@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME		= a.out
-SRC_FILES	= main.cpp Animal.cpp Cat.cpp Dog.cpp
+SRC_FILES	= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp 
 SRC_DIR		= ./src/
 INC_DIR		= ./inc/
 OBJ_DIR		= ./obj/

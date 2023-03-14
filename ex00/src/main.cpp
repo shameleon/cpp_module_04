@@ -13,8 +13,23 @@
 #include "../inc/Animal.hpp"
 #include "../inc/Dog.hpp"
 #include "../inc/Cat.hpp"
+#include "../inc/WrongAnimal.hpp"
+#include "../inc/WrongCat.hpp"
 
-int				main(void)
+static int		test2(void)
+{
+	const WrongAnimal	*meta = new WrongAnimal();
+	const WrongAnimal	*i = new WrongCat();
+
+	std::cout <<  std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound();
+	meta->makeSound();
+	std::cout << std::endl;
+	return 0;
+}
+
+static int		test1(void)
 {
 	const Animal	*meta = new Animal();
 	const Animal	*j = new Dog();
@@ -26,6 +41,16 @@ int				main(void)
 	i->makeSound();
 	j->makeSound();
 	meta->makeSound();
+	std::cout << std::endl;
+	return 0;
+}
+
+int				main(void)
+{
+	std::cout << "TEST 1 " << std::endl;
 	std::cout << "______________________________________________" << std::endl;
+	test1();
+	std::cout << "______________________________________________" << std::endl;
+	test2();
 	return 0;
 }
