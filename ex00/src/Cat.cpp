@@ -40,7 +40,7 @@ Cat::Cat(Cat const	&other)
 Cat::~Cat(void)
 {
 	std::cout << COL_RED << ">(Cat default destructor): RIP little ";
-	std::cout << this->_name << this->Animal::_type  << " ! " << COL_RES  << std::endl;
+	std::cout << this->_name << " " <<this->Animal::_type  << " ! " << COL_RES  << std::endl;
 	return ;
 }
 

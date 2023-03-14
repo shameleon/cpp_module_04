@@ -40,7 +40,7 @@ Dog::Dog(Dog const	&other)
 Dog::~Dog(void)
 {
 	std::cout << COL_RED << ">(Dog default destructor): RIP little ";
-	std::cout << this->_name << this->Animal::_type  << " ! " << COL_RES  << std::endl;
+	std::cout << this->_name << " " << this->Animal::_type  << " ! " << COL_RES  << std::endl;
 	return ;
 }
 
