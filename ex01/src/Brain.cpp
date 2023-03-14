@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmouaike <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,39 +12,39 @@
 
 #include "../inc/Animal.hpp"
 
-Animal::Animal(void):_type("undefined type")
+Brain::Brain(void):_type("undefined type")
 {
-	std::cout << ">(Animal default constructor): a default Animal was created. ";
-	std::cout << "it is of " << this->_type << std::endl;
+	std::cout << ">(Brain default constructor): a default Brain was created. ";
+	std::cout << std::endl;
 	return ;
 }
 
-Animal::Animal(std::string const type):_type(type)
+Brain::Brain(std::string const idea)
 {
-	std::cout << ">(Animal parametric constructor): a new Animal was created. ";
-	std::cout << "it is a " << this->_type << " ! " << std::endl;
+	std::cout << ">(Brain parametric constructor): a new Brain was created. ";
+	std::cout << std::endl;
 	return ;
 }
 
-Animal::Animal(Animal const	&other):_type(other.getType())
+Brain::Brain(Brain const	&other):_type(other.getType())
 {
-	std::cout << ">(Animal copy constructor): a clone of " << this->getType();
-	std::cout << " type was created." << std::endl;
+	std::cout << ">(Brain copy constructor): brain cloned ";
+	std::cout << std::endl;
 	return ;
 }
 
-Animal::~Animal(void)
+Brain::~Brain(void)
 {
-	std::cout << COL_RED << "->(Animal destructor): RIP little ";
+	std::cout << COL_RED << "->(Brain destructor)";
 	std::cout << this->_type << " ! " << COL_RES  << std::endl;
 	return ;
 }
 
-Animal		&Animal::operator=(Animal const &rhs)
+Brain		&Brain::operator=(Brain const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	std::cout << "->(Animal copy assignment operator): ";
+	std::cout << "->(Brain copy assignment operator): ";
 	if (this->_type != rhs.getType())
 	{
 		std::cout << this->_type << " cannot be updated and copied from ";
@@ -56,20 +56,20 @@ Animal		&Animal::operator=(Animal const &rhs)
 	return (*this);
 }
 
-std::string		Animal::getType(void) const
+std::string		Brain::getType(void) const
 {
 	return this->_type;
 }
 
-void		Animal::makeSound(void) const
+void		Brain::makeSound(void) const
 {
-	std::cout << ">(Animal Makes Sound): ";
+	std::cout << ">(Brain Makes Sound): wrong sound";
 	std::cout << this->_type << std::endl;
 	return ;
 }
 
 /* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &oss, Animal const &rhs)
+std::ostream	&operator<<(std::ostream &oss, Brain const &rhs)
 {
 	oss << rhs.getType() << std::endl;
 	return oss;
