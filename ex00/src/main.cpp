@@ -42,6 +42,7 @@ static int		test2(void)
 	const WrongAnimal	*i = new WrongCat();
 
 	std::cout <<  std::endl;
+	std::cout << meta->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
 	i->makeSound();
 	meta->makeSound();
@@ -58,11 +59,12 @@ static int		test1(void)
 	const Animal	*i = new Cat();
 
 	std::cout <<  std::endl;
+	std::cout << meta->getType() << " " << std::endl;
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
 	meta->makeSound();
+	j->makeSound();
+	i->makeSound();
 	std::cout << std::endl;
 	delete meta;
 	delete j;
