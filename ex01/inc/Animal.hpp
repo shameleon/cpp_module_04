@@ -23,7 +23,6 @@
 
 # include <iostream>
 # include <iomanip>
-# include "../inc/Brain.hpp"
 
 class	Animal
 {
@@ -44,7 +43,8 @@ class	Animal
 
 };
 
-/* * * * *  stream operator * * * * */
+/* * * * *  stream operator * * * * 
 std::ostream	&operator<<(std::ostream &o, Animal const &rhs);
+*/
 
 #endif

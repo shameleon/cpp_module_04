@@ -68,9 +68,10 @@ void		Animal::makeSound(void) const
 	return ;
 }
 
-/* * * * *  stream operator * * * * */
+/* * * * *  stream operator * * * * *
 std::ostream	&operator<<(std::ostream &oss, Animal const &rhs)
 {
-	oss << rhs.getType() << std::endl;
+	oss << rhs.getType();
 	return oss;
 }
+*/

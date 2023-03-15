@@ -11,66 +11,68 @@
 /* ************************************************************************** */
 
 #include "../inc/Animal.hpp"
+#include "../inc/Brain.hpp"
 
-Brain::Brain(void):_type("undefined type")
+Brain::Brain(void)
 {
 	std::cout << ">(Brain default constructor): a default Brain was created. ";
 	std::cout << std::endl;
+	for (int i = 0; i < _size; i++)
+		this->_ideas[i] = "_";
 	return ;
 }
 
-Brain::Brain(std::string const idea)
-{
-	std::cout << ">(Brain parametric constructor): a new Brain was created. ";
-	std::cout << std::endl;
-	return ;
-}
-
-Brain::Brain(Brain const	&other):_type(other.getType())
+Brain::Brain(Brain const	&other)
 {
 	std::cout << ">(Brain copy constructor): brain cloned ";
 	std::cout << std::endl;
+	for (int i = 0; i < _size; i++)
+		this->_ideas[i] = other.getIdea(i);
 	return ;
 }
 
 Brain::~Brain(void)
 {
 	std::cout << COL_RED << "->(Brain destructor)";
-	std::cout << this->_type << " ! " << COL_RES  << std::endl;
+	std::cout << COL_RES  << std::endl;
 	return ;
 }
 
-Brain		&Brain::operator=(Brain const &rhs)
+Brain			&Brain::operator=(Brain const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
 	std::cout << "->(Brain copy assignment operator): ";
-	if (this->_type != rhs.getType())
-	{
-		std::cout << this->_type << " cannot be updated and copied from ";
-		std::cout << rhs.getType() << std::endl;
-		return (*this);
-	}
-	std::cout << this->_type << " was updated and copied another " << rhs.getType();
-	std::cout << "'s attributes " << std::endl;
+	std::cout << " Brain was updated and copied another Brain ideas.";
+	std::cout << std::endl;
+	for (int i = 0; i < _size; i++)
+		this->_ideas[i] = rhs.getIdea(i);
 	return (*this);
 }
 
-std::string		Brain::getType(void) const
+std::string		Brain::getIdea(int const index) const
 {
-	return this->_type;
+	if (index > 0 && index < _size)
+		return this->_ideas[index];
+	return "";
 }
 
-void		Brain::makeSound(void) const
+int		Brain::getBrainSize(void) const
 {
-	std::cout << ">(Brain Makes Sound): wrong sound";
-	std::cout << this->_type << std::endl;
+	return this->_size;
+}
+
+void			Brain::setIdea(std::string const idea, int const index)
+{
+	if (index > 0 && index < _size)
+		this->_ideas[index] = idea;
 	return ;
 }
 
 /* * * * *  stream operator * * * * */
 std::ostream	&operator<<(std::ostream &oss, Brain const &rhs)
 {
-	oss << rhs.getType() << std::endl;
+	for (int i = 0; i < rhs.getBrainSize(); i++)
+		oss << rhs.getIdea(i);
 	return oss;
 }

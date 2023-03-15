@@ -17,20 +17,23 @@
 
 class	Brain
 {
-	protected:
-		std::string		_ideas[100];
+	private :
+		static const int	_size = 100;
+		std::string			_ideas[_size];
 
 	public:
 		Brain(void);
-		Brainl(std::string const	idea);
-		Brain(Brain const	&other);
-		virtual ~Brain(void);
+		Brain(Brain const &other);
+		~Brain(void);
 
-		Brain			&operator=(Brain const &rhs);
+		Brain				&operator=(Brain const &rhs);
 
+		std::string			getIdea(int const index) const;
+		int					getBrainSize(void) const;
+		void				setIdea(std::string const idea, int const index);
 };
 
 /* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &o, Brain const &rhs);
+std::ostream	&operator<<(std::ostream &oss, Brain const &rhs);
 
 #endif

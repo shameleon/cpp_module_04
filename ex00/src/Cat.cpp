@@ -55,6 +55,7 @@ Cat		&Cat::operator=(Cat const &rhs)
 		std::cout << rhs.getType() << std::endl;
 		return (*this);
 	}
+	this->_name = rhs.getName();
 	std::cout << this->_name << " was updated to " << rhs.getName();
 	std::cout << "'s attributes " << std::endl;
 	return (*this);

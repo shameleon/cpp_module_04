@@ -14,9 +14,13 @@
 # define CAT_HPP
 
 # include "../inc/Animal.hpp"
+# include "../inc/Brain.hpp"
 
 class	Cat: public Animal
 {
+	private:
+		Brain			*_brain;
+
 	protected:
 		std::string		_name;
 
@@ -26,11 +30,15 @@ class	Cat: public Animal
 		Cat(Cat const	&other);
 		virtual ~Cat(void);
 
-		Cat	&operator=(Cat const &rhs);
+		Cat				&operator=(Cat const &rhs);
 		
 		std::string		getName(void) const;
+		Brain			*getBrain(void) const;
 
 		virtual void	makeSound(void) const;
 };
+
+/* * * * *  stream operator * * * * */
+std::ostream	&operator<<(std::ostream &oss, Cat const &rhs);
 
 #endif
