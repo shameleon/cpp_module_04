@@ -26,10 +26,11 @@ Animal::Animal(std::string const type):_type(type)
 	return ;
 }
 
-Animal::Animal(Animal const	&other):_type(other.getType())
+Animal::Animal(Animal const	&other)
 {
 	std::cout << ">(Animal copy constructor): a clone of " << this->getType();
 	std::cout << " type was created." << std::endl;
+	*this = other
 	return ;
 }
 
@@ -45,14 +46,9 @@ Animal		&Animal::operator=(Animal const &rhs)
 	if (this == &rhs)
 		return (*this);
 	std::cout << "->(Animal copy assignment operator): ";
-	if (this->_type != rhs.getType())
-	{
-		std::cout << this->_type << " cannot be updated and copied from ";
-		std::cout << rhs.getType() << std::endl;
-		return (*this);
-	}
 	std::cout << this->_type << " was updated and copied another " << rhs.getType();
 	std::cout << "'s attributes " << std::endl;
+	this->type =rhs.getType();
 	return (*this);
 }
 

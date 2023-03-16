@@ -28,6 +28,7 @@ Brain::Brain(Brain const	&other)
 	std::cout << std::endl;
 	for (int i = 0; i < _size; i++)
 		this->_ideas[i] = other.getIdea(i);
+	// 	*this = copy;
 	return ;
 }
 
@@ -47,6 +48,7 @@ Brain			&Brain::operator=(Brain const &rhs)
 	std::cout << std::endl;
 	for (int i = 0; i < _size; i++)
 		this->_ideas[i] = rhs.getIdea(i);
+	// 	std::copy(rhs._ideas, rhs._ideas + 100, this->_ideas);
 	return (*this);
 }
 

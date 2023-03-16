@@ -30,6 +30,11 @@ static int		test4(void)
 	delete j;
 	return 0;
 }
+
+/* 
+Cat	*j = new Cat(*i);
+*i = *j
+*/
 static int		test3(void)
 {
 	const Animal	*j = new Dog("WiFi");

@@ -31,7 +31,8 @@ Cat::Cat(std::string const name):Animal("Cat")
 Cat::Cat(Cat const	&other):Animal(other)
 {
 	//this->Animal::_type = other.getType();
-	this->_name = other.getName();
+	//this->_name = other.getName();
+	*this = other;
 	std::cout << ">(Cat copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
 	return ;
@@ -48,16 +49,10 @@ Cat		&Cat::operator=(Cat const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	std::cout << ">(Cat copy assignment operator): ";
-	if (this->Animal::_type != rhs.getType())
-	{
-		std::cout << this->Animal::_type << " cannot be updated and copied from ";
-		std::cout << rhs.getType() << std::endl;
-		return (*this);
-	}
-	this->_name = rhs.getName();
 	std::cout << this->_name << " was updated to " << rhs.getName();
 	std::cout << "'s attributes " << std::endl;
+	Animal::operator=(rhs);
+	//this->_name = rhs.getName();
 	return (*this);
 }
 

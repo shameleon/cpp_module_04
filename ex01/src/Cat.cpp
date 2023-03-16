@@ -21,6 +21,7 @@ Cat::Cat(void):Animal("Cat")
 	return ;
 }
 
+/* remove ? */
 Cat::Cat(std::string const name):Animal("Cat")
 {
 	this->_name = name;
@@ -33,6 +34,7 @@ Cat::Cat(std::string const name):Animal("Cat")
 Cat::Cat(Cat const	&other)
 {
 	this->_brain = new Brain();
+	// this->_brain = new Brain(*other._brain);
 	*this = other;
 	std::cout << ">(Cat copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
@@ -56,17 +58,13 @@ Cat		&Cat::operator=(Cat const &rhs)
 	if (this == &rhs)
 		return (*this);
 	std::cout << ">(Cat copy assignment operator): ";
-	if (this->Animal::_type != rhs.getType())
-	{
-		std::cout << this->Animal::_type << " cannot be updated and copied from ";
-		std::cout << rhs.getType() << std::endl;
-		return (*this);
-	}
-	this->_name = rhs.getName();
+	//this->_name = rhs.getName();
 	std::cout << this->_name << " was updated to " << rhs.getName();
 	std::cout << "'s attributes";
-	// *this->_brain = *rhs.getBrain();
 	std::cout << ", name and ideas." << std::endl;
+	Animal::operator=(rhs);
+	*this->_brain = *rhs._brain;
+	// *this->_brain = *rhs.getBrain();
 	return (*this);
 }
 
@@ -75,9 +73,14 @@ std::string		Cat::getName(void) const
 	return this->_name;
 }
 
-Brain			*Cat::getBrain(void) const
+Brain			&Cat::getBrain(void) const
 {
-	return this->_brain;
+	return (*this->_brain);
+}
+
+Brain			*Cat::setBrain(Brain const &brain) const
+{
+	return (*this->_brain)= brain;
 }
 
 /* Overriding makeSound() */
