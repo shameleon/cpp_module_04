@@ -15,22 +15,22 @@
 Cat::Cat(void):Animal("Cat")
 {
 	this->_name = "Kitty";
-	std::cout << ">(Cat default constructor): a kitten with no name. ";
-	std::cout << "it is named " << this->_name << std::endl;
+	std::cout << ">(Cat default constructor): created an unanmed Cat";
+	std::cout << " and named it to " << this->_name << std::endl;
 	return ;
 }
 
 Cat::Cat(std::string const name):Animal("Cat")
 {
 	this->_name = name;
-	std::cout << ">(Cat parametric constructor): a new Cat named ";
+	std::cout << ">(Cat parametric constructor): a newly created Cat created a kitten named ";
 	std::cout << this->_name << " ! " << std::endl;
 	return ;
 }
 
-Cat::Cat(Cat const	&other)
+Cat::Cat(Cat const	&other):Animal(other)
 {
-	this->Animal::_type = other.getType();
+	//this->Animal::_type = other.getType();
 	this->_name = other.getName();
 	std::cout << ">(Cat copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
@@ -74,4 +74,10 @@ void		Cat::makeSound(void) const
 	std::cout << " named " << this->_name << " is Meowing ! ";
 	std::cout << std::endl;
 	return ;
+}
+
+std::ostream	&operator<<(std::ostream &oss, Animal const &rhs)
+{
+	oss << rhs.getName();
+	return oss;
 }

@@ -28,7 +28,7 @@ class	Dog: public Animal
 
 		Dog	&operator=(Dog const &rhs);
 		
-		std::string		getName(void) const;
+		virtual std::string		getName(void) const;
 
 		virtual void	makeSound(void) const;
 };

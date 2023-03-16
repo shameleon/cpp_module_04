@@ -61,16 +61,22 @@ std::string		Animal::getType(void) const
 	return this->_type;
 }
 
-void		Animal::makeSound(void) const
+void			Animal::makeSound(void) const
 {
 	std::cout << ">(Animal Makes Sound): ";
 	std::cout << this->_type << std::endl;
 	return ;
 }
 
-/* * * * *  stream operator * * * * */
+std::string		Animal::getName(void) const
+{
+	return "";
+}
+
+/* * * * *  stream operator * * * * 
 std::ostream	&operator<<(std::ostream &oss, Animal const &rhs)
 {
-	oss << rhs.getType() << std::endl;
+	oss << rhs.getType();
 	return oss;
 }
+*/

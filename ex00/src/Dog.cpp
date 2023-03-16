@@ -14,21 +14,21 @@
 
 Dog::Dog(void):Animal("Dog")
 {
-	this->_name = "Doggie";
-	std::cout << ">(Dog default constructor): a Dog with no name. ";
-	std::cout << "it is named " << this->_name << std::endl;
+	this->_name = "Puppy";
+	std::cout << ">(Dog default constructor): created an unamed Dog ";
+	std::cout << " and named it to " << this->_name << std::endl;
 	return ;
 }
 
 Dog::Dog(std::string const name):Animal("Dog")
 {
 	this->_name = name;
-	std::cout << ">(Dog parametric constructor): a new Dog named ";
+	std::cout << ">(Dog parametric constructor): a newly created Dog named ";
 	std::cout << this->_name << " ! " << std::endl;
 	return ;
 }
 
-Dog::Dog(Dog const	&other)
+Dog::Dog(Dog const	&other):Animal("Dog")
 {
 	this->Animal::_type = other.getType();
 	this->_name = other.getName();
