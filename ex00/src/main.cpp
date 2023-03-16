@@ -20,6 +20,16 @@
 /*         Ex00 Polymorphism           */
 /* *********************************** */
 
+static int		test4(void)
+{
+	const Animal	*j = new Cat("PrincessUSB");
+
+	std::cout << &j << ": " << j->getName() << " (" << j->getType() << ")\n";
+	j->makeSound();
+	std::cout << j;
+	delete j;
+	return 0;
+}
 static int		test3(void)
 {
 	const Animal	*j = new Dog("WiFi");
@@ -27,21 +37,26 @@ static int		test3(void)
 	const Animal	*k = new Cat("HelloK");
 
 	std::cout <<  std::endl;
-	std::cout << j << " " << j->getName() << std::endl;
-	//std::cout << i << " " << i << std::endl;
-	//std::cout << k << " " << k->getType() << " " <<std::endl;
+	std::cout << &j << ": " << j->getName() << " (" << j->getType() << ")\n";
+	std::cout << &i << ": " << i->getName() << " (" << i->getType() << ")\n";
+	std::cout << &k << ": " << k->getName() << " (" << k->getType() << ")\n";
+	std::cout << std::endl;
 	i->makeSound();
 	j->makeSound();
-	std::cout << "\n Cat Copy : HelloKitty = PrincessUSB \n";
+	std::cout << COL_GRN << "\n - - - Copying cats : HelloKitty = PrincessUSB - - - \n";
 	k = i;
-	std::cout << i << " " << i->getType() << " " << std::endl;
-	std::cout << k << " " << k->getType() << " " <<std::endl;
+	std::cout << &i << ": " << i->getName() << " (" << i->getType() << ")\n";
+	std::cout << &k << ": " << k->getName() << " (" << k->getType() << ")\n";
 	k->makeSound();
-	std::cout << std::endl;
-
-	//std::cout << " Cat went surgery and extensive DNA editing tobecame a dog)"
+	std::cout << COL_RES << std::endl;
+	std::cout << COL_PUR << "- - - Cat went surgery and extensive DNA editing to become a dog - - - \n";
+	std::cout << "- - - PrincessUSB = Wifi - - - \n";
+	i = j;
+	std::cout << &j << ": " << j->getName() << " (" << j->getType() << ")\n";
+	std::cout << &i << ": " << i->getName() << " (" << i->getType() << ")\n";
+	i->makeSound();
+	std::cout << COL_RES << std::endl;
 	delete j;
-	delete i;
 	delete k;
 	return 0;
 }
@@ -50,15 +65,19 @@ static int		test2(void)
 {
 	const WrongAnimal	*meta = new WrongAnimal();
 	const WrongAnimal	*i = new WrongCat();
+	const Animal		*j= new Cat();
 
 	std::cout <<  std::endl;
-	std::cout << meta->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	std::cout << &meta << ": " << meta->getName() << " (" << meta->getType() << ")\n";
+	std::cout << &i << ": " << i->getName() << " (" << i->getType() << ")\n";
+	std::cout << &j << ": " << j->getName() << " (" << j->getType() << ")\n";
 	meta->makeSound();
 	i->makeSound();
+	j->makeSound();
 	std::cout << std::endl;
 	delete meta;
 	delete i;
+	delete j;
 	return 0;
 }
 
@@ -69,8 +88,9 @@ static int		test1(void)
 	const Animal	*i = new Cat();
 
 	std::cout <<  std::endl;
-	std::cout << j << j->getType() << " " << std::endl;
-	std::cout << i << i->getType() << " " << std::endl;
+	std::cout << &meta << ": " << meta->getType() << " " << std::endl;
+	std::cout << &j << ": " << j->getType() << " " << std::endl;
+	std::cout << &i << ": " << i->getType() << " " << std::endl;
 	j->makeSound();
 	i->makeSound();
 	std::cout << std::endl;
@@ -95,6 +115,10 @@ int				main(void)
 	std::cout << COL_YEL << "TEST 3" << COL_RES << std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	test3();
+	std::cout << std::endl << std::endl;
+	std::cout << COL_YEL << "TEST 4" << COL_RES << std::endl;
+	std::cout << "______________________________________________" << std::endl;
+	test4();
 	return 0;
 }
 

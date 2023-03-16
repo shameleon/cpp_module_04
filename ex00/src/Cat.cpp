@@ -23,7 +23,7 @@ Cat::Cat(void):Animal("Cat")
 Cat::Cat(std::string const name):Animal("Cat")
 {
 	this->_name = name;
-	std::cout << ">(Cat parametric constructor): a newly created Cat created a kitten named ";
+	std::cout << ">(Cat parametric constructor): a newly created Cat named ";
 	std::cout << this->_name << " ! " << std::endl;
 	return ;
 }
@@ -74,10 +74,4 @@ void		Cat::makeSound(void) const
 	std::cout << " named " << this->_name << " is Meowing ! ";
 	std::cout << std::endl;
 	return ;
-}
-
-std::ostream	&operator<<(std::ostream &oss, Animal const &rhs)
-{
-	oss << rhs.getName();
-	return oss;
 }
