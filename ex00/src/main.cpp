@@ -22,17 +22,27 @@
 
 static int		test3(void)
 {
-	const Animal	*j = new Dog(" WiFi ");
-	const Animal	*i = new Cat(" Princess USB ");
+	const Animal	*j = new Dog("WiFi");
+	const Animal	*i = new Cat("PrincessUSB");
+	const Animal	*k = new Cat("HelloK");
 
 	std::cout <<  std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	std::cout << j << " " << j->getName() << std::endl;
+	//std::cout << i << " " << i << std::endl;
+	//std::cout << k << " " << k->getType() << " " <<std::endl;
 	i->makeSound();
 	j->makeSound();
+	std::cout << "\n Cat Copy : HelloKitty = PrincessUSB \n";
+	k = i;
+	std::cout << i << " " << i->getType() << " " << std::endl;
+	std::cout << k << " " << k->getType() << " " <<std::endl;
+	k->makeSound();
 	std::cout << std::endl;
+
+	//std::cout << " Cat went surgery and extensive DNA editing tobecame a dog)"
 	delete j;
 	delete i;
+	delete k;
 	return 0;
 }
 
@@ -44,8 +54,8 @@ static int		test2(void)
 	std::cout <<  std::endl;
 	std::cout << meta->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
 	meta->makeSound();
+	i->makeSound();
 	std::cout << std::endl;
 	delete meta;
 	delete i;
@@ -59,10 +69,8 @@ static int		test1(void)
 	const Animal	*i = new Cat();
 
 	std::cout <<  std::endl;
-	std::cout << meta->getType() << " " << std::endl;
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
-	meta->makeSound();
 	j->makeSound();
 	i->makeSound();
 	std::cout << std::endl;
@@ -74,15 +82,15 @@ static int		test1(void)
 
 int				main(void)
 {
-	std::cout << "TEST 1 " << std::endl;
+	std::cout << COL_YEL << "TEST 1" << COL_RES << std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	test1();
 	std::cout << std::endl << std::endl;
-	std::cout << "TEST 2 " << std::endl;
+	std::cout << COL_YEL << "TEST 2" << COL_RES <<  std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	test2();
 	std::cout << std::endl << std::endl;
-	std::cout << "TEST 3 " << std::endl;
+	std::cout << COL_YEL << "TEST 3" << COL_RES << std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	test3();
 	return 0;

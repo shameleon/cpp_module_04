@@ -27,7 +27,7 @@
 class	Animal
 {
 	protected:
-		std::string		_type;
+		std::string				_type;
 
 	public:
 		Animal(void);
@@ -35,15 +35,16 @@ class	Animal
 		Animal(Animal const	&other);
 		virtual ~Animal(void);
 
-		Animal			&operator=(Animal const &rhs);
+		Animal					&operator=(Animal const &rhs);
 
-		std::string		getType(void) const;
+		std::string				getType(void) const;
+		virtual std::string		getName(void) const;
 
-		virtual void	makeSound(void) const;
+		virtual void			makeSound(void) const;
 
 };
 
-/* * * * *  stream operator * * * * */
+/* * * * *  stream operator * * * * *
 std::ostream	&operator<<(std::ostream &o, Animal const &rhs);
-
+*/
 #endif

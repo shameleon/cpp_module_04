@@ -28,7 +28,7 @@ Dog::Dog(std::string const name):Animal("Dog")
 	return ;
 }
 
-Dog::Dog(Dog const	&other)
+Dog::Dog(Dog const	&other):Animal("Dog")
 {
 	this->Animal::_type = other.getType();
 	this->_name = other.getName();
