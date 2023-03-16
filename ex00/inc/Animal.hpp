@@ -48,3 +48,8 @@ class	Animal
 std::ostream	&operator<<(std::ostream &o, Animal const &rhs);
 */
 #endif
+
+/*
+virtual : dynamic resolution for function call 
+method = virtual member-function 
+*/

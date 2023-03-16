@@ -69,8 +69,8 @@ static int		test1(void)
 	const Animal	*i = new Cat();
 
 	std::cout <<  std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	std::cout << j << j->getType() << " " << std::endl;
+	std::cout << i << i->getType() << " " << std::endl;
 	j->makeSound();
 	i->makeSound();
 	std::cout << std::endl;
@@ -82,6 +82,8 @@ static int		test1(void)
 
 int				main(void)
 {
+	std::cout << std::endl;
+	std::cout << std::endl;
 	std::cout << COL_YEL << "TEST 1" << COL_RES << std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	test1();

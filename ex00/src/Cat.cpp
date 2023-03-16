@@ -15,15 +15,15 @@
 Cat::Cat(void):Animal("Cat")
 {
 	this->_name = "Kitty";
-	std::cout << ">(Cat default constructor): created a kitten named ";
-	std::cout << this->_name << std::endl;
+	std::cout << ">(Cat default constructor): created an unanmed Cat";
+	std::cout << " and named it to " << this->_name << std::endl;
 	return ;
 }
 
 Cat::Cat(std::string const name):Animal("Cat")
 {
 	this->_name = name;
-	std::cout << ">(Cat parametric constructor): created a kitten named ";
+	std::cout << ">(Cat parametric constructor): a newly created Cat created a kitten named ";
 	std::cout << this->_name << " ! " << std::endl;
 	return ;
 }
