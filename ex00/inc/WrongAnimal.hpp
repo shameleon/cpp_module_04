@@ -44,7 +44,4 @@ class	WrongAnimal
 
 };
 
-/* * * * *  stream operator * * * */
-std::ostream	&operator<<(std::ostream &o, WrongAnimal const &rhs);
-
 #endif

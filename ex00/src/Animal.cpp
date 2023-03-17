@@ -14,29 +14,29 @@
 
 Animal::Animal(void):_type("animal of undefined type")
 {
-	std::cout << ">(Animal default constructor): a default Animal was created. ";
-	std::cout << "it is a " << this->_type << std::endl;
+	std::cout << EMO_WRENCH << " (Animal default constructor): a default Animal was created. ";
+	std::cout << "it is a(n) " << this->_type << std::endl;
 	return ;
 }
 
 Animal::Animal(std::string const type):_type(type)
 {
-	std::cout << ">(Animal parametric constructor): a new Animal was created. ";
-	std::cout << "it is a " << this->_type << " type ! " << std::endl;
+	std::cout << EMO_WRENCH << " (Animal parametric constructor): a new Animal was created. ";
+	std::cout << "it is a(n) " << this->_type << " ! " << std::endl;
 	return ;
 }
 
 Animal::Animal(Animal const	&other)
 {
-	std::cout << ">(Animal copy constructor): a clone of " << this->getType();
+	std::cout << EMO_WRENCH << " (Animal copy constructor): a clone of " << this->getType();
 	std::cout << " type was created." << std::endl;
-	*this = other
+	*this = other;
 	return ;
 }
 
 Animal::~Animal(void)
 {
-	std::cout << COL_RED << ">(Animal destructor): RIP little ";
+	std::cout << COL_RED << EMO_MINUS << " (Animal destructor): RIP little ";
 	std::cout << this->_type << " ! " << COL_RES  << std::endl;
 	return ;
 }
@@ -45,10 +45,10 @@ Animal		&Animal::operator=(Animal const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	std::cout << "->(Animal copy assignment operator): ";
+	std::cout << EMO_WRENCH << " (Animal copy assignment operator): ";
 	std::cout << this->_type << " was updated and copied another " << rhs.getType();
 	std::cout << "'s attributes " << std::endl;
-	this->type =rhs.getType();
+	this->_type =rhs.getType();
 	return (*this);
 }
 
@@ -59,7 +59,7 @@ std::string		Animal::getType(void) const
 
 void			Animal::makeSound(void) const
 {
-	std::cout << ">(Animal Makes Sound): undefined sound";
+	std::cout << EMO_MINUS << " (Animal Makes Sound): undefined sound";
 	std::cout << std::endl;
 	return ;
 }
@@ -69,10 +69,16 @@ std::string		Animal::getName(void) const
 	return "";
 }
 
-/* * * * *  stream operator * * * */
-std::ostream	&operator<<(std::ostream &oss, Animal const &rhs)
+std::ostream	&operator<<(std::ostream& oss, Animal const &rhs)
 {
-	//oss << rhs.getName();
-	oss << &rhs << ": " << rhs.getName() << " (" << rhs.getType() << ")\n";
+	oss << &rhs << ": " << rhs.getName() << " (" << rhs.getType() << ")" << std::endl;
 	return oss;
+}
+;
+
+void			put_animal(Animal const &self)
+{
+	std::cout << self.getName();
+	std::cout << " (" << self.getType() << ")" << std::endl;
+	return ;
 }

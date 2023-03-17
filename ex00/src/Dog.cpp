@@ -15,31 +15,32 @@
 Dog::Dog(void):Animal("Dog")
 {
 	this->_name = "Puppy";
-	std::cout << ">(Dog default constructor): created an unamed Dog ";
-	std::cout << " and named it to " << this->_name << std::endl;
+	std::cout << EMO_DOG << " (Dog default constructor): created an unamed Dog ";
+	std::cout << " and named it " << this->_name << std::endl;
 	return ;
 }
 
 Dog::Dog(std::string const name):Animal("Dog")
 {
 	this->_name = name;
-	std::cout << ">(Dog parametric constructor): a newly created Dog named ";
+	std::cout << EMO_DOG << " (Dog parametric constructor): a newly created Dog named ";
 	std::cout << this->_name << " ! " << std::endl;
 	return ;
 }
 
-Dog::Dog(Dog const	&other):Animal("Dog")
+Dog::Dog(Dog const	&other):Animal(other)
 {
-	this->Animal::_type = other.getType();
-	this->_name = other.getName();
-	std::cout << ">(Dog copy constructor): a clone of " << other.getType();
+	//this->Animal::_type = other.getType();
+	//this->_name = other.getName();
+	*this = other;
+	std::cout << EMO_DOG << " (Dog copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
 	return ;
 }
 
 Dog::~Dog(void)
 {
-	std::cout << COL_RED << ">(Dog destructor): RIP little ";
+	std::cout << COL_RED << EMO_DOG << " (Dog destructor): RIP ";
 	std::cout << this->_name << " " << this->Animal::_type  << " ! " << COL_RES  << std::endl;
 	return ;
 }
@@ -48,15 +49,12 @@ Dog		&Dog::operator=(Dog const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	std::cout << ">(Dog copy assignment operator): ";
-	if (this->Animal::_type != rhs.getType())
-	{
-		std::cout << this->Animal::_type << " cannot be updated and copied from ";
-		std::cout << rhs.getType() << std::endl;
-		return (*this);
-	}
+	std::cout << EMO_DOG << " (Dog copy assignment operator): ";
 	std::cout << this->_name << " was updated to " << rhs.getName();
 	std::cout << "'s attributes " << std::endl;
+	//Animal::operator=(rhs);
+	this->_type = rhs.getType();
+	this->_name = rhs.getName();
 	return (*this);
 }
 
@@ -69,8 +67,9 @@ std::string		Dog::getName(void) const
 /* Method = virtual member fonction */
 void		Dog::makeSound(void) const
 {
-	std::cout << ">(Dog): " << this->Animal::_type;
+	std::cout << EMO_DOG << " (Dog): " << this->Animal::_type;
 	std::cout << " named " << this->_name << " is Barking ! ";
+	std::cout << " WOOF WOOF ! " << std::endl;
 	std::cout << std::endl;
 	return ;
 }
