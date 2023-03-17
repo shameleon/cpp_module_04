@@ -27,23 +27,24 @@
 class	WrongAnimal
 {
 	protected:
-		std::string		_type;
+		std::string				_type;
 
 	public:
 		WrongAnimal(void);
-		WrongAnimal(std::string const	type);
-		WrongAnimal(WrongAnimal const	&other);
+		WrongAnimal(std::string const type);
+		WrongAnimal(WrongAnimal const &other);
 		virtual ~WrongAnimal(void);
 
-		WrongAnimal			&operator=(WrongAnimal const &rhs);
+		WrongAnimal				&operator=(WrongAnimal const &rhs);
 
-		std::string		getType(void) const;
+		std::string				getType(void) const;
+		virtual std::string		getName(void) const;
 
-		virtual void	makeSound(void) const;
+		virtual void			makeSound(void) const;
 
 };
 
-/* * * * *  stream operator * * * * */
+/* * * * *  stream operator * * * */
 std::ostream	&operator<<(std::ostream &o, WrongAnimal const &rhs);
 
 #endif

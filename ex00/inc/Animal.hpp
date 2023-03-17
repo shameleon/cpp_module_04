@@ -31,7 +31,7 @@ class	Animal
 
 	public:
 		Animal(void);
-		Animal(std::string const	type);
+		Animal(std::string const type); // protected ??
 		Animal(Animal const	&other);
 		virtual ~Animal(void);
 
@@ -44,9 +44,9 @@ class	Animal
 
 };
 
-/* * * * *  stream operator * * * * *
+/* * * * *  stream operator * * * * */
 std::ostream	&operator<<(std::ostream &o, Animal const &rhs);
-*/
+
 #endif
 
 /*

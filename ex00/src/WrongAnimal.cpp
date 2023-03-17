@@ -12,10 +12,10 @@
 
 #include "../inc/WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(void):_type("undefined type")
+WrongAnimal::WrongAnimal(void):_type("Wrong animal of undefined type")
 {
 	std::cout << ">(WrongAnimal default constructor): a default WrongAnimal was created. ";
-	std::cout << "it is of " << this->_type << std::endl;
+	std::cout << "it is a" << this->_type << std::endl;
 	return ;
 }
 
@@ -64,13 +64,19 @@ std::string		WrongAnimal::getType(void) const
 void		WrongAnimal::makeSound(void) const
 {
 	std::cout << ">(WrongAnimal Makes Sound): wrong sound";
-	std::cout << this->_type << std::endl;
+	std::cout << std::endl;
 	return ;
 }
 
-/* * * * *  stream operator * * * * */
+std::string		WrongAnimal::getName(void) const
+{
+	return "";
+}
+
+/* * * * *  stream operator * * * */
 std::ostream	&operator<<(std::ostream &oss, WrongAnimal const &rhs)
 {
 	oss << rhs.getType() << std::endl;
 	return oss;
 }
+

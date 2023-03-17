@@ -18,7 +18,7 @@
 class	WrongCat: public WrongAnimal
 {
 	protected:
-		std::string		_name;
+		std::string				_name;
 
 	public:
 		WrongCat(void);
@@ -26,11 +26,11 @@ class	WrongCat: public WrongAnimal
 		WrongCat(WrongCat const	&other);
 		virtual ~WrongCat(void);
 
-		WrongCat	&operator=(WrongCat const &rhs);
+		WrongCat				&operator=(WrongCat const &rhs);
 		
-		std::string		getName(void) const;
+		virtual std::string		getName(void) const;
 
-		virtual void	makeSound(void) const;
+		virtual void			makeSound(void) const;
 };
 
 #endif

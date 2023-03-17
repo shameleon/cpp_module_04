@@ -14,23 +14,23 @@
 
 WrongCat::WrongCat(void):WrongAnimal("WrongCat")
 {
-	this->_name = "Kitty";
-	std::cout << ">(WrongCat default constructor): a kitten with no name. ";
-	std::cout << "it is named " << this->_name << std::endl;
+	this->_name = "WrongKitty";
+	std::cout << ">(Wrong Cat default constructor): created an unanmed Wrong Cat";
+	std::cout << " and named it to " << this->_name << std::endl;
 	return ;
 }
 
 WrongCat::WrongCat(std::string const name):WrongAnimal("WrongCat")
 {
 	this->_name = name;
-	std::cout << ">(WrongCat parametric constructor): a new WrongCat named ";
+	std::cout << ">(WrongCat parametric constructor): a newly created WrongCat named ";
 	std::cout << this->_name << " ! " << std::endl;
 	return ;
 }
 
-WrongCat::WrongCat(WrongCat const	&other)
+WrongCat::WrongCat(WrongCat const	&other):WrongAnimal(other)
 {
-	this->WrongAnimal::_type = other.getType();
+	//this->WrongAnimal::_type = other.getType();
 	this->_name = other.getName();
 	std::cout << ">(WrongCat copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
