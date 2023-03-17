@@ -133,27 +133,3 @@ int				main(void)
 	test4();
 	return 0;
 }
-
-/*
-Process:         a.out [2001]
-Load Address:    0x10c7e3000
-Identifier:      a.out
-Version:         ???
-Code Type:       X86-64
-Platform:        macOS
-Parent Process:  leaks [2000]
-
-Date/Time:       2023-03-14 18:06:23.428 +0100
-Launch Time:     2023-03-14 18:06:23.297 +0100
-OS Version:      macOS 11.7.4 (20G1120)
-Report Version:  7
-Analysis Tool:   /usr/bin/leaks
-
-Physical footprint:         344K
-Physical footprint (peak):  344K
-----
-
-leaks Report Version: 4.0
-Process 2001: 169 nodes malloced for 12 KB
-Process 2001: 0 leaks for 0 total leaked bytes.
-*/
