@@ -26,10 +26,11 @@ WrongAnimal::WrongAnimal(std::string const type):_type(type)
 	return ;
 }
 
-WrongAnimal::WrongAnimal(WrongAnimal const	&other):_type(other.getType())
+WrongAnimal::WrongAnimal(WrongAnimal const	&other)
 {
 	std::cout << ">(WrongAnimal copy constructor): a clone of " << this->getType();
 	std::cout << " type was created." << std::endl;
+	*this = other;
 	return ;
 }
 
@@ -45,14 +46,9 @@ WrongAnimal		&WrongAnimal::operator=(WrongAnimal const &rhs)
 	if (this == &rhs)
 		return (*this);
 	std::cout << "->(WrongAnimal copy assignment operator): ";
-	if (this->_type != rhs.getType())
-	{
-		std::cout << this->_type << " cannot be updated and copied from ";
-		std::cout << rhs.getType() << std::endl;
-		return (*this);
-	}
 	std::cout << this->_type << " was updated and copied another " << rhs.getType();
 	std::cout << "'s attributes " << std::endl;
+	this->_type =rhs.getType();
 	return (*this);
 }
 
@@ -71,12 +67,5 @@ void		WrongAnimal::makeSound(void) const
 std::string		WrongAnimal::getName(void) const
 {
 	return "";
-}
-
-/* * * * *  stream operator * * * */
-std::ostream	&operator<<(std::ostream &oss, WrongAnimal const &rhs)
-{
-	oss << rhs.getType() << std::endl;
-	return oss;
 }
 

@@ -15,8 +15,8 @@
 WrongCat::WrongCat(void):WrongAnimal("WrongCat")
 {
 	this->_name = "WrongKitty";
-	std::cout << ">(Wrong Cat default constructor): created an unanmed Wrong Cat";
-	std::cout << " and named it to " << this->_name << std::endl;
+	std::cout << ">(Wrong Cat default constructor): created an unamed Wrong Cat";
+	std::cout << " and named it " << this->_name << std::endl;
 	return ;
 }
 
@@ -30,8 +30,7 @@ WrongCat::WrongCat(std::string const name):WrongAnimal("WrongCat")
 
 WrongCat::WrongCat(WrongCat const	&other):WrongAnimal(other)
 {
-	//this->WrongAnimal::_type = other.getType();
-	this->_name = other.getName();
+	*this = other;
 	std::cout << ">(WrongCat copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
 	return ;
@@ -49,14 +48,10 @@ WrongCat		&WrongCat::operator=(WrongCat const &rhs)
 	if (this == &rhs)
 		return (*this);
 	std::cout << ">(WrongCat copy assignment operator): ";
-	if (this->WrongAnimal::_type != rhs.getType())
-	{
-		std::cout << this->WrongAnimal::_type << " cannot be updated and copied from ";
-		std::cout << rhs.getType() << std::endl;
-		return (*this);
-	}
 	std::cout << this->_name << " was updated to " << rhs.getName();
 	std::cout << "'s attributes " << std::endl;
+	WrongAnimal::operator=(rhs);
+	this->_name = rhs.getName();
 	return (*this);
 }
 
