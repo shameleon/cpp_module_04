@@ -15,14 +15,14 @@
 Animal::Animal(void):_type("animal of undefined type")
 {
 	std::cout << EMO_WRENCH << " (Animal default constructor): a default Animal was created. ";
-	std::cout << "it is a " << this->_type << std::endl;
+	std::cout << "it is a(n) " << this->_type << std::endl;
 	return ;
 }
 
 Animal::Animal(std::string const type):_type(type)
 {
 	std::cout << EMO_WRENCH << " (Animal parametric constructor): a new Animal was created. ";
-	std::cout << "it is a " << this->_type << " ! " << std::endl;
+	std::cout << "it is a(n) " << this->_type << " ! " << std::endl;
 	return ;
 }
 
@@ -45,7 +45,7 @@ Animal		&Animal::operator=(Animal const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	std::cout << EMO_HEAVY_CHECK << " (Animal copy assignment operator): ";
+	std::cout << EMO_WRENCH << " (Animal copy assignment operator): ";
 	std::cout << this->_type << " was updated and copied another " << rhs.getType();
 	std::cout << "'s attributes " << std::endl;
 	this->_type =rhs.getType();

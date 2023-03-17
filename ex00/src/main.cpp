@@ -22,19 +22,18 @@
 
 static int		test4(void)
 {
-	Animal			*j = new Cat("PrincessUSB");
-	Animal			*k = new Cat("DarkRoast");
+	Cat			j = Cat("PrincessUSB");
+	Cat			*k = new Cat(j);
 
 	std::cout << COL_BLU <<  std::endl;
 	std::cout << EMO_OPEN_BOOK  << " " << &j << ": ";
-	put_animal(*j);
-	j->makeSound();
+	put_animal(j);
+	j.makeSound();
 	std::cout << COL_CYA << std::endl;
 	std::cout << EMO_OPEN_BOOK  << " " << &k << ": ";
 	put_animal(*k);
 	k->makeSound();
 	std::cout << COL_RES << std::endl;
-	delete j;
 	delete k;
 	return 0;
 }
