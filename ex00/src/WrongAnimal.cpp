@@ -14,21 +14,21 @@
 
 WrongAnimal::WrongAnimal(void):_type("Wrong animal of undefined type")
 {
-	std::cout << ">(WrongAnimal default constructor): a default WrongAnimal was created. ";
+	std::cout << "->(WrongAnimal default constructor): a default WrongAnimal was created. ";
 	std::cout << "it is a" << this->_type << std::endl;
 	return ;
 }
 
 WrongAnimal::WrongAnimal(std::string const type):_type(type)
 {
-	std::cout << ">(WrongAnimal parametric constructor): a new WrongAnimal was created. ";
+	std::cout << "->(WrongAnimal parametric constructor): a new WrongAnimal was created. ";
 	std::cout << "it is a " << this->_type << " ! " << std::endl;
 	return ;
 }
 
 WrongAnimal::WrongAnimal(WrongAnimal const	&other)
 {
-	std::cout << ">(WrongAnimal copy constructor): a clone of " << this->getType();
+	std::cout << "->(WrongAnimal copy constructor): a clone of " << this->getType();
 	std::cout << " type was created." << std::endl;
 	*this = other;
 	return ;
