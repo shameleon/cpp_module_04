@@ -35,7 +35,7 @@ class	Cat: public Animal
 		std::string		getName(void) const;
 		Brain			*getBrain(void) const;
 
-		virtual void	makeSound(void) const;
+		void	makeSound(void) const;
 };
 
 /* * * * *  stream operator * * * * */
