@@ -28,7 +28,7 @@ Brain::Brain(Brain const	&other)
 	std::cout << std::endl;
 	for (int i = 0; i < _size; i++)
 		this->_ideas[i] = other.getIdea(i);
-	// 	*this = copy;
+	// 	*this = other;
 	return ;
 }
 
@@ -57,6 +57,11 @@ std::string		Brain::getIdea(int const index) const
 	if (index > 0 && index < _size)
 		return this->_ideas[index];
 	return "";
+}
+
+std::string		*Brain::getIdea(void) const
+{
+	return this->_ideas;
 }
 
 int		Brain::getBrainSize(void) const

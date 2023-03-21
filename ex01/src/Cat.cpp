@@ -52,6 +52,7 @@ Cat::~Cat(void)
 /*
 this->brain = other.brain; // shallow copy
 *this->brain = *other.brain; // deep copy
+this->_brain
 */
 Cat		&Cat::operator=(Cat const &rhs)
 {
@@ -63,7 +64,7 @@ Cat		&Cat::operator=(Cat const &rhs)
 	std::cout << "'s attributes";
 	std::cout << ", name and ideas." << std::endl;
 	Animal::operator=(rhs);
-	*this->_brain = *rhs._brain;
+	this->_brain = new Brain(*rhs._brain);
 	// *this->_brain = *rhs.getBrain();
 	return (*this);
 }
