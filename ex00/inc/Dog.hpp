@@ -26,7 +26,7 @@ class	Dog: public Animal
 		Dog(Dog const	&other);
 		~Dog(void);
 
-		Dog	&operator=(Dog const &rhs);
+		Dog				&operator=(Dog const &rhs);
 		
 		std::string		getName(void) const;
 

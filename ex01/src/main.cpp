@@ -33,8 +33,8 @@ static int		test2(void)
 /* testing one brain for one cat */
 static int		test1(void)
 {
-	const Animal	*kitten1 = new Cat("Princess USB");
-	const Animal	*kitten2 = new Cat("Pussycatch");
+	const Animal	*kitten1 = new Cat("Mrs Norris");
+	const Animal	*kitten2 = new Cat("Crookshanks");
 	//const Animal	*kitten3 = new Cat(kitten1);
 
 	kitten1->makeSound();

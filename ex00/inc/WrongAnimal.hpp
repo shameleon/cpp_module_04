@@ -14,12 +14,9 @@
 # define WRONGANIMAL_HPP
 
 # define COL_RED "\033[0;31m"
-# define COL_GRN "\033[0;32m"
-# define COL_YEL "\033[0;33m"
-# define COL_PUR "\033[0;35m"
-# define COL_INV_YEL "\033[7;93m"
-# define COL_CYA "\033[0;36m"
 # define COL_RES "\033[0m"
+
+# define EMO_OPEN_BOOK "\U0001F4D6"
 
 # include <iostream>
 # include <iomanip>
@@ -43,5 +40,8 @@ class	WrongAnimal
 		virtual void			makeSound(void) const;
 
 };
+
+/* * * * *  stream operator * * * * */
+std::ostream	&operator<<(std::ostream &o, WrongAnimal const &rhs);
 
 #endif

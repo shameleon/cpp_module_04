@@ -16,17 +16,16 @@ Cat::Cat(void):Animal("Cat")
 {
 	this->_name = "Kitty";
 	this->_brain = new Brain();
-	std::cout << ">(Cat default constructor): a kitten with default name ";
-	std::cout << this->_name << "." << std::endl;
+	std::cout << EMO_CAT << " (Cat default constructor): created an unamed Cat";
+	std::cout << " and named it " << this->_name << std::endl;
 	return ;
 }
 
-/* remove ? */
 Cat::Cat(std::string const name):Animal("Cat")
 {
 	this->_name = name;
 	this->_brain = new Brain();
-	std::cout << ">(Cat parametric constructor): a new Cat named ";
+	std::cout << EMO_CAT << " (Cat parametric constructor): a newly created Cat named ";
 	std::cout << this->_name << " ! " << std::endl;
 	return ;
 }
@@ -85,20 +84,13 @@ Brain			*Cat::setBrain(Brain const &brain) const
 }
 
 /* Overriding makeSound() */
-/* Method = virtual member fonction */
 void		Cat::makeSound(void) const
 {
-	std::cout << ">(Cat): " << this->Animal::_type;
+	std::cout << EMO_CAT <<  " (Cat): " << this->Animal::_type;
 	std::cout << " named " << this->_name << " is Meowing ! ";
-	std::cout << std::endl;
+	std::cout << " Meeeow meow meeeeeeeeooooooooow !!! " << std::endl;
 	return ;
 }
 
-/* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &oss, Cat const &rhs)
-{
-	oss << rhs.getType() << " name: " << rhs.getName();
-	// std::cout << " Brain: " << rhs.getBrain() << std::endl;
-	return oss;
-}
+
 

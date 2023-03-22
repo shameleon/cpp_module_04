@@ -28,7 +28,7 @@ class	Cat: public Animal
 		Cat(void);
 		Cat(std::string const	name);
 		Cat(Cat const	&other);
-		virtual ~Cat(void);
+		~Cat(void);
 
 		Cat				&operator=(Cat const &rhs);
 		
@@ -37,8 +37,5 @@ class	Cat: public Animal
 
 		void	makeSound(void) const;
 };
-
-/* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &oss, Cat const &rhs);
 
 #endif

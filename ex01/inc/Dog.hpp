@@ -14,9 +14,13 @@
 # define DOG_HPP
 
 # include "../inc/Animal.hpp"
+# include "../inc/Brain.hpp"
 
 class	Dog: public Animal
 {
+	private:
+		Brain			*_brain;
+
 	protected:
 		std::string		_name;
 
@@ -24,13 +28,14 @@ class	Dog: public Animal
 		Dog(void);
 		Dog(std::string const	name);
 		Dog(Dog const	&other);
-		virtual ~Dog(void);
+		~Dog(void);
 
-		Dog	&operator=(Dog const &rhs);
+		Dog				&operator=(Dog const &rhs);
 		
 		std::string		getName(void) const;
+		Brain			*getBrain(void) const;
 
-		void	makeSound(void) const;
+		void			makeSound(void) const;
 };
 
 #endif
