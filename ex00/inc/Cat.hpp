@@ -18,19 +18,19 @@
 class	Cat: public Animal
 {
 	protected:
-		std::string				_name;
+		std::string		_name;
 
 	public:
 		Cat(void);
 		Cat(std::string const	name);
 		Cat(Cat const	&other);
-		virtual ~Cat(void);
+		~Cat(void);
 
-		Cat						&operator=(Cat const &rhs);
+		Cat				&operator=(Cat const &rhs);
 		
-		virtual std::string		getName(void) const;
+		std::string		getName(void) const;
 
-		virtual void			makeSound(void) const;
+		void			makeSound(void) const;
 };
 
 /* * * * *  stream operator * * * * */

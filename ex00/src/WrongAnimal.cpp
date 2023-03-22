@@ -15,7 +15,7 @@
 WrongAnimal::WrongAnimal(void):_type("Wrong animal of undefined type")
 {
 	std::cout << "->(WrongAnimal default constructor): a default WrongAnimal was created. ";
-	std::cout << "it is a" << this->_type << std::endl;
+	std::cout << "it is a " << this->_type << std::endl;
 	return ;
 }
 

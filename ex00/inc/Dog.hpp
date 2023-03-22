@@ -24,13 +24,13 @@ class	Dog: public Animal
 		Dog(void);
 		Dog(std::string const	name);
 		Dog(Dog const	&other);
-		virtual ~Dog(void);
+		~Dog(void);
 
 		Dog	&operator=(Dog const &rhs);
 		
-		virtual std::string		getName(void) const;
+		std::string		getName(void) const;
 
-		virtual void	makeSound(void) const;
+		void			makeSound(void) const;
 };
 
 #endif
