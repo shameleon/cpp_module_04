@@ -30,8 +30,6 @@ Dog::Dog(std::string const name):Animal("Dog")
 
 Dog::Dog(Dog const	&other):Animal(other)
 {
-	//this->Animal::_type = other.getType();
-	//this->_name = other.getName();
 	*this = other;
 	std::cout << EMO_DOG << " (Dog copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
@@ -52,8 +50,7 @@ Dog		&Dog::operator=(Dog const &rhs)
 	std::cout << EMO_DOG << " (Dog copy assignment operator): ";
 	std::cout << this->_name << " was updated to " << rhs.getName();
 	std::cout << "'s attributes " << std::endl;
-	//Animal::operator=(rhs);
-	this->_type = rhs.getType();
+	Animal::operator=(rhs);
 	this->_name = rhs.getName();
 	return (*this);
 }

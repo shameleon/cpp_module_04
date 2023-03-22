@@ -19,15 +19,14 @@
 /* *********************************** */
 /*         Ex00 Polymorphism           */
 /* *********************************** */
-/* */
 
 static void			put_animal(Animal const &obj)
 {
+	std::cout << EMO_OPEN_BOOK << " " << &obj << ": ";
 	std::cout << obj.getName();
 	std::cout << " (" << obj.getType() << ")" << std::endl;
 	return ;
 }
-
 
 static int		test3(void)
 {
@@ -35,11 +34,9 @@ static int		test3(void)
 	Cat			*k = new Cat(j);
 
 	std::cout << COL_BLU <<  std::endl;
-	std::cout << EMO_OPEN_BOOK << " " << &j << ": ";
 	put_animal(j);
 	j.makeSound();
 	std::cout << COL_CYA << std::endl;
-	std::cout << EMO_OPEN_BOOK  << " " << k << ": ";
 	put_animal(*k);
 	k->makeSound();
 	std::cout << COL_RES << std::endl;
@@ -53,10 +50,10 @@ static int		test2(void)
 	const WrongAnimal	*i = new WrongCat();
 	const Animal		*j= new Cat();
 
-	std::cout <<   EMO_OPEN_BOOK  << std::endl;
-	std::cout << meta << " | " << meta->getType() << " " << std::endl;
-	std::cout << j << " | " << j->getType() << " " << std::endl;
-	std::cout << i << " | " << i->getType() << " " << std::endl;
+	std::cout << std::endl;
+	std::cout << *meta;
+	std::cout << *j;
+	std::cout << *i;
 	std::cout <<  std::endl;
 	j->makeSound();
 	i->makeSound();
@@ -74,10 +71,10 @@ static int		test1(void)
 	const Animal	*j = new Dog();
 	const Animal	*i = new Cat();
 
-	std::cout <<  EMO_OPEN_BOOK  << std::endl;
-	std::cout << meta << " | " << meta->getType() << " " << std::endl;
-	std::cout << j << " | " << j->getType() << " " << std::endl;
-	std::cout << i << " | " << i->getType() << " " << std::endl;
+	std::cout << std::endl;
+	std::cout << *meta;
+	std::cout << *j;
+	std::cout << *i;
 	std::cout <<  std::endl;
 	j->makeSound();
 	i->makeSound();
@@ -106,3 +103,12 @@ int				main(void)
 	test3();
 	return 0;
 }
+
+
+/*
+	std::cout <<  EMO_OPEN_BOOK  << std::endl;
+	std::cout << meta << " : " << meta->getType() << " " << std::endl;
+	std::cout << j << " : " << j->getType() << " " << std::endl;
+	std::cout << i << " : " << i->getType() << " " << std::endl;
+	std::cout <<  std::endl;
+*/

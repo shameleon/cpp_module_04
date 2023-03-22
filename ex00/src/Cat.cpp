@@ -28,11 +28,8 @@ Cat::Cat(std::string const name):Animal("Cat")
 	return ;
 }
 
-/* *this = other; */
 Cat::Cat(Cat const	&other):Animal(other)
 {
-	//this->_type = other.getType();
-	//this->_name = other.getName();
 	*this = other;
 	std::cout << EMO_CAT << " (Cat copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
@@ -53,8 +50,7 @@ Cat		&Cat::operator=(Cat const &rhs)
 	std::cout << EMO_CAT << " (Cat copy assignment operator): ";
 	std::cout << this->_name << " was updated to " << rhs.getName();
 	std::cout << "'s attributes " << std::endl;
-	//Animal::operator=(rhs);
-	this->_type = rhs.getType();
+	Animal::operator=(rhs);
 	this->_name = rhs.getName();
 	return (*this);
 }
@@ -65,7 +61,6 @@ std::string		Cat::getName(void) const
 }
 
 /* Overriding makeSound() */
-/* Method = virtual member fonction */
 void		Cat::makeSound(void) const
 {
 	std::cout << EMO_CAT <<  " (Cat): " << this->Animal::_type;
