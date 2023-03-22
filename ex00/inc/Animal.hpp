@@ -56,11 +56,9 @@ class	Animal
 /* * * * *  stream operator * * * * */
 std::ostream	&operator<<(std::ostream &o, Animal const &rhs);
 
-void			put_animal(Animal const &self);
-
 #endif
 
 /*
-virtual : dynamic resolution for function call 
+virtual : dynamic resolution for function call - runtime polymorphism
 method = virtual member-function 
 */

@@ -18,19 +18,19 @@
 class	WrongCat: public WrongAnimal
 {
 	protected:
-		std::string				_name;
+		std::string		_name;
 
 	public:
 		WrongCat(void);
 		WrongCat(std::string const	name);
 		WrongCat(WrongCat const	&other);
-		virtual ~WrongCat(void);
+		~WrongCat(void);
 
-		WrongCat				&operator=(WrongCat const &rhs);
+		WrongCat		&operator=(WrongCat const &rhs);
 		
-		virtual std::string		getName(void) const;
+		std::string		getName(void) const;
 
-		virtual void			makeSound(void) const;
+		void			makeSound(void) const;
 };
 
 #endif

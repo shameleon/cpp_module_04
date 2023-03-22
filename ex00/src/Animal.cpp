@@ -12,17 +12,17 @@
 
 #include "../inc/Animal.hpp"
 
-Animal::Animal(void):_type("animal of undefined type")
+Animal::Animal(void):_type("type undefined")
 {
 	std::cout << EMO_WRENCH << " (Animal default constructor): a default Animal was created. ";
-	std::cout << "it is a(n) " << this->_type << std::endl;
+	std::cout << "it is a " << this->_type << std::endl;
 	return ;
 }
 
 Animal::Animal(std::string const type):_type(type)
 {
 	std::cout << EMO_WRENCH << " (Animal parametric constructor): a new Animal was created. ";
-	std::cout << "it is a(n) " << this->_type << " ! " << std::endl;
+	std::cout << "it is a " << this->_type << " ! " << std::endl;
 	return ;
 }
 
@@ -73,12 +73,4 @@ std::ostream	&operator<<(std::ostream& oss, Animal const &rhs)
 {
 	oss << &rhs << ": " << rhs.getName() << " (" << rhs.getType() << ")" << std::endl;
 	return oss;
-}
-;
-
-void			put_animal(Animal const &self)
-{
-	std::cout << self.getName();
-	std::cout << " (" << self.getType() << ")" << std::endl;
-	return ;
 }

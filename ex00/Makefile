@@ -22,6 +22,8 @@ OBJ			= $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
 CXX			= c++
 CXXFLAGS	= -std=c++98
 CFLAGS		= -Wall -Werror -Wextra
+CSHAD		= -Wshadow=local
+CNOSHAD		= -Wno-shadow
 
 COL_RED = @echo -n "\e[1;31m"
 COL_GRN = @echo -n "\e[1;32m"
@@ -61,4 +63,15 @@ re: fclean all
 run: $(NAME)
 	@./$(NAME)
 
-.PHONY : run re fclean clean
+leaks:  
+	valgrind --leak-check=full --show-leak-kinds=all -s ./$(NAME)
+
+shadow: $(OBJ)
+	$(COL_PUR)
+	$(CXX) $(CXXFLAGS) $(CFLAGS) $(CSHAD) $(OBJ) -o $(NAME)
+	@echo  $(NAME) " executable is ready !"
+	$(COL_RESET)
+
+
+.PHONY : shadow leaks run re fclean clean 
+
