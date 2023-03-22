@@ -69,7 +69,7 @@ void		Dog::makeSound(void) const
 {
 	std::cout << EMO_DOG << " (Dog): " << this->Animal::_type;
 	std::cout << " named " << this->_name << " is Barking ! ";
-	std::cout << " WOOF WOOF ! " << std::endl;
+	std::cout << " WOOF WOOF !!!! " << std::endl;
 	std::cout << std::endl;
 	return ;
 }

@@ -30,7 +30,7 @@ class	Dog: public Animal
 		
 		std::string		getName(void) const;
 
-		virtual void	makeSound(void) const;
+		void	makeSound(void) const;
 };
 
 #endif

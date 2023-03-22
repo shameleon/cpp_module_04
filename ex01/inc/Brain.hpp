@@ -17,7 +17,7 @@
 
 class	Brain
 {
-	private :
+	private : //protected:
 		static const int	_size = 100;
 		std::string			_ideas[_size];
 
@@ -29,7 +29,8 @@ class	Brain
 		Brain				&operator=(Brain const &rhs);
 
 		std::string			getIdea(int const index) const;
-		int					getBrainSize(void) const;
+		std::string			*getIdeas(void) const;
+		//int					getBrainSize(void) const;
 		void				setIdea(std::string const idea, int const index);
 };
 

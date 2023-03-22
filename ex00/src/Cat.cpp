@@ -70,6 +70,6 @@ void		Cat::makeSound(void) const
 {
 	std::cout << EMO_CAT <<  " (Cat): " << this->Animal::_type;
 	std::cout << " named " << this->_name << " is Meowing ! ";
-	std::cout << " Meeeow meow meeeeeeeeooooooooow " << std::endl;
+	std::cout << " Meeeow meow meeeeeeeeooooooooow !!! " << std::endl;
 	return ;
 }

@@ -78,28 +78,26 @@ int				main(void)
 ______________________________________________
 TEST 1 
 ______________________________________________
->(Animal parametric constructor): a new Animal was created. it is a Cat ! 
->(Brain default constructor): a default Brain was created. 
->(Cat parametric constructor): a new Cat named Princess USB ! 
->(Animal parametric constructor): a new Animal was created. it is a Cat ! 
->(Brain default constructor): a default Brain was created. 
->(Cat parametric constructor): a new Cat named Pussycatch ! 
->(Cat): Cat named Princess USB is Meowing ! 
->(Cat): Cat named Pussycatch is Meowing ! 
-kitten1 : 0x7ffee55d4748
-kitten2 : 0x7ffee55d4718
+const Animal	*kitten1 = new Cat("Princess USB");
 
->(Cat): Cat named Princess USB is Meowing ! 
+delete kitten;
 
-kitten1 : 0x7ffee55d4748
-kitten2 : 0x7ffee55d4718
+______________________________________________
+TEST 2
+______________________________________________
+Cat		Spirou;
+Cat		copycat(Spirou);
+Cat		
 
-Cat
-->(Brain destructor)
->(Cat destructor): RIP little Princess USB Cat ! 
-->(Animal destructor): RIP little Cat ! 
-->(Animal destructor): RIP little Cat ! 
-a.out(11312,0x112e0ce00) malloc: *** error for object 0x7f948c505980: pointer being freed was not allocated
-a.out(11312,0x112e0ce00) malloc: *** set a breakpoint in malloc_error_break to debug
-make: *** [run] Abort trap: 6
+______________________________________________
+TEST 3
+______________________________________________
+
+Animal	*shelter[20]
+for()
+	shelter[i] = new Cat();
+
+for()
+	delete shelter[i];
+
 */
