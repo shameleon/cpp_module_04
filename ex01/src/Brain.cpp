@@ -15,16 +15,16 @@
 
 Brain::Brain(void)
 {
-	std::cout << EMO_STAR << " (Brain default constructor): a Brain was created. ";
+	std::cout << EMO_THOUGHT<< " (Brain default constructor): a Brain was created. ";
 	std::cout << std::endl;
 	for (int i = 0; i < _size; i++)
-		this->_ideas[i] = "_";
+		this->_ideas[i] = EMO_STAR;
 	return ;
 }
 
-Brain::Brain(Brain const	&other)
+Brain::Brain(Brain const &other)
 {
-	std::cout << EMO_STAR << "(Brain copy constructor): brain cloned ";
+	std::cout << EMO_THOUGHT << "(Brain copy constructor): brain cloned ";
 	std::cout << std::endl;
 	for (int i = 0; i < _size; i++)
 		this->_ideas[i] = other.getIdea(i);
@@ -34,7 +34,7 @@ Brain::Brain(Brain const	&other)
 
 Brain::~Brain(void)
 {
-	std::cout <<  EMO_STAR << COL_RED << " (Brain destructor)";
+	std::cout <<  EMO_THOUGHT << COL_RED << " (Brain destructor)";
 	std::cout << COL_RES  << std::endl;
 	return ;
 }

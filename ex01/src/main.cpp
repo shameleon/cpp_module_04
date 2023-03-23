@@ -27,26 +27,48 @@ static int		test3(void)
 
 static int		test2(void)
 {
+	Cat		kitten1 = Cat();
+	Cat		*kitten2 = new Cat(kitten1);
+	Animal	*kitten3 = new Cat();
+
+	std::cout <<  std::endl;
+	kitten1.setBrain(IDEA_RUN, 0);
+	kitten1.setBrain(IDEA_COLLISON, 1);
+	kitten1.setBrain(IDEA_RAT, 2);
+	kitten1.setBrain(IDEA_MEAT_ON_BONE, 3);
+	std::cout << "kitten1 : " << kitten1;
+	kitten1.getBrain();
+	std::cout << "kitten2 : " << *kitten2;
+	kitten2->getBrain();
+
+	*kitten3 = kitten1;
+	std::cout << "kitten3 : " << *kitten3;
+	kitten2->getBrain();
+	std::cout << "kitten3 = kitten 1 (copy)" << std::endl;
+	std::cout << "kitten3 : " << *kitten3;
+	kitten2->getBrain();
+	std::cout <<  std::endl;
+	delete kitten2;
 	return 0;
 }
 
 /* testing one brain for one cat */
 static int		test1(void)
 {
-	const Animal	*kitten1 = new Cat();
-	const Animal	*kitten2 = new Dog();
+	const Animal	*kitten = new Cat();
+	const Animal	*puppy = new Dog();
 
 	std::cout <<  std::endl;
-	kitten1->makeSound();
-	kitten2->makeSound();
+	kitten->makeSound();
+	puppy->makeSound();
 	std::cout <<  std::endl;
-	std::cout << "kitten1 : " << *kitten1;
+	std::cout << "kitten : " << *kitten;
 	//kitten1->setBrain("coucou");
 	//std::cout << kitten1->getBrain();
-	std::cout << "kitten2 : " << *kitten2;
+	std::cout << "puppy : " << *puppy;
 	std::cout <<  std::endl;
-	delete kitten1;
-	delete kitten2;
+	delete kitten;
+	delete puppy;
 	return 0;
 }
 
