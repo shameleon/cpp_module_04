@@ -140,8 +140,6 @@ static int		test1(void)
 	puppy->makeSound();
 	std::cout <<  std::endl;
 	std::cout << "kitten : " << *kitten;
-	//kitten1->setBrain("coucou");
-	//std::cout << kitten1->getBrain();
 	std::cout << "puppy  : " << *puppy;
 	std::cout <<  std::endl;
 	delete kitten;

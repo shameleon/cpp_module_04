@@ -26,8 +26,8 @@ class	Cat: public Animal
 
 	public:
 		Cat(void);
-		Cat(std::string const	name);
-		Cat(Cat const	&other);
+		Cat(std::string const name);
+		Cat(Cat const &other);
 		~Cat(void);
 
 		Cat			&operator=(Cat const &rhs);
