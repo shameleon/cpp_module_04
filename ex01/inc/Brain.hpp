@@ -13,11 +13,13 @@
 #ifndef BRAIN_HPP
 # define BRAIN_HPP
 
+# define EMO_STAR "\U00002B50"
+
 # include "../inc/Animal.hpp"
 
 class	Brain
 {
-	private : //protected:
+	private:
 		static const int	_size = 100;
 		std::string			_ideas[_size];
 
@@ -29,8 +31,6 @@ class	Brain
 		Brain				&operator=(Brain const &rhs);
 
 		std::string			getIdea(int const index) const;
-		std::string			*getIdeas(void) const;
-		//int					getBrainSize(void) const;
 		void				setIdea(std::string const idea, int const index);
 };
 

@@ -61,11 +61,10 @@ std::string		Dog::getName(void) const
 }
 
 /* Overriding makeSound() */
-/* Method = virtual member fonction */
 void		Dog::makeSound(void) const
 {
 	std::cout << EMO_DOG << " (Dog): " << this->Animal::_type;
-	std::cout << " named " << this->_name << " is Barking ! ";
+	std::cout << " named " << this->_name << " is Barking ! "  << EMO_DOG2;
 	std::cout << " WOOF WOOF !!!! " << std::endl;
 	return ;
 }

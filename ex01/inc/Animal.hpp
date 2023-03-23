@@ -24,8 +24,6 @@
 
 # define EMO_MINUS "\U00002796"
 # define EMO_WRENCH "\U0001F527"
-# define EMO_CAT "\U0001F431"
-# define EMO_DOG "\U0001F436"
 # define EMO_NO_ENTRY "\U000026D4"
 # define EMO_HEAVY_CHECK "\U00002714"
 # define EMO_OPEN_BOOK "\U0001F4D6"
@@ -47,7 +45,6 @@ class	Animal
 		Animal			&operator=(Animal const &rhs);
 
 		std::string		getType(void) const;
-		virtual std::string		getName(void) const;
 
 		virtual void	makeSound(void) const;
 

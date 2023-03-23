@@ -14,33 +14,23 @@
 
 Dog::Dog(void):Animal("Dog")
 {
-	this->_name = "Doggie";
-	std::cout << ">(Dog default constructor): a Dog with no name. ";
-	std::cout << "it is named " << this->_name << std::endl;
+	this->_brain = new Brain();
+	std::cout << EMO_DOG << " (Dog default constructor): created an unamed Dog ";
 	return ;
 }
 
-Dog::Dog(std::string const name):Animal("Dog")
+Dog::Dog(Dog const	&other):Animal(other)
 {
-	this->_name = name;
-	std::cout << ">(Dog parametric constructor): a new Dog named ";
-	std::cout << this->_name << " ! " << std::endl;
-	return ;
-}
-
-Dog::Dog(Dog const	&other)
-{
-	this->Animal::_type = other.getType();
-	this->_name = other.getName();
-	std::cout << ">(Dog copy constructor): a clone of " << other.getType();
+	*this = other;
+	std::cout << EMO_DOG << " (Dog copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
 	return ;
 }
 
 Dog::~Dog(void)
 {
-	std::cout << COL_RED << ">(Dog destructor): RIP little ";
-	std::cout << this->_name << " " << this->Animal::_type  << " ! " << COL_RES  << std::endl;
+	std::cout << COL_RED << EMO_DOG << " (Dog destructor): RIP little";
+	std::cout << this->Animal::_type  << " ! " << COL_RES  << std::endl;
 	return ;
 }
 
@@ -48,29 +38,24 @@ Dog		&Dog::operator=(Dog const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	std::cout << ">(Dog copy assignment operator): ";
-	if (this->Animal::_type != rhs.getType())
-	{
-		std::cout << this->Animal::_type << " cannot be updated and copied from ";
-		std::cout << rhs.getType() << std::endl;
-		return (*this);
-	}
-	std::cout << this->_name << " was updated to " << rhs.getName();
+	std::cout << EMO_DOG << " (Dog copy assignment operator): ";
+	std::cout << " Dog was updated to another " << rhs.getType();
 	std::cout << "'s attributes " << std::endl;
+	Animal::operator=(rhs);
+		this->_brain = new Brain(*rhs._brain);
 	return (*this);
 }
 
-std::string		Dog::getName(void) const
+Brain			*Dog::getBrain(void) const
 {
-	return this->_name;
+	return (this->_brain);
 }
 
 /* Overriding makeSound() */
-/* Method = virtual member fonction */
 void		Dog::makeSound(void) const
 {
-	std::cout << ">(Dog): " << this->Animal::_type;
-	std::cout << " named " << this->_name << " is Barking ! ";
-	std::cout << std::endl;
+	std::cout << EMO_DOG << " (Dog): " << this->Animal::_type;
+	std::cout << " is Barking ! " << EMO_DOG2;
+	std::cout << " WOOF WOOF !!!! " << std::endl;
 	return ;
 }
