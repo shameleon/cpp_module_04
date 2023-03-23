@@ -13,16 +13,16 @@
 #ifndef CAT_HPP
 # define CAT_HPP
 
+# define EMO_CAT "\U0001F431"
+# define EMO_CAT2 "\U0001F408"
+
 # include "../inc/Animal.hpp"
 # include "../inc/Brain.hpp"
 
 class	Cat: public Animal
 {
 	private:
-		Brain			*_brain;
-
-	protected:
-		std::string		_name;
+		Brain		*_brain;
 
 	public:
 		Cat(void);
@@ -30,12 +30,12 @@ class	Cat: public Animal
 		Cat(Cat const	&other);
 		~Cat(void);
 
-		Cat				&operator=(Cat const &rhs);
+		Cat			&operator=(Cat const &rhs);
 		
-		std::string		getName(void) const;
-		Brain			*getBrain(void) const;
+		void		getBrain(void) const;
+		void		setBrain(std::string const idea, int const index);
 
-		void	makeSound(void) const;
+		void		makeSound(void) const;
 };
 
 #endif

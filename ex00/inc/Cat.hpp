@@ -15,6 +15,9 @@
 
 # include "../inc/Animal.hpp"
 
+# define EMO_CAT "\U0001F431"
+# define EMO_CAT2 "\U0001F408"
+
 class	Cat: public Animal
 {
 	protected:

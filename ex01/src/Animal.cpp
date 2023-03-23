@@ -64,14 +64,8 @@ void			Animal::makeSound(void) const
 	return ;
 }
 
-std::string		Animal::getName(void) const
-{
-	return "N/A";
-}
-
 std::ostream	&operator<<(std::ostream& oss, Animal const &rhs)
 {
-	oss << EMO_OPEN_BOOK << "  " << &rhs << " : " << rhs.getName();
-	oss << " (" << rhs.getType() << ")" << std::endl;
+	oss << EMO_OPEN_BOOK << "  " << &rhs << " : " << rhs.getType() << std::endl;
 	return oss;
 }

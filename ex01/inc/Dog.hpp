@@ -13,6 +13,9 @@
 #ifndef DOG_HPP
 # define DOG_HPP
 
+# define EMO_DOG "\U0001F436"
+# define EMO_DOG2 "\U0001F415"
+
 # include "../inc/Animal.hpp"
 # include "../inc/Brain.hpp"
 
@@ -21,9 +24,6 @@ class	Dog: public Animal
 	private:
 		Brain			*_brain;
 
-	protected:
-		std::string		_name;
-
 	public:
 		Dog(void);
 		Dog(std::string const	name);
@@ -31,8 +31,7 @@ class	Dog: public Animal
 		~Dog(void);
 
 		Dog				&operator=(Dog const &rhs);
-		
-		std::string		getName(void) const;
+
 		Brain			*getBrain(void) const;
 
 		void			makeSound(void) const;

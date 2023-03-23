@@ -15,16 +15,16 @@
 
 Brain::Brain(void)
 {
-	std::cout << ">(Brain default constructor): a default Brain was created. ";
+	std::cout << EMO_THOUGHT<< " (Brain default constructor): a Brain was created. ";
 	std::cout << std::endl;
 	for (int i = 0; i < _size; i++)
-		this->_ideas[i] = "_";
+		this->_ideas[i] = EMO_STAR;
 	return ;
 }
 
-Brain::Brain(Brain const	&other)
+Brain::Brain(Brain const &other)
 {
-	std::cout << ">(Brain copy constructor): brain cloned ";
+	std::cout << EMO_THOUGHT << "(Brain copy constructor): brain cloned ";
 	std::cout << std::endl;
 	for (int i = 0; i < _size; i++)
 		this->_ideas[i] = other.getIdea(i);
@@ -34,7 +34,7 @@ Brain::Brain(Brain const	&other)
 
 Brain::~Brain(void)
 {
-	std::cout << COL_RED << "->(Brain destructor)";
+	std::cout <<  EMO_THOUGHT << COL_RED << " (Brain destructor)";
 	std::cout << COL_RES  << std::endl;
 	return ;
 }
@@ -43,7 +43,7 @@ Brain			&Brain::operator=(Brain const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	std::cout << "->(Brain copy assignment operator): ";
+	std::cout << " (Brain copy assignment operator): ";
 	std::cout << " Brain was updated and copied another Brain ideas.";
 	std::cout << std::endl;
 	for (int i = 0; i < _size; i++)
@@ -59,16 +59,6 @@ std::string		Brain::getIdea(int const index) const
 	return "";
 }
 
-std::string		*Brain::getIdea(void) const
-{
-	return this->_ideas;
-}
-
-int		Brain::getBrainSize(void) const
-{
-	return this->_size;
-}
-
 void			Brain::setIdea(std::string const idea, int const index)
 {
 	if (index > 0 && index < _size)
@@ -79,7 +69,8 @@ void			Brain::setIdea(std::string const idea, int const index)
 /* * * * *  stream operator * * * * */
 std::ostream	&operator<<(std::ostream &oss, Brain const &rhs)
 {
-	for (int i = 0; i < rhs.getBrainSize(); i++)
+	for (int i = 0; i < 20; i++)
 		oss << rhs.getIdea(i);
+	oss << std::endl;
 	return oss;
 }

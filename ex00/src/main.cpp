@@ -17,7 +17,7 @@
 #include "../inc/WrongCat.hpp"
 
 /* *********************************** */
-/*         Ex00 Polymorphism           */
+/*  Ex00     Subtyping Polymorphism    */
 /* *********************************** */
 
 static void			put_animal(Animal const &obj)

@@ -17,7 +17,7 @@
 
 
 /* ********************************************** */
-/*         Ex01 shallow copy / deep copy          */
+/*  Ex01        shallow copy / deep copy          */
 /* ********************************************** */
 
 static int		test3(void)
@@ -27,49 +27,65 @@ static int		test3(void)
 
 static int		test2(void)
 {
+	Cat		kitten1 = Cat();
+	Cat		*kitten2 = new Cat(kitten1);
+	Animal	*kitten3 = new Cat();
+
+	std::cout <<  std::endl;
+	kitten1.setBrain(IDEA_RUN, 0);
+	kitten1.setBrain(IDEA_COLLISON, 1);
+	kitten1.setBrain(IDEA_RAT, 2);
+	kitten1.setBrain(IDEA_MEAT_ON_BONE, 3);
+	std::cout << "kitten1 : " << kitten1;
+	kitten1.getBrain();
+	std::cout << "kitten2 : " << *kitten2;
+	kitten2->getBrain();
+
+	*kitten3 = kitten1;
+	std::cout << "kitten3 : " << *kitten3;
+	kitten2->getBrain();
+	std::cout << "kitten3 = kitten 1 (copy)" << std::endl;
+	std::cout << "kitten3 : " << *kitten3;
+	kitten2->getBrain();
+	std::cout <<  std::endl;
+	delete kitten2;
 	return 0;
 }
 
 /* testing one brain for one cat */
 static int		test1(void)
 {
-	const Animal	*kitten1 = new Cat("Mrs Norris");
-	const Animal	*kitten2 = new Cat("Crookshanks");
-	//const Animal	*kitten3 = new Cat(kitten1);
+	const Animal	*kitten = new Cat();
+	const Animal	*puppy = new Dog();
 
-	kitten1->makeSound();
-	kitten2->makeSound();
-	std::cout << "kitten1 : " << &kitten1 << std::endl;
-	std::cout << "kitten2 : " << &kitten2 << std::endl;
-	//std::cout << "kitten3 : " << kitten3 << std::endl;
 	std::cout <<  std::endl;
-	//kitten2 = kitten1; malloc: *** error for object 0x7fe31cc05a30: pointer being freed was not allocated
-	kitten2->makeSound();
-	std::cout << std::endl;
-	std::cout << "kitten1 : " << &kitten1 << std::endl;
-	std::cout << "kitten2 : " << &kitten2 << std::endl;
-	std::cout << std::endl;
-	std::cout << kitten1->getType() << std::endl;
-	delete kitten1;
-	delete kitten2;
+	kitten->makeSound();
+	puppy->makeSound();
+	std::cout <<  std::endl;
+	std::cout << "kitten : " << *kitten;
+	//kitten1->setBrain("coucou");
+	//std::cout << kitten1->getBrain();
+	std::cout << "puppy : " << *puppy;
+	std::cout <<  std::endl;
+	delete kitten;
+	delete puppy;
 	return 0;
 }
 
 int				main(void)
 {
-	std::string		flatline = "_______________________________________________";
-
-	std::cout << std::endl <<  flatline + flatline << std::endl;
-	std::cout << "TEST 1 " << std::endl;
-	std::cout << flatline + flatline << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << COL_YEL << "TEST 1" << COL_RES << std::endl;
+	std::cout << "______________________________________________" << std::endl;
 	test1();
 	std::cout << std::endl << std::endl;
-	std::cout << "TEST 2 " << std::endl;
-	std::cout << flatline + flatline << std::endl;
+	std::cout << COL_YEL << "TEST 2" << COL_RES <<  std::endl;
+	std::cout << "______________________________________________" << std::endl;
 	test2();
 	std::cout << std::endl << std::endl;
-	std::cout << "TEST 3 " << std::endl;
-	std::cout << flatline + flatline << std::endl;
+	std::cout << COL_YEL << "TEST 3" << COL_RES << std::endl;
+	std::cout << "______________________________________________" << std::endl;
 	test3();
 	return 0;
 }

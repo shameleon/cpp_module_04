@@ -24,14 +24,18 @@
 
 # define EMO_MINUS "\U00002796"
 # define EMO_WRENCH "\U0001F527"
-# define EMO_CAT "\U0001F431"
-# define EMO_DOG "\U0001F436"
 # define EMO_NO_ENTRY "\U000026D4"
 # define EMO_HEAVY_CHECK "\U00002714"
 # define EMO_OPEN_BOOK "\U0001F4D6"
+# define EMO_THOUGHT "\U0001F4AD"
+# define IDEA_RUN "\U0001F356"
+# define IDEA_COLLISON "\U0001F4A5"
+# define IDEA_RAT "\U0001F400"
+# define IDEA_MEAT_ON_BONE "\U0001F356"
 
 # include <iostream>
 # include <iomanip>
+# include "../inc/Brain.hpp"
 
 class	Animal
 {
@@ -47,7 +51,6 @@ class	Animal
 		Animal			&operator=(Animal const &rhs);
 
 		std::string		getType(void) const;
-		virtual std::string		getName(void) const;
 
 		virtual void	makeSound(void) const;
 

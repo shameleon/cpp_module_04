@@ -63,8 +63,8 @@ std::string		Cat::getName(void) const
 /* Overriding makeSound() */
 void		Cat::makeSound(void) const
 {
-	std::cout << EMO_CAT <<  " (Cat): " << this->Animal::_type;
-	std::cout << " named " << this->_name << " is Meowing ! ";
+	std::cout << EMO_CAT2 <<  " (Cat): " << this->Animal::_type;
+	std::cout << " named " << this->_name << " is Meowing ! "  << EMO_CAT2;
 	std::cout << " Meeeow meow meeeeeeeeooooooooow !!! " << std::endl;
 	return ;
 }
