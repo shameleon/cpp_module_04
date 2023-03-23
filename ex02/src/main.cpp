@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Animal.hpp"
+#include "../inc/AAnimal.hpp"
 #include "../inc/Dog.hpp"
 #include "../inc/Cat.hpp"
 #include "../inc/Brain.hpp"
@@ -19,12 +19,12 @@
 
 
 /* ********************************************** */
-/*  Ex01        shallow copy / deep copy          */
+/*  Ex02        Abstract Class                    */
 /* ********************************************** */
 
 static int		test4(void)
 {
-	Animal		*shelter[20];
+	AAnimal		*shelter[20];
 
 	for (int i = 0; i < 20; i++)
 	{
@@ -132,8 +132,8 @@ static int		test2(void)
 
 static int		test1(void)
 {
-	const Animal	*kitten = new Cat();
-	const Animal	*puppy = new Dog();
+	const AAnimal	*kitten = new Cat();
+	const AAnimal	*puppy = new Dog();
 
 	std::cout <<  std::endl;
 	kitten->makeSound();
