@@ -54,14 +54,14 @@ Brain			&Brain::operator=(Brain const &rhs)
 
 std::string		Brain::getIdea(int const index) const
 {
-	if (index > 0 && index < _size)
+	if (index >= 0 && index < _size)
 		return this->_ideas[index];
 	return "";
 }
 
 void			Brain::setIdea(std::string const idea, int const index)
 {
-	if (index > 0 && index < _size)
+	if (index >= 0 && index < _size)
 		this->_ideas[index] = idea;
 	return ;
 }

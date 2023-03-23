@@ -15,7 +15,7 @@
 Cat::Cat(void):Animal("Cat")
 {
 	this->_brain = new Brain();
-	std::cout << EMO_CAT << " (Cat default constructor): created a Cat";
+	std::cout << EMO_CAT << " (Cat default constructor): created a Cat ";
 	std::cout << EMO_CAT2 << std::endl;
 	return ;
 }
@@ -57,8 +57,8 @@ Cat		&Cat::operator=(Cat const &rhs)
 
 void	Cat::getBrain(void) const
 {
-	std::cout << "\t" << EMO_THOUGHT << COL_BLU;
-	std::cout << " Brain:\t" << *this->_brain;
+	std::cout << "\t      " << COL_BLU <<  this->_brain;
+	std::cout << " : " << EMO_THOUGHT << " Brain   " << *this->_brain;
 	std::cout << COL_RES;
 	return ;
 }

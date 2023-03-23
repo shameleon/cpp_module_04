@@ -28,27 +28,43 @@ static int		test3(void)
 static int		test2(void)
 {
 	Cat		kitten1 = Cat();
-	Cat		*kitten2 = new Cat(kitten1);
-	Animal	*kitten3 = new Cat();
-
-	std::cout <<  std::endl;
-	kitten1.setBrain(IDEA_RUN, 0);
-	kitten1.setBrain(IDEA_COLLISON, 1);
+	kitten1.setBrain(EMO_CAT2, 0);
+	kitten1.setBrain(EMO_WRENCH, 1);
 	kitten1.setBrain(IDEA_RAT, 2);
-	kitten1.setBrain(IDEA_MEAT_ON_BONE, 3);
+	std::cout << COL_PUR << std::endl;
+	Cat		kitten2 = Cat(kitten1);
+	std::cout << COL_CYA << std::endl;
+	Cat		*kitten3 = new Cat();
+
+	std::cout << COL_RES << std::endl;
+	kitten1.setBrain(EMO_WRENCH, 3);
+	kitten1.setBrain(IDEA_COLLISON, 4);
+	kitten1.setBrain(IDEA_MEAT_ON_BONE, 5);
 	std::cout << "kitten1 : " << kitten1;
 	kitten1.getBrain();
-	std::cout << "kitten2 : " << *kitten2;
-	kitten2->getBrain();
-
+	std::cout << "kitten2 : " << kitten2;
+	kitten2.getBrain();
+	std::cout << "kitten3 : " << *kitten3;
+	kitten3->getBrain();
+	std::cout << COL_CYA << std::endl;
 	*kitten3 = kitten1;
+	std::cout << COL_RES;
 	std::cout << "kitten3 : " << *kitten3;
-	kitten2->getBrain();
-	std::cout << "kitten3 = kitten 1 (copy)" << std::endl;
-	std::cout << "kitten3 : " << *kitten3;
-	kitten2->getBrain();
+	kitten3->getBrain();
 	std::cout <<  std::endl;
-	delete kitten2;
+	std::cout << "______________________________________________" << std::endl;
+	kitten1.setBrain(EMO_STAR, 0);
+	kitten1.setBrain(EMO_STAR, 5);
+	kitten2.setBrain(EMO_STAR, 2);
+	kitten3->setBrain(EMO_STAR, 1);
+	kitten3->setBrain(EMO_STAR, 3);
+	std::cout << "kitten1 : " << kitten1;
+	kitten1.getBrain();
+	std::cout << "kitten2 : " << kitten2;
+	kitten2.getBrain();
+	std::cout << "kitten3 : " << *kitten3;
+	kitten3->getBrain();
+	delete kitten3;
 	return 0;
 }
 
@@ -94,10 +110,9 @@ int				main(void)
 ______________________________________________
 TEST 1 
 ______________________________________________
-const Animal	*kitten1 = new Cat("Princess USB");
-
+const Animal	*kitten = new Cat("Princess USB");
+...
 delete kitten;
-
 ______________________________________________
 TEST 2
 ______________________________________________
