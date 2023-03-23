@@ -20,7 +20,6 @@ Cat::Cat(void):Animal("Cat")
 	return ;
 }
 
-
 Cat::Cat(Cat const	&other)
 {
 	*this = other;
@@ -37,21 +36,15 @@ Cat::~Cat(void)
 	return ;
 }
 
-/*
-this->brain = other.brain; // shallow copy
-*this->brain = *other.brain; // deep copy
-*/
 Cat		&Cat::operator=(Cat const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	std::cout  << EMO_CAT  << " (Cat copy assignment operator): ";
-	//this->_name = rhs.getName();
+	std::cout  << EMO_CAT << " (Cat copy assignment operator): ";
 	std::cout << " Cat was updated to another " << rhs.getType();
 	std::cout << "'s attributes" << std::endl;
 	Animal::operator=(rhs);
 	this->_brain = new Brain(*rhs._brain);
-	// *this->_brain = *rhs.getBrain();
 	return (*this);
 }
 
@@ -78,5 +71,8 @@ void	Cat::makeSound(void) const
 	return ;
 }
 
-
+/*
+this->brain = other.brain; // shallow copy
+*this->brain = *other.brain; // deep copy
+*/
 

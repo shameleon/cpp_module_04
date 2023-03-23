@@ -48,9 +48,18 @@ Dog		&Dog::operator=(Dog const &rhs)
 	return (*this);
 }
 
-Brain		*Dog::getBrain(void) const
+void	Dog::getBrain(void) const
 {
-	return (this->_brain);
+	std::cout << "\t      " << COL_BLU <<  this->_brain;
+	std::cout << " : " << EMO_THOUGHT << " Brain   " << *this->_brain;
+	std::cout << COL_RES;
+	return ;
+}
+
+void	Dog::setBrain(std::string const idea, int const index)
+{
+	this->_brain->setIdea(idea, index);
+	return ;
 }
 
 /* Overriding makeSound() */
