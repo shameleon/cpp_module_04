@@ -12,7 +12,7 @@
 
 #include "../inc/AMateria.hpp"
 
-AMateria::AMateria(void):_type("type undefined")
+AMateria::AMateria(void):_type("")
 {
 	std::cout << EMO_WRENCH << " (AMateria def. constr.) ";
 	return ;
@@ -40,7 +40,7 @@ AMateria::~AMateria(void)
 
 AMateria			&AMateria::operator=(AMateria const &rhs)
 {
-	if (this == &rhs)
+	if (this->_type == rhs.getType())
 		return (*this);
 	std::cout << EMO_WRENCH << " (AMateria copy assignment operator) ";
 	this->_type =rhs.getType();
@@ -49,17 +49,11 @@ AMateria			&AMateria::operator=(AMateria const &rhs)
 
 std::string	const	&AMateria::getType(void) const
 {
-	return ;
+	return this->_type;
 }
 
 AMateria			&AMateria::clone(void) const
 {
-	std::cout << EMO_MINUS << " (AMateria::clone)";
 	return ;
 }
 
-std::ostream	&operator<<(std::ostream& oss, AMateria const &rhs)
-{
-	oss << EMO_OPEN_BOOK << &rhs << " : " << rhs.getType() << std::endl;
-	return oss;
-}

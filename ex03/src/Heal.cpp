@@ -10,23 +10,51 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Heal_HPP
-# define Heal_HPP
-
 # include "../inc/AMateria.hpp"
 
-class	Heal: public AMateria
+Heal::Heal(void):AMateria("Heal")
 {
-	public:
-		Heal(void);
-		Heal(Heal const &other);
-		virtual ~Heal(void);
+	std::cout << EMO_Heal_CUBE << " (Heal def. constr.) ";
+	return ;
+}
 
-		Heal	&operator=(Heal const &rhs);
-		
-		Heal	*clone(void);
-};
+Heal::Heal(std::string const &type):AMateria(type)
+{
+	std::cout << EMO_Heal_CUBE << " (Heal param. constr.) ";
+	return ;
+}
 
-#endif
+Heal::Heal(Heal const	&other)
+{
+	std::cout << EMO_Heal_CUBE << " (Heal copy constructor) ";
+	*this = other;
+	return ;
+}
 
-/* https://github.com/99x/emojicpp/blob/master/emoji.h */
+Heal::~Heal(void)
+{
+	std::cout << COL_RED << EMO_MINUS << " (Heal destructor) ";
+	std::cout << COL_RES;
+	return ;
+}
+
+Heal			&Heal::operator=(Heal const &rhs)
+{
+	if (this == &rhs)
+		return (*this);
+	std::cout << EMO_Heal_CUBE << " (Heal copy assignment operator) ";
+	this->_type =rhs.getType();
+	return (*this);
+}
+
+Heal			&Heal::clone(void) const
+{
+	std::cout << EMO_MINUS << " (Heal::clone)";
+	return (new Heal(*this));
+}
+
+void	use(ICharacter &target)
+{
+	std::cout << "* heals " << target->getName() << "'s wounds *" << std::endl;
+	return ;
+}

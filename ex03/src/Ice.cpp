@@ -47,14 +47,15 @@ Ice			&Ice::operator=(Ice const &rhs)
 	return (*this);
 }
 
-std::string	const	&Ice::getType(void) const
-{
-	return ;
-}
-
 Ice			&Ice::clone(void) const
 {
 	std::cout << EMO_MINUS << " (Ice::clone)";
+	return (new Ice(*this));
+}
+
+void	use(ICharacter &target)
+{
+	std::cout << "* shoots an ice bolt at " << target->getName() << " *" << std::endl;
 	return ;
 }
 

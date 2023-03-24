@@ -27,14 +27,11 @@ class	IMateriaSource
 		virtual AMateria	*createMateria(std::string const &type) = 0;
 };
 
-
-
-
 /*
-	Interface for class MateriaSource
-	IMateriaSource : interface class :
+	IMateriaSource : Interface for class MateriaSource
+
+		interface class :
 					 contains only pure virtual functions
 					 no implementation, no attributes, no member-functions
 */
 
-*/
