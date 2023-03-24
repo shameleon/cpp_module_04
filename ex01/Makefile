@@ -21,14 +21,15 @@ OBJ			= $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
 
 CXX			= c++
 CXXFLAGS	= -std=c++98
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra 
+DEBUG 		= -g3 -fsanitize=address-
 
 COL_RED = @echo -n "\e[1;31m"
 COL_GRN = @echo -n "\e[1;32m"
 COL_YEL = @echo -n "\e[1;33m"
 COL_BLU = @echo -n "\e[1;34m"
 COL_PUR = @echo -n "\e[1;35m"
-COL_RESET = @echo -n "\e[0;32m"
+COL_RESET = @echo -n "\e[0m"
 
 all: $(NAME)
 
@@ -42,7 +43,7 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	@mkdir -p $(OBJ_DIR)
 	$(COL_BLU)
-	$(CXX) $(CXXFLAGS) $(CFLAGS) -I$(INC_DIR) -c $< -o $@ 
+	$(CXX) $(CXXFLAGS) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 	$(COL_RESET)
 
 clean: $(OBJ_DIR)
