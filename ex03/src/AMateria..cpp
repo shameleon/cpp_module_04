@@ -14,14 +14,13 @@
 
 AMateria::AMateria(void):_type("type undefined")
 {
-	std::cout << EMO_WRENCH << " (AMateria def. const.) ";
+	std::cout << EMO_WRENCH << " (AMateria def. constr.) ";
 	return ;
 }
 
-AMateria::AMateria(std::string const type):_type(type)
+AMateria::AMateria(std::string const &type):_type(type)
 {
-	std::cout << EMO_WRENCH << " (AMateria parametric constructor): a new AMateria was created. ";
-	std::cout << "it is a " << this->_type << " ! " << std::endl;
+	std::cout << EMO_WRENCH << " (AMateria param. constr.) ";
 	return ;
 }
 

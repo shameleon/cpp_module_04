@@ -10,54 +10,55 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHARACTER_HPP
-# define CHARACTER_HPP
-
 # include <iostream>
 # include <iomanip>
-# include "../inc/ICharacter.hpp"
+# include "../inc/Character.hpp"
 
 
-class	Character
+Character::Character(void):_name("default")
 {
-	private:
-		std::string const	_name;
-	public:
-		Character(void);
-		Character(std::string const name);
-		Character(Character const &copy);
-		~Character(void);
+	return ;
+}
 
-		Character			*operator=(Character const &rhs)
-		std::string const	&getName(void) const;
-		void				equip(AMateria *m)= 0;
-		void				unequip(int idx);
-		void				use(int idx, ICharacter &target);
-};
-
-#endif
-
-
-/*
-Class IMateriaSource
+Character::Character(std::string const name):_name(name)
 {
-public:
-virtual ~IMateriaSource() {}
-virtual void learnMateria(AMateria*) = 0;
-virtual AMateria* createMateria(std::string const & type) = 0;
-};
+	return ;
+}
 
-•learnMateria(AMateria*)
-Copie la Materia passée en paramètre et la stocke en mémoire afin de la cloner
-plus tard. Tout comme le Character, la MateriaSource peut contenir 4 Materias
-maximum. Ces dernières ne sont pas forcément uniques.
-•createMateria(std::string const &)
-Retourne une nouvelle Materia. Celle-ci est une copie de celle apprise précédem-
-ment par la MateriaSource et dont le type est le même que celui passé en para-
-mètre. Retourne 0 si le type est inconnu.
-En bref, votre MateriaSource doit pouvoir apprendre des "modèles" de Materias
-afin de les recréer à volonté. Ainsi, vous serez capable de générer une nouvelle Materia à
-partir de son type sous forme de chaîne de caractères.
-12
+Character::Character(Character const &other):_name(name)
+{
+	*this = other;
+	return ;
+}
 
-*/
+Character::~Character(void)
+{
+	return ;
+}
+
+Character	*Character::operator=(Character const &rhs)
+{
+	this->_name = rhs->getName();
+	/* *this->_brain = *rhs._brain; */
+	return ;
+}
+
+std::string const	&getName(void) const
+{
+	return &(this->_name)
+}
+
+void		Character::equip(AMateria *m)
+{
+	return ;
+}
+
+void		Character::unequip(int idx)
+{
+	return ;
+}
+
+void		Character::use(int idx, ICharacter &target)
+{
+	return ;
+}

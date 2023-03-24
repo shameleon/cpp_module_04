@@ -39,7 +39,7 @@ static void		test2(void)
 
 static int		test1(void)
 {
-	IMateriaSource*	src = new MateriaSource();
+	IMateriaSource *src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
@@ -68,14 +68,14 @@ int				main(void)
 	std::cout << std::endl << std::endl;
 	std::cout << COL_YEL << "TEST 2" << COL_RES <<  std::endl;
 	std::cout << "______________________________________________" << std::endl;
-	test2();
+	//test2();
 	std::cout << std::endl << std::endl;
 	std::cout << COL_YEL << "TEST 3" << COL_RES << std::endl;
 	std::cout << "______________________________________________" << std::endl;
-	test3();
+	//test3();
 	std::cout << std::endl << std::endl;
 	std::cout << COL_YEL << "TEST 4" << COL_RES << std::endl;
 	std::cout << "______________________________________________" << std::endl;
-	test4();
+	//test4();
 	return 0;
 }

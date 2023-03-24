@@ -35,7 +35,7 @@
 
 # include <iostream>
 # include <iomanip>
-# include "../inc/.hpp"
+# include "../inc/ICharacter.hpp"
 
 class	AMateria
 {
