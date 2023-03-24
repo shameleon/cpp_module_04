@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmouaike <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 09:17:27 by jmouaike          #+#    #+#             */
-/*   Updated: 2023/03/24 09:17:31 by jmouaike         ###   ########.fr       */
+/*   Created: 2023/03/24 09:17:40 by jmouaike          #+#    #+#             */
+/*   Updated: 2023/03/24 09:17:44 by jmouaike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMATERIASOURCE_HPP
-# define IMATERIASOURCE_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-# define COL_RED "\033[0;31m"
-# define COL_GRN "\033[0;32m"
-# define COL_YEL "\033[0;33m"
-# define COL_BLU "\033[0;34m"
-# define COL_PUR "\033[0;35m"
-# define COL_INV_YEL "\033[7;93m"
-# define COL_CYA "\033[0;36m"
-# define COL_RES "\033[0m"
+# include "../inc/IMateriaSource.hpp"
 
-# include <iostream>
-# include <iomanip>
-//# include "../inc/.hpp"
-
-//class	AMateria;
-
-class	IMateriaSource
+class	MateriaSource
 {
 	public:
-		virtual				~IMateriaSource(void) {}
-		virtual void		learn(AMateria*)= 0;
-		virtual AMateria	*createMateria(st::string const &type) = 0;
-};
+		MateriaSource(void);
+		MateriaSource(MateriaSource const &other);
+		~MateriaSource(void);
 
-/* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &o, IMateriaSource const &rhs);
+		MateriaSource	*operator=(MateriaSource const &rhs);
+		
+		void		learn(AMateria *m);
+		AMateria	*createMateria(std::string const &type);
+};
 
 #endif
 

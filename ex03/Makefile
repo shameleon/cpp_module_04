@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jmouaike <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/14 10:55:03 by jmouaike          #+#    #+#              #
-#    Updated: 2023/03/14 10:55:10 by jmouaike         ###   ########.fr        #
+#    Created: 2023/03/24 09:19:21 by jmouaike          #+#    #+#              #
+#    Updated: 2023/03/24 09:19:31 by jmouaike         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= a.out
-SRC_FILES	= main.cpp
+SRC_FILES	= main.cpp AMateria.cpp Ice.cpp Heal.cpp ICharacter.cpp Character.cpp IMateriaSource.cpp MateriaSource.cpp
 SRC_DIR		= ./src/
 INC_DIR		= ./inc/
 OBJ_DIR		= ./obj/

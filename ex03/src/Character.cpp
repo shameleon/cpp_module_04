@@ -1,45 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmouaike <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 09:17:13 by jmouaike          #+#    #+#             */
-/*   Updated: 2023/03/24 09:17:17 by jmouaike         ###   ########.fr       */
+/*   Created: 2023/03/24 09:19:53 by jmouaike          #+#    #+#             */
+/*   Updated: 2023/03/24 09:19:57 by jmouaike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
-
-# define COL_RED "\033[0;31m"
-# define COL_GRN "\033[0;32m"
-# define COL_YEL "\033[0;33m"
-# define COL_BLU "\033[0;34m"
-# define COL_PUR "\033[0;35m"
-# define COL_INV_YEL "\033[7;93m"
-# define COL_CYA "\033[0;36m"
-# define COL_RES "\033[0m"
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
 # include <iostream>
 # include <iomanip>
-//# include "../inc/.hpp"
+# include "../inc/ICharacter.hpp"
 
-//class	AMateria;
 
-class	ICharacter
+class	Character
 {
+	private:
+		std::string const	_name;
 	public:
-		virtual						~ICharacter() {}
-		virtual	std::string const	&getName(void) const = 0;
-		virtual void				equip(AMateria)= 0;
-		virtual void				unequip(int idx)= 0;
-		virtual void				use(int idx, ICharacter &target)= 0;
-};
+		Character(void);
+		Character(std::string const name);
+		Character(Character const &copy);
+		~Character(void);
 
-/* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &o, ICharacter const &rhs);
+		Character			*operator=(Character const &rhs)
+		std::string const	&getName(void) const;
+		void				equip(AMateria *m)= 0;
+		void				unequip(int idx);
+		void				use(int idx, ICharacter &target);
+};
 
 #endif
 
