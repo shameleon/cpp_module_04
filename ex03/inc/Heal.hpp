@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
+#ifndef Heal_HPP
+# define Heal_HPP
 
 # include "../inc/AMateria.hpp"
 
-class	Ice: public AMateria
+class	Heal: public AMateria
 {
 	public:
-		Ice(void);
-		Ice(Ice const &other);
-		virtual ~Ice(void);
+		Heal(void);
+		Heal(Heal const &other);
+		virtual ~Heal(void);
 
-		Ice		&operator=(Ice const &rhs);
+		Heal	&operator=(Heal const &rhs);
 		
-		Ice		*clone(void);
+		Heal	*clone(void);
 };
 
 #endif

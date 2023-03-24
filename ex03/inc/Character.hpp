@@ -10,75 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
-
-# define COL_RED "\033[0;31m"
-# define COL_GRN "\033[0;32m"
-# define COL_YEL "\033[0;33m"
-# define COL_BLU "\033[0;34m"
-# define COL_PUR "\033[0;35m"
-# define COL_INV_YEL "\033[7;93m"
-# define COL_CYA "\033[0;36m"
-# define COL_RES "\033[0m"
-
-# define EMO_MINUS "\U00002796"
-# define EMO_WRENCH "\U0001F527"
-# define EMO_NO_ENTRY "\U000026D4"
-# define EMO_HEAVY_CHECK "\U00002714"
-# define EMO_OPEN_BOOK "\U0001F4D6"
-# define EMO_THOUGHT "\U0001F4AD"
-# define IDEA_FORK "\U0001F374"
-# define IDEA_COLLISON "\U0001F4A5"
-# define IDEA_RAT "\U0001F400"
-# define IDEA_MEAT_ON_BONE "\U0001F356"
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
 # include <iostream>
 # include <iomanip>
-# include "../inc/.hpp"
+# include "../inc/ICharacter.hpp"
 
-class	AMateria
+
+class	Character
 {
-	protected:
-		std::string		_type;
-
+	private:
+		std::string const	_name;
 	public:
-		AMateria(void);
-		AMateria(std::string const &type);
-		AMateria(AMateria const	&other);
-		virtual ~AMateria(void);
+		Character(void);
+		Character(std::string const name);
+		Character(Character const &copy);
+		~Character(void);
 
-		AMateria			&operator=(AMateria const &rhs);
-
-		std::string	const	&getType(void) const;
-
-		virtual AMateria	*clone(void) const = 0;
-		virtual void		use(ICharacter &target);
+		Character			*operator=(Character const &rhs)
+		std::string const	&getName(void) const;
+		void				equip(AMateria *m)= 0;
+		void				unequip(int idx);
+		void				use(int idx, ICharacter &target);
 };
-
-/* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &o, AMateria const &rhs);
 
 #endif
 
 
 /*
-#include "AMateria.hpp"
-
-class	AMateria;
-
-class	ICharacter
-{
-	public:
-		virtual ~ICharacter(void) {}
-		virtual const std::string&	get_name(void) const = 0;
-		virtual void				equip(AMateria* m) = 0;
-		virtual void				unequip(int idx) = 0;
-		virtual void				use(int idx, ICharacter& target) = 0;
-};
-
-
-lass IMateriaSource
+Class IMateriaSource
 {
 public:
 virtual ~IMateriaSource() {}
