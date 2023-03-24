@@ -22,20 +22,21 @@ WrongCat::WrongCat(void):WrongAnimal("WrongCat")
 
 WrongCat::WrongCat(WrongCat const	&other):WrongAnimal(other)
 {
+	this->_brain = new Brain();
 	*this = other;
 	std::cout << EMO_CAT << " (WrongCat copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
 	return ;
 }
 
-/* delete this->_brain;  // removed to allow test */
 WrongCat::~WrongCat(void)
 {
+	delete this->_brain;
 	std::cout << EMO_CAT << COL_RED << " (WrongCat default destructor): RIP little ";
 	std::cout << this->WrongAnimal::_type  << " ! " << COL_RES  << std::endl;
 	return ;
 }
-
+/* 	*this->_brain = *rhs._brain; */
 WrongCat	&WrongCat::operator=(WrongCat const &rhs)
 {
 	if (this == &rhs)
@@ -43,8 +44,8 @@ WrongCat	&WrongCat::operator=(WrongCat const &rhs)
 	std::cout << EMO_CAT << " (WrongCat copy assignment operator): ";
 	std::cout << " WrongCat was updated to another " << rhs.getType();
 	std::cout << "'s attributes " << std::endl;
-	WrongAnimal::operator=(rhs);
-	this->_brain = rhs._brain;
+	this->_type = rhs.getType();
+	*this->_brain = *rhs._brain;
 	return (*this);
 }
 
@@ -59,12 +60,6 @@ void		WrongCat::getBrain(void) const
 void		WrongCat::setBrain(std::string const idea, int const index)
 {
 	this->_brain->setIdea(idea, index);
-	return ;
-}
-
-void		WrongCat::delBrain(void)
-{
-	delete this->_brain;
 	return ;
 }
 

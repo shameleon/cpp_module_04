@@ -82,7 +82,6 @@ static int		test3(void)
 	wrong2.getBrain();
 	std::cout << "wrong3 : " << *wrong3;
 	wrong3->getBrain();
-	wrong1.delBrain();
 	delete wrong3;
 	return 0;
 }
@@ -172,5 +171,5 @@ int				main(void)
 }
 
 /*
-
+	valgrind tests : 1[ok] 2[ok] 3[ok] 4[ok]
 */

@@ -34,7 +34,6 @@ class	WrongCat: public WrongAnimal
 		
 		void		getBrain(void) const;
 		void		setBrain(std::string const idea, int const index);
-		void		delBrain(void);
 
 		void		makeSound(void) const;
 };

@@ -22,6 +22,7 @@ Cat::Cat(void):Animal("Cat")
 
 Cat::Cat(Cat const	&other)
 {
+	this->_brain = new Brain();
 	*this = other;
 	std::cout << EMO_CAT << " (Cat copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
@@ -36,6 +37,7 @@ Cat::~Cat(void)
 	return ;
 }
 
+/* *this->_brain = *rhs._brain; */
 Cat		&Cat::operator=(Cat const &rhs)
 {
 	if (this == &rhs)
@@ -43,7 +45,8 @@ Cat		&Cat::operator=(Cat const &rhs)
 	std::cout  << EMO_CAT << " (Cat copy assignment operator): ";
 	std::cout << " Cat was updated to another " << rhs.getType();
 	std::cout << "'s attributes" << std::endl;
-	Animal::operator=(rhs);
+	this->_type = rhs.getType();
+	delete this->_brain;
 	this->_brain = new Brain(*rhs._brain);
 	return (*this);
 }

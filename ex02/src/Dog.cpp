@@ -22,6 +22,7 @@ Dog::Dog(void):AAnimal("Dog")
 
 Dog::Dog(Dog const	&other):AAnimal(other)
 {
+	delete this->_brain;
 	*this = other;
 	std::cout << EMO_DOG << " (Dog copy constructor): a clone of " << other.getType();
 	std::cout << " type was created." << std::endl;
@@ -43,7 +44,8 @@ Dog		&Dog::operator=(Dog const &rhs)
 	std::cout << EMO_DOG << " (Dog copy assignment operator): ";
 	std::cout << " Dog was updated to another " << rhs.getType();
 	std::cout << "'s attributes " << std::endl;
-	AAnimal::operator=(rhs);
+	this->_type = rhs.getType();
+	delete this->_brain;
 	this->_brain = new Brain(*rhs._brain);
 	return (*this);
 }
