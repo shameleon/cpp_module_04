@@ -48,7 +48,7 @@ Animal		&Animal::operator=(Animal const &rhs)
 	std::cout << EMO_WRENCH << " (Animal copy assignment operator): ";
 	std::cout << this->_type << " was updated and copied another " << rhs.getType();
 	std::cout << "'s attributes " << std::endl;
-	this->_type =rhs.getType();
+	this->_type = rhs.getType();
 	return (*this);
 }
 

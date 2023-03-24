@@ -1,32 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   ICharacter.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmouaike <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 09:17:00 by jmouaike          #+#    #+#             */
-/*   Updated: 2023/03/24 09:17:06 by jmouaike         ###   ########.fr       */
+/*   Created: 2023/03/24 09:20:41 by jmouaike          #+#    #+#             */
+/*   Updated: 2023/03/24 09:20:50 by jmouaike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
+# include "../inc/ICharacter.hpp"
 
-# include "../inc/AMateria.hpp"
+/*
 
-class	Ice: public AMateria
-{
-	public:
-		Ice(void);
-		Ice(Ice const &other);
-		virtual ~Ice(void);
-
-		Ice		&operator=(Ice const &rhs);
-		
-		Ice		*clone(void);
-};
-
-#endif
-
-/* https://github.com/99x/emojicpp/blob/master/emoji.h */
+*/

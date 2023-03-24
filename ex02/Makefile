@@ -28,7 +28,7 @@ COL_GRN = @echo -n "\e[1;32m"
 COL_YEL = @echo -n "\e[1;33m"
 COL_BLU = @echo -n "\e[1;34m"
 COL_PUR = @echo -n "\e[1;35m"
-COL_RESET = @echo -n "\e[0;32m"
+COL_RESET = @echo -n "\e[0m"
 
 all: $(NAME)
 

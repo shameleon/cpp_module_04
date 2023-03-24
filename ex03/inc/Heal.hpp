@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   Heal.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmouaike <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 09:17:00 by jmouaike          #+#    #+#             */
-/*   Updated: 2023/03/24 09:17:06 by jmouaike         ###   ########.fr       */
+/*   Created: 2023/03/24 09:16:48 by jmouaike          #+#    #+#             */
+/*   Updated: 2023/03/24 09:16:53 by jmouaike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
+#ifndef HEAL_HPP
+# define HEAL_HPP
 
 # include "../inc/AMateria.hpp"
 
-class	Ice: public AMateria
+class	Heal: public AMateria
 {
 	public:
-		Ice(void);
-		Ice(Ice const &other);
-		virtual ~Ice(void);
+		Heal(void);
+		Heal(Heal const &other);
+		virtual ~Heal(void);
 
-		Ice		&operator=(Ice const &rhs);
+		Heal	&operator=(Heal const &rhs);
 		
-		Ice		*clone(void);
+		Heal	*clone(void);
 };
 
 #endif
