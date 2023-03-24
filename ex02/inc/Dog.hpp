@@ -35,7 +35,7 @@ class	Dog: public AAnimal
 		void		getBrain(void) const;
 		void		setBrain(std::string const idea, int const index);
 
-		void		makeSound(void) const;
+		void		makeSound(void) const override;
 };
 
 #endif

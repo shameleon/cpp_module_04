@@ -60,3 +60,14 @@ class	AAnimal
 std::ostream	&operator<<(std::ostream &o, AAnimal const &rhs);
 
 #endif
+
+/*
+	AAnimal   : abstract class 
+	makeSound : pure virtual function. 
+				function override in derived class(es)
+	
+	Abstract class cannot be instanciated. only throught pointers or references.
+	Tests :
+	Animal	mypet;							   // [KO]
+	Animal  *my_pet = new Dog("Rantanplan");   // [OK]
+*/

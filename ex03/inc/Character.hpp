@@ -16,10 +16,12 @@
 # include "../inc/ICharacter.hpp"
 
 
-class	Character
+class	Character: public ICharacter
 {
-	private:
+	private: 
 		std::string const	_name;
+		AMateria			*_backpack[4];
+
 	public:
 		Character(void);
 		Character(std::string const name);
@@ -27,14 +29,16 @@ class	Character
 		~Character(void);
 
 		Character			*operator=(Character const &rhs)
-		std::string const	&getName(void) const;
-		void				equip(AMateria *m)= 0;
-		void				unequip(int idx);
-		void				use(int idx, ICharacter &target);
+		std::string const	&getName(void) const override;
+		void				equip(AMateria *m) override;
+		void				unequip(int idx) override;
+		void				use(int idx, ICharacter &target) override;
 };
 
-#endif
+/* * * * *  stream operator * * * * */
+std::ostream	&operator<<(std::ostream &o, Character const &rhs);
 
+#endif
 
 /*
 

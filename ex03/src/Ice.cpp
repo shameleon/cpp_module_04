@@ -10,23 +10,51 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
-
 # include "../inc/AMateria.hpp"
 
-class	Ice: public AMateria
+Ice::Ice(void):AMateria("Ice")
 {
-	public:
-		Ice(void);
-		Ice(Ice const &other);
-		virtual ~Ice(void);
+	std::cout << EMO_ICE_CUBE << " (Ice def. constr.) ";
+	return ;
+}
 
-		Ice		&operator=(Ice const &rhs);
-		
-		Ice		*clone(void);
-};
+Ice::Ice(std::string const &type):AMateria(type)
+{
+	std::cout << EMO_ICE_CUBE << " (Ice param. constr.) ";
+	return ;
+}
 
-#endif
+Ice::Ice(Ice const	&other)
+{
+	std::cout << EMO_ICE_CUBE << " (Ice copy constructor) ";
+	*this = other;
+	return ;
+}
 
-/* https://github.com/99x/emojicpp/blob/master/emoji.h */
+Ice::~Ice(void)
+{
+	std::cout << COL_RED << EMO_MINUS << " (Ice destructor) ";
+	std::cout << COL_RES;
+	return ;
+}
+
+Ice			&Ice::operator=(Ice const &rhs)
+{
+	if (this == &rhs)
+		return (*this);
+	std::cout << EMO_ICE_CUBE << " (Ice copy assignment operator) ";
+	this->_type =rhs.getType();
+	return (*this);
+}
+
+std::string	const	&Ice::getType(void) const
+{
+	return ;
+}
+
+Ice			&Ice::clone(void) const
+{
+	std::cout << EMO_MINUS << " (Ice::clone)";
+	return ;
+}
+

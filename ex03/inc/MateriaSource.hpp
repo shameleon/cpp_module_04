@@ -15,8 +15,11 @@
 
 # include "../inc/IMateriaSource.hpp"
 
-class	MateriaSource
+class	MateriaSource: public IMateriaSource
 {
+	private:
+		AMateria		*_source[4];
+
 	public:
 		MateriaSource(void);
 		MateriaSource(MateriaSource const &other);
@@ -24,12 +27,14 @@ class	MateriaSource
 
 		MateriaSource	*operator=(MateriaSource const &rhs);
 		
-		void		learn(AMateria *m);
-		AMateria	*createMateria(std::string const &type);
+		void			learn(AMateria *m) override;
+		AMateria		*createMateria(std::string const &type) override;
 };
 
 #endif
 
+/* * * * *  stream operator * * * * */
+std::ostream	&operator<<(std::ostream &o, MateriaSource const &rhs);
 
 /*
 •learnMateria(AMateria*)

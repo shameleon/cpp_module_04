@@ -24,9 +24,12 @@ class	Heal: public AMateria
 
 		Heal	&operator=(Heal const &rhs);
 		
-		Heal	*clone(void);
+		Heal	*clone(void) override;
+		void	use(ICharacter &target);
 };
 
 #endif
 
-/* https://github.com/99x/emojicpp/blob/master/emoji.h */
+/*
+
+*/
