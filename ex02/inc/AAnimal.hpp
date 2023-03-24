@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
 # define COL_RED "\033[0;31m"
 # define COL_GRN "\033[0;32m"
@@ -37,26 +37,26 @@
 # include <iomanip>
 # include "../inc/Brain.hpp"
 
-class	Animal
+class	AAnimal
 {
 	protected:
 		std::string		_type;
 
 	public:
-		Animal(void);
-		Animal(std::string const	type);
-		Animal(Animal const	&other);
-		virtual ~Animal(void);
+		AAnimal(void);
+		AAnimal(std::string const	type);
+		AAnimal(AAnimal const	&other);
+		virtual ~AAnimal(void);
 
-		Animal			&operator=(Animal const &rhs);
+		AAnimal			&operator=(AAnimal const &rhs);
 
 		std::string		getType(void) const;
 
-		virtual void	makeSound(void) const;
+		virtual void	makeSound(void) const = 0;
 
 };
 
 /* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &o, Animal const &rhs);
+std::ostream	&operator<<(std::ostream &o, AAnimal const &rhs);
 
 #endif

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 
 # define COL_RED "\033[0;31m"
 # define COL_GRN "\033[0;32m"
@@ -37,26 +37,66 @@
 # include <iomanip>
 # include "../inc/Brain.hpp"
 
-class	Animal
+class	AMateria
 {
 	protected:
 		std::string		_type;
 
 	public:
-		Animal(void);
-		Animal(std::string const	type);
-		Animal(Animal const	&other);
-		virtual ~Animal(void);
+		AMateria(void);
+		AMateria(std::string const &type);
+		AMateria(AMateria const	&other);
+		virtual ~AMateria(void);
 
-		Animal			&operator=(Animal const &rhs);
+		AMateria			&operator=(AMateria const &rhs);
 
-		std::string		getType(void) const;
+		std::string	const	&getType(void) const;
 
-		virtual void	makeSound(void) const;
-
+		virtual AMateria	*clone(void) const = 0;
+		virtual void		use(ICharacter &target);
 };
 
 /* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &o, Animal const &rhs);
+std::ostream	&operator<<(std::ostream &o, AMateria const &rhs);
 
 #endif
+
+
+/*
+#include "AMateria.hpp"
+
+class	AMateria;
+
+class	ICharacter
+{
+	public:
+		virtual ~ICharacter(void) {}
+		virtual const std::string&	get_name(void) const = 0;
+		virtual void				equip(AMateria* m) = 0;
+		virtual void				unequip(int idx) = 0;
+		virtual void				use(int idx, ICharacter& target) = 0;
+};
+
+
+lass IMateriaSource
+{
+public:
+virtual ~IMateriaSource() {}
+virtual void learnMateria(AMateria*) = 0;
+virtual AMateria* createMateria(std::string const & type) = 0;
+};
+
+•learnMateria(AMateria*)
+Copie la Materia passée en paramètre et la stocke en mémoire afin de la cloner
+plus tard. Tout comme le Character, la MateriaSource peut contenir 4 Materias
+maximum. Ces dernières ne sont pas forcément uniques.
+•createMateria(std::string const &)
+Retourne une nouvelle Materia. Celle-ci est une copie de celle apprise précédem-
+ment par la MateriaSource et dont le type est le même que celui passé en para-
+mètre. Retourne 0 si le type est inconnu.
+En bref, votre MateriaSource doit pouvoir apprendre des "modèles" de Materias
+afin de les recréer à volonté. Ainsi, vous serez capable de générer une nouvelle Materia à
+partir de son type sous forme de chaîne de caractères.
+12
+
+*/

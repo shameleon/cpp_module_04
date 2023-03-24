@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmouaike <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/14 10:55:42 by jmouaike          #+#    #+#             */
-/*   Updated: 2023/03/14 10:55:46 by jmouaike         ###   ########.fr       */
+/*   Created: 2023/03/14 10:55:55 by jmouaike          #+#    #+#             */
+/*   Updated: 2023/03/14 10:55:57 by jmouaike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
-# define EMO_CAT "\U0001F431"
-# define EMO_CAT2 "\U0001F408"
+# define EMO_DOG "\U0001F436"
+# define EMO_DOG2 "\U0001F415"
 
-# include "../inc/Animal.hpp"
+# include "../inc/AAnimal.hpp"
 # include "../inc/Brain.hpp"
 
-class	Cat: public Animal
+class	Dog: public AAnimal
 {
 	private:
 		Brain		*_brain;
 
 	public:
-		Cat(void);
-		Cat(std::string const name);
-		Cat(Cat const &other);
-		~Cat(void);
+		Dog(void);
+		Dog(std::string const	name);
+		Dog(Dog const	&other);
+		~Dog(void);
 
-		Cat			&operator=(Cat const &rhs);
-		
+		Dog			&operator=(Dog const &rhs);
+
 		void		getBrain(void) const;
 		void		setBrain(std::string const idea, int const index);
 

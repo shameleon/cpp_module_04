@@ -22,7 +22,7 @@
 class	Dog: public Animal
 {
 	private:
-		Brain			*_brain;
+		Brain		*_brain;
 
 	public:
 		Dog(void);
@@ -30,11 +30,12 @@ class	Dog: public Animal
 		Dog(Dog const	&other);
 		~Dog(void);
 
-		Dog				&operator=(Dog const &rhs);
+		Dog			&operator=(Dog const &rhs);
 
-		Brain			*getBrain(void) const;
+		void		getBrain(void) const;
+		void		setBrain(std::string const idea, int const index);
 
-		void			makeSound(void) const;
+		void		makeSound(void) const;
 };
 
 #endif

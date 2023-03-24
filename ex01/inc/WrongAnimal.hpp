@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmouaike <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
+
+# define COL_RED "\033[0;31m"
+# define COL_RES "\033[0m"
 
 # define COL_RED "\033[0;31m"
 # define COL_GRN "\033[0;32m"
@@ -37,26 +40,26 @@
 # include <iomanip>
 # include "../inc/Brain.hpp"
 
-class	Animal
+class	WrongAnimal
 {
 	protected:
-		std::string		_type;
+		std::string				_type;
 
 	public:
-		Animal(void);
-		Animal(std::string const	type);
-		Animal(Animal const	&other);
-		virtual ~Animal(void);
+		WrongAnimal(void);
+		WrongAnimal(std::string const type);
+		WrongAnimal(WrongAnimal const &other);
+		virtual ~WrongAnimal(void);
 
-		Animal			&operator=(Animal const &rhs);
+		WrongAnimal				&operator=(WrongAnimal const &rhs);
 
-		std::string		getType(void) const;
+		std::string				getType(void) const;
 
-		virtual void	makeSound(void) const;
+		virtual void			makeSound(void) const;
 
 };
 
 /* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &o, Animal const &rhs);
+std::ostream	&operator<<(std::ostream &o, WrongAnimal const &rhs);
 
 #endif

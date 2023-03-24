@@ -16,18 +16,18 @@
 # define EMO_CAT "\U0001F431"
 # define EMO_CAT2 "\U0001F408"
 
-# include "../inc/Animal.hpp"
+# include "../inc/AAnimal.hpp"
 # include "../inc/Brain.hpp"
 
-class	Cat: public Animal
+class	Cat: public AAnimal
 {
 	private:
 		Brain		*_brain;
 
 	public:
 		Cat(void);
-		Cat(std::string const name);
-		Cat(Cat const &other);
+		Cat(std::string const	name);
+		Cat(Cat const	&other);
 		~Cat(void);
 
 		Cat			&operator=(Cat const &rhs);

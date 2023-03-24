@@ -4,3 +4,6 @@
 [runtime polymorphism](https://www.geeksforgeeks.org/virtual-function-cpp/)
 
 [copy constructor : deep and shallow copy](https://www.javatpoint.com/cpp-copy-constructor)
+
+
+[Unicode Emoji](https://github.com/99x/emojicpp)

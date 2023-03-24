@@ -12,7 +12,7 @@
 
 #include "../inc/Cat.hpp"
 
-Cat::Cat(void):Animal("Cat")
+Cat::Cat(void):AAnimal("Cat")
 {
 	this->_brain = new Brain();
 	std::cout << EMO_CAT << " (Cat default constructor): created a Cat ";
@@ -32,7 +32,7 @@ Cat::~Cat(void)
 {
 	delete this->_brain;
 	std::cout  << EMO_CAT << COL_RED << " (Cat destructor): RIP little ";
-	std::cout << this->Animal::_type  << " ! " << COL_RES  << std::endl;
+	std::cout << this->AAnimal::_type  << " ! " << COL_RES  << std::endl;
 	return ;
 }
 
@@ -43,7 +43,7 @@ Cat		&Cat::operator=(Cat const &rhs)
 	std::cout  << EMO_CAT << " (Cat copy assignment operator): ";
 	std::cout << " Cat was updated to another " << rhs.getType();
 	std::cout << "'s attributes" << std::endl;
-	Animal::operator=(rhs);
+	AAnimal::operator=(rhs);
 	this->_brain = new Brain(*rhs._brain);
 	return (*this);
 }
@@ -65,7 +65,7 @@ void	Cat::setBrain(std::string const idea, int const index)
 /* Overriding makeSound() */
 void	Cat::makeSound(void) const
 {
-	std::cout << EMO_CAT <<  " (Cat): " << this->Animal::_type;
+	std::cout << EMO_CAT <<  " (Cat): " << this->AAnimal::_type;
 	std::cout << " is Meowing ! "  << EMO_CAT2;
 	std::cout << " Meeeow meeeeeeeeooooooooow !!! " << std::endl;
 	return ;

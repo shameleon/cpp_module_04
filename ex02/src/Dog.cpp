@@ -12,7 +12,7 @@
 
 #include "../inc/Dog.hpp"
 
-Dog::Dog(void):Animal("Dog")
+Dog::Dog(void):AAnimal("Dog")
 {
 	this->_brain = new Brain();
 	std::cout << EMO_DOG << " (Dog default constructor): created a Dog ";
@@ -20,7 +20,7 @@ Dog::Dog(void):Animal("Dog")
 	return ;
 }
 
-Dog::Dog(Dog const	&other):Animal(other)
+Dog::Dog(Dog const	&other):AAnimal(other)
 {
 	*this = other;
 	std::cout << EMO_DOG << " (Dog copy constructor): a clone of " << other.getType();
@@ -32,7 +32,7 @@ Dog::~Dog(void)
 {
 	delete this->_brain;
 	std::cout << COL_RED << EMO_DOG << " (Dog destructor): RIP little";
-	std::cout << this->Animal::_type  << " ! " << COL_RES  << std::endl;
+	std::cout << this->AAnimal::_type  << " ! " << COL_RES  << std::endl;
 	return ;
 }
 
@@ -43,7 +43,7 @@ Dog		&Dog::operator=(Dog const &rhs)
 	std::cout << EMO_DOG << " (Dog copy assignment operator): ";
 	std::cout << " Dog was updated to another " << rhs.getType();
 	std::cout << "'s attributes " << std::endl;
-	Animal::operator=(rhs);
+	AAnimal::operator=(rhs);
 	this->_brain = new Brain(*rhs._brain);
 	return (*this);
 }
@@ -65,7 +65,7 @@ void	Dog::setBrain(std::string const idea, int const index)
 /* Overriding makeSound() */
 void		Dog::makeSound(void) const
 {
-	std::cout << EMO_DOG << " (Dog): " << this->Animal::_type;
+	std::cout << EMO_DOG << " (Dog): " << this->AAnimal::_type;
 	std::cout << " is Barking ! " << EMO_DOG2;
 	std::cout << " WOOF WOOF !!!! " << std::endl;
 	return ;

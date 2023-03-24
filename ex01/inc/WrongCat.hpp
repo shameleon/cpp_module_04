@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmouaike <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,30 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
 # define EMO_CAT "\U0001F431"
 # define EMO_CAT2 "\U0001F408"
 
-# include "../inc/Animal.hpp"
+# include "../inc/WrongAnimal.hpp"
 # include "../inc/Brain.hpp"
 
-class	Cat: public Animal
+class	WrongCat: public WrongAnimal
 {
 	private:
 		Brain		*_brain;
 
 	public:
-		Cat(void);
-		Cat(std::string const name);
-		Cat(Cat const &other);
-		~Cat(void);
+		WrongCat(void);
+		WrongCat(std::string const	name);
+		WrongCat(WrongCat const	&other);
+		~WrongCat(void);
 
-		Cat			&operator=(Cat const &rhs);
+		WrongCat	&operator=(WrongCat const &rhs);
 		
 		void		getBrain(void) const;
 		void		setBrain(std::string const idea, int const index);
+		void		delBrain(void);
 
 		void		makeSound(void) const;
 };
