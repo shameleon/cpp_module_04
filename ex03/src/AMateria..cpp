@@ -57,3 +57,17 @@ AMateria			&AMateria::clone(void) const
 	return ;
 }
 
+std::ostream	&operator<<(std::ostream &oss, AMateria const &rhs)
+{
+	if (AMateria.getType == "Ice")
+		oss << EMO_ICE_CUBE;
+	else if (AMateria.getType == "Heal")
+		oss << EMO_BLUE_HEART;
+	else if (AMateria.getType == NULL)
+		oss << EMO_FREE;
+	else
+		oss << EMO_BLACK_SQ;
+	return oss;
+}
+
+

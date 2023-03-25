@@ -55,7 +55,7 @@ class	AMateria
 };
 
 /* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &o, AMateria const &rhs);
+std::ostream	&operator<<(std::ostream &oss, AMateria const &rhs);
 
 #endif
 

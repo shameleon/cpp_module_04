@@ -27,14 +27,14 @@ class	MateriaSource: public IMateriaSource
 
 		MateriaSource	*operator=(MateriaSource const &rhs);
 		
-		void			learn(AMateria *m) override;
+		void			learnMateria(AMateria *m) override;
 		AMateria		*createMateria(std::string const &type) override;
 };
 
 #endif
 
 /* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &o, MateriaSource const &rhs);
+std::ostream	&operator<<(std::ostream &oss, MateriaSource const &rhs);
 
 /*
 •learnMateria(AMateria*)

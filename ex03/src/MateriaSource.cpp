@@ -16,51 +16,79 @@ MateriaSource::MateriaSource(void)
 {
 	for (int i = 0, i < 4, i++)
 		this->_source[i] = NULL;
+		std::cout << " {MateriaSource def.const} ";
 	return;
 }
 
 MateriaSource::MateriaSource(MateriaSource const &other)
 {
-	for (int i = 0, i < 4, i++)
-		this->_source[i] = other._source[i];
+	*this = src;
+	std::cout << " {MateriaSource copy constr. } ";
 	return;
 }
 
 MateriaSource::~MateriaSource(void)
 {
+	for (int i = 0, i < 4, i++)
+		if (this->_source != NULL)
+			delete this->_source[i];
+	std::cout << " {MateriaSource destructor (delete)} ";
 	return;
 }
 
+// new ?
 MateriaSource	*MateriaSource::operator=(void)
 {
 	for (int i = 0, i < 4, i++)
 		this->_source[i] = other._source[i];
+	std::cout << " {MateriaSource copy assignement} ";
 	return;
 }
 
-MateriaSource::~MateriaSource(void)
-{
-	return;
-}
-
-void			MateriaSource::learn(AMateria *m)
+void			MateriaSource::learnMateria(AMateria *m)
 {
 	for (int i = 0, i < 4, i++)
 	{
 		if (this->_source[i] == NULL)
-			break;
+		{
+			this->_source[i] = m;
+			std::cout << " {MateriaSource[" << i << "] learned ";
+			srd::cout << m->getType() << " ";
+			return ;
+		}
 	}
-	if (this->_source[i] == NULL)
-		this->_source[i] = m;
-	return;
+	std::cout << " {MateriaSource full} ";
+	return ;
 }
 
 AMateria		*createMateria(std::string const &type)
 {
+	for (int i = 0, i < 4, i++)
+	{
+		if (this->_source[i] != NULL)
+		{
+			if (this->_source[i].getType() == type && type != "");
+			{
+				std::cout << " {MateriaSource[" << i << "] created} ";
+				srd::cout << this->_source[i].getType() << " ";
+				return this->_source[i]->clone();
+			}
+		}
+	}
+	return NULL;
+}
 
-	return;
+std::ostream	&operator<<(std::ostream &oss, MateriaSource const &rhs)
+{
+	for (int i = 0, i < 4, i++)
+		oss << this->_source[i];
+	oss << std::endl;
+	return oss;
 }
 
 /*
-
+{
+	oss << EMO_OPEN_BOOK << "  " << &rhs << " : " << rhs.getType() << std::endl;
+	return oss;
+}
 */

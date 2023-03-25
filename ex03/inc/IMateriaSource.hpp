@@ -17,13 +17,11 @@
 # include <iomanip>
 # include "../inc/AMateria.hpp"
 
-//class	AMateria;
-
 class	IMateriaSource
 {
 	public:
 		virtual				~IMateriaSource(void) {}
-		virtual void		learn(AMateria *) = 0;
+		virtual void		learnMateria(AMateria *) = 0;
 		virtual AMateria	*createMateria(std::string const &type) = 0;
 };
 

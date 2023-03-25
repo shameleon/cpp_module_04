@@ -30,13 +30,14 @@ class	Character: public ICharacter
 
 		Character			*operator=(Character const &rhs)
 		std::string const	&getName(void) const override;
+		AMateria			*getMateria(int idx) const override;
 		void				equip(AMateria *m) override;
 		void				unequip(int idx) override;
 		void				use(int idx, ICharacter &target) override;
 };
 
 /* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &o, Character const &rhs);
+std::ostream	&operator<<(std::ostream &oss, Character const &rhs);
 
 #endif
 

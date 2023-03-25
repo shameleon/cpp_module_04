@@ -45,7 +45,12 @@ Character	*Character::operator=(Character const &rhs)
 
 std::string const	&getName(void) const
 {
-	return &(this->_name)
+	return &(this->_name);
+}
+
+AMateria			&getMateria(int idx) const
+{
+	return &(this->_backpack[idx]);
 }
 
 void		Character::equip(AMateria *m)
@@ -61,4 +66,12 @@ void		Character::unequip(int idx)
 void		Character::use(int idx, ICharacter &target)
 {
 	return ;
+}
+
+std::ostream	&operator<<(std::ostream &oss, Character const &rhs)
+{
+	oss << std::setw(15) << rhs.getName() << " ";
+	for (int i = 0; i < 4; i++)
+		oss << rhs.getMateria(i);
+	return oss;
 }
