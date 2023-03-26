@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME		= a.out
-SRC_FILES	= main.cpp AMateria.cpp Ice.cpp Heal.cpp ICharacter.cpp Character.cpp IMateriaSource.cpp MateriaSource.cpp
+SRC_FILES	= main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp 
 SRC_DIR		= ./src/
 INC_DIR		= ./inc/
 OBJ_DIR		= ./obj/

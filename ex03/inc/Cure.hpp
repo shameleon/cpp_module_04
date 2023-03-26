@@ -1,16 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.cpp                                     :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmouaike <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 09:20:41 by jmouaike          #+#    #+#             */
-/*   Updated: 2023/03/24 09:20:50 by jmouaike         ###   ########.fr       */
+/*   Created: 2023/03/24 09:16:48 by jmouaike          #+#    #+#             */
+/*   Updated: 2023/03/24 09:16:53 by jmouaike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../inc/ICharacter.hpp"
+#ifndef CURE_HPP
+# define CURE_HPP
+
+# include "../inc/AMateria.hpp"
+
+class	Cure: public AMateria
+{
+	public:
+		Cure(void);
+		Cure(Cure const &other);
+		virtual ~Cure(void);
+
+		Cure		&operator=(Cure const &rhs);
+		
+		AMateria	*clone(void) const; // override;
+		void		use(ICharacter &target);
+};
+
+#endif
 
 /*
 

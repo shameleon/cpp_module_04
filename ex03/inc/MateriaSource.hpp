@@ -15,22 +15,27 @@
 
 # include "../inc/IMateriaSource.hpp"
 
-class	MateriaSource
+class	MateriaSource: public IMateriaSource
 {
+	private:
+		AMateria		*_source[4];
+
 	public:
 		MateriaSource(void);
 		MateriaSource(MateriaSource const &other);
 		~MateriaSource(void);
 
-		MateriaSource	*operator=(MateriaSource const &rhs);
+		MateriaSource	&operator=(MateriaSource const &rhs);
 		
-		void		learn(AMateria *m);
-		AMateria	*createMateria(std::string const &type);
+		void			learnMateria(AMateria *m); // override;
+		AMateria		*createMateria(std::string const &type); // override;
 };
 
 #endif
 
-
+/* * * * *  stream operator * * * * 
+std::ostream	&operator<<(std::ostream &oss, MateriaSource const &rhs);
+*/
 /*
 •learnMateria(AMateria*)
 	Copie la Materia passée en paramètre et la stocke en mémoire afin de la cloner

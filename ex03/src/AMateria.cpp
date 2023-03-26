@@ -12,7 +12,7 @@
 
 #include "../inc/AMateria.hpp"
 
-AMateria::AMateria(void):_type("type undefined")
+AMateria::AMateria(void):_type("")
 {
 	std::cout << EMO_WRENCH << " (AMateria def. constr.) ";
 	return ;
@@ -26,44 +26,58 @@ AMateria::AMateria(std::string const &type):_type(type)
 
 AMateria::AMateria(AMateria const	&other)
 {
-	std::cout << EMO_WRENCH << " (AMateria copy constructor): a clone of " << this->getType();
-	std::cout << " type was created." << std::endl;
+	std::cout << EMO_WRENCH << " (AMateria copy constructor) ";
 	*this = other;
 	return ;
 }
 
 AMateria::~AMateria(void)
 {
-	std::cout << COL_RED << EMO_MINUS << " (AMateria destructor): RIP little ";
-	std::cout << this->_type << " ! " << COL_RES  << std::endl;
+	std::cout << COL_RED << EMO_MINUS << " (AMateria destructor) ";
+	std::cout << COL_RES;
 	return ;
 }
 
-AMateria		&AMateria::operator=(AMateria const &rhs)
+AMateria			&AMateria::operator=(AMateria const &rhs)
 {
-	if (this == &rhs)
+	if (this->_type == rhs.getType())
 		return (*this);
-	std::cout << EMO_WRENCH << " (AMateria copy assignment operator): ";
-	std::cout << this->_type << " was updated and copied another " << rhs.getType();
-	std::cout << "'s attributes " << std::endl;
+	std::cout << EMO_WRENCH << " (AMateria copy assignment operator) ";
 	this->_type =rhs.getType();
 	return (*this);
 }
 
-std::string		AMateria::getType(void) const
+std::string	const	&AMateria::getType(void) const
 {
 	return this->_type;
 }
 
-void			AMateria::makeSound(void) const
+/*
+Unimplemented :
+
+AMateria			*AMateria::clone(void) const = 0;
+*/
+
+void				AMateria::use(ICharacter &target)
 {
-	std::cout << EMO_MINUS << " (AMateria Makes Sound): undefined sound";
-	std::cout << std::endl;
+	if (this->_type == "ice")
+		std::cout << " * shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	if (this->_type == "cure")
+		std::cout << " * Heals " << target.getName() << "'s wounds *" << std::endl;
 	return ;
 }
 
-std::ostream	&operator<<(std::ostream& oss, AMateria const &rhs)
+std::ostream	&operator<<(std::ostream &oss, AMateria const &rhs)
 {
-	oss << EMO_OPEN_BOOK << "  " << &rhs << " : " << rhs.getType() << std::endl;
+	if (rhs.getType() == "ice")
+		oss << EMO_ICE_CUBE;
+	else if (rhs.getType() == "cure")
+		oss << EMO_BLUE_HEART;
+	else if (rhs.getType() == "")
+		oss << EMO_FREE;
+	else
+		oss << EMO_BLACK_SQ;
 	return oss;
 }
+
+

@@ -10,23 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
+# include "../inc/Ice.hpp"
 
-# include "../inc/AMateria.hpp"
-
-class	Ice: public AMateria
+Ice::Ice(void):AMateria("ice")
 {
-	public:
-		Ice(void);
-		Ice(Ice const &other);
-		virtual ~Ice(void);
+	std::cout << EMO_ICE_CUBE << " (Ice def. constr.) ";
+	return ;
+}
 
-		Ice		&operator=(Ice const &rhs);
-		
-		Ice		*clone(void);
-};
+Ice::Ice(Ice const	&other)
+{
+	std::cout << EMO_ICE_CUBE << " (Ice copy constructor) ";
+	*this = other;
+	return ;
+}
 
-#endif
+Ice::~Ice(void)
+{
+	std::cout << COL_RED << EMO_MINUS << " (Ice destructor) ";
+	std::cout << COL_RES;
+	return ;
+}
 
-/* https://github.com/99x/emojicpp/blob/master/emoji.h */
+Ice			&Ice::operator=(Ice const &rhs)
+{
+	if (this == &rhs)
+		return (*this);
+	std::cout << EMO_ICE_CUBE << " (Ice copy assignment operator) ";
+	this->_type =rhs.getType();
+	return (*this);
+}
+
+AMateria	*Ice::clone(void) const
+{
+	std::cout << EMO_MINUS << " (Ice clone) ";
+	return (new Ice());
+}
+
+void		Ice::use(ICharacter &target)
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	return ;
+}
+

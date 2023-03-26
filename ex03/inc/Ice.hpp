@@ -22,11 +22,11 @@ class	Ice: public AMateria
 		Ice(Ice const &other);
 		virtual ~Ice(void);
 
-		Ice		&operator=(Ice const &rhs);
-		
-		Ice		*clone(void);
+		Ice			&operator=(Ice const &rhs);
+
+		AMateria	*clone(void) const; //override;
+		void		use(ICharacter &target);
 };
 
 #endif
 
-/* https://github.com/99x/emojicpp/blob/master/emoji.h */
