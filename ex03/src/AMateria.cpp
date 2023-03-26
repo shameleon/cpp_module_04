@@ -52,18 +52,28 @@ std::string	const	&AMateria::getType(void) const
 	return this->_type;
 }
 
-AMateria			&AMateria::clone(void) const
+/*
+Unimplemented :
+
+AMateria			*AMateria::clone(void) const = 0;
+*/
+
+void				AMateria::use(ICharacter &target)
 {
+	if (this->_type == "ice")
+		std::cout << " * shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	if (this->_type == "cure")
+		std::cout << " * Heals " << target.getName() << "'s wounds *" << std::endl;
 	return ;
 }
 
 std::ostream	&operator<<(std::ostream &oss, AMateria const &rhs)
 {
-	if (AMateria.getType == "Ice")
+	if (rhs.getType() == "ice")
 		oss << EMO_ICE_CUBE;
-	else if (AMateria.getType == "Heal")
+	else if (rhs.getType() == "cure")
 		oss << EMO_BLUE_HEART;
-	else if (AMateria.getType == NULL)
+	else if (rhs.getType() == "")
 		oss << EMO_FREE;
 	else
 		oss << EMO_BLACK_SQ;

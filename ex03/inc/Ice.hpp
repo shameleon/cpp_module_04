@@ -22,10 +22,10 @@ class	Ice: public AMateria
 		Ice(Ice const &other);
 		virtual ~Ice(void);
 
-		Ice		&operator=(Ice const &rhs);
+		Ice			&operator=(Ice const &rhs);
 
-		Ice		*clone(void) override;
-		void	use(ICharacter &target);
+		AMateria	*clone(void) const; //override;
+		void		use(ICharacter &target);
 };
 
 #endif

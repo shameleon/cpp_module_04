@@ -19,7 +19,7 @@
 class	Character: public ICharacter
 {
 	private: 
-		std::string const	_name;
+		std::string			_name;
 		AMateria			*_backpack[4];
 
 	public:
@@ -28,12 +28,12 @@ class	Character: public ICharacter
 		Character(Character const &other);
 		~Character(void);
 
-		Character			*operator=(Character const &rhs)
-		std::string const	&getName(void) const override;
-		AMateria			*getMateria(int idx) const override;
-		void				equip(AMateria *m) override;
-		void				unequip(int idx) override;
-		void				use(int idx, ICharacter &target) override;
+		Character			&operator=(Character const &rhs);
+		std::string const	&getName(void) const; //override;
+		//virtual AMateria	&getItem(int idx) const; // override;
+		void				equip(AMateria *m); //override;
+		void				unequip(int idx); //override;
+		void				use(int idx, ICharacter &target); //override;
 };
 
 /* * * * *  stream operator * * * * */

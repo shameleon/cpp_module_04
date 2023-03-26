@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Heal.hpp                                           :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmouaike <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEAL_HPP
-# define HEAL_HPP
+#ifndef CURE_HPP
+# define CURE_HPP
 
 # include "../inc/AMateria.hpp"
 
-class	Heal: public AMateria
+class	Cure: public AMateria
 {
 	public:
-		Heal(void);
-		Heal(Heal const &other);
-		virtual ~Heal(void);
+		Cure(void);
+		Cure(Cure const &other);
+		virtual ~Cure(void);
 
-		Heal	&operator=(Heal const &rhs);
+		Cure		&operator=(Cure const &rhs);
 		
-		Heal	*clone(void) override;
-		void	use(ICharacter &target);
+		AMateria	*clone(void) const; // override;
+		void		use(ICharacter &target);
 };
 
 #endif

@@ -10,17 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../inc/AMateria.hpp"
+# include "../inc/Ice.hpp"
 
-Ice::Ice(void):AMateria("Ice")
+Ice::Ice(void):AMateria("ice")
 {
 	std::cout << EMO_ICE_CUBE << " (Ice def. constr.) ";
-	return ;
-}
-
-Ice::Ice(std::string const &type):AMateria(type)
-{
-	std::cout << EMO_ICE_CUBE << " (Ice param. constr.) ";
 	return ;
 }
 
@@ -47,15 +41,15 @@ Ice			&Ice::operator=(Ice const &rhs)
 	return (*this);
 }
 
-Ice			&Ice::clone(void) const
+AMateria	*Ice::clone(void) const
 {
-	std::cout << EMO_MINUS << " (Ice::clone)";
-	return (new Ice(*this));
+	std::cout << EMO_MINUS << " (Ice clone) ";
+	return (new Ice());
 }
 
-void	use(ICharacter &target)
+void		Ice::use(ICharacter &target)
 {
-	std::cout << "* shoots an ice bolt at " << target->getName() << " *" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 	return ;
 }
 

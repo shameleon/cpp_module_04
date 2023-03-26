@@ -25,17 +25,17 @@ class	MateriaSource: public IMateriaSource
 		MateriaSource(MateriaSource const &other);
 		~MateriaSource(void);
 
-		MateriaSource	*operator=(MateriaSource const &rhs);
+		MateriaSource	&operator=(MateriaSource const &rhs);
 		
-		void			learnMateria(AMateria *m) override;
-		AMateria		*createMateria(std::string const &type) override;
+		void			learnMateria(AMateria *m); // override;
+		AMateria		*createMateria(std::string const &type); // override;
 };
 
 #endif
 
-/* * * * *  stream operator * * * * */
+/* * * * *  stream operator * * * * 
 std::ostream	&operator<<(std::ostream &oss, MateriaSource const &rhs);
-
+*/
 /*
 •learnMateria(AMateria*)
 	Copie la Materia passée en paramètre et la stocke en mémoire afin de la cloner
