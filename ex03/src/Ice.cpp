@@ -41,6 +41,7 @@ Ice			&Ice::operator=(Ice const &rhs)
 	return (*this);
 }
 
+/* returns a new instance of the same type */
 AMateria	*Ice::clone(void) const
 {
 	std::cout << EMO_WRENCH << " ! ice cloned ! ";

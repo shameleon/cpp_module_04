@@ -48,6 +48,5 @@ std::ostream	&operator<<(std::ostream &oss, MateriaSource const &rhs);
 En bref, votre MateriaSource doit pouvoir apprendre des "modèles" de Materias
 afin de les recréer à volonté. Ainsi, vous serez capable de générer une nouvelle Materia à
 partir de son type sous forme de chaîne de caractères.
-12
 
 */

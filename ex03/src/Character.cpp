@@ -86,12 +86,13 @@ void				Character::equip(AMateria *m)
 	{
 		if (this->_backpack[i] == NULL)
 		{
-			this->_backpack[i] = m;
+			*this->_backpack[i] = *m;
+			delete m;
 			std::cout <<  " + 1 " << m->getType() << " to backpack > ";
 			return;
 		}
-		std::cout << " = backpack is full = ";
 	}
+	std::cout << " = backpack is full = ";
 	return ;
 }
 

@@ -54,6 +54,8 @@ MateriaSource	&MateriaSource::operator=(MateriaSource const &rhs)
 	return *this;
 }
 
+/* learns and stores up to 4 new materials, not necessarily unique materials.
+When _source is full, it deletes incoming AMateria parameter and declares _source full */
 void			MateriaSource::learnMateria(AMateria *m)
 {
 	for (int i = 0; i < 4; i++)
@@ -66,33 +68,48 @@ void			MateriaSource::learnMateria(AMateria *m)
 			return ;
 		}
 	}
+	delete m;
 	std::cout << " {MateriaSource full} ";
 	return ;
 }
 
+/* 	returns a new Materia copied from previously learned Materias that are stored in _source
+	type of the returned MAteria is pecified by the parameter 'type' 
+	Returns NULL if type is unknown to _source */
 AMateria		*MateriaSource::createMateria(std::string const &type)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->_source[i] != NULL)
+		if (this->_source[i]->getType() == type)
 		{
-			if (this->_source[i]->getType() == type && type != "")
-			{
-				std::cout << " {MateriaSource[" << i << "] created} ";
-				std::cout << this->_source[i]->getType() << " ";
-				return this->_source[i]->clone();
-			}
+			std::cout << " {source[" << i << "] created new Materia} ";
+			std::cout << this->_source[i]->getType() << " ";
+			return this->_source[i]->clone();
 		}
 	}
+	std::cout << " {source could not create unknown Materia} ";
 	return NULL;
 }
 
 /*
 std::ostream	&operator<<(std::ostream &oss, MateriaSource const &rhs)
 {
-	for (int i = 0; i < 4; i++)
-		oss << rhs._source[i];
+	oss << rhs->putMateriaSource();
 	oss << std::endl;
 	return oss;
 }
+*/
+/*
+•learnMateria(AMateria*)
+	Copie la Materia passée en paramètre et la stocke en mémoire afin de la cloner
+	plus tard. Tout comme le Character, la MateriaSource peut contenir 4 Materias
+	maximum. Ces dernières ne sont pas forcément uniques.
+•createMateria(std::string const &)
+	Retourne une nouvelle Materia. Celle-ci est une copie de celle apprise précédem-
+	ment par la MateriaSource et dont le type est le même que celui passé en para-
+	mètre. Retourne 0 si le type est inconnu.
+En bref, votre MateriaSource doit pouvoir apprendre des "modèles" de Materias
+afin de les recréer à volonté. Ainsi, vous serez capable de générer une nouvelle Materia à
+partir de son type sous forme de chaîne de caractères.
+
 */
