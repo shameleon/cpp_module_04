@@ -16,14 +16,14 @@ MateriaSource::MateriaSource(void)
 {
 	for (int i = 0; i < 4; i++)
 		this->_source[i] = NULL;
-		std::cout << " {MateriaSource def.const} ";
+	std::cout << " { MateriaSource default constr. } " << std::endl;
 	return;
 }
 
 MateriaSource::MateriaSource(MateriaSource const &other)
 {
 	*this = other;
-	std::cout << " {MateriaSource copy constr. } ";
+	std::cout << " { MateriaSource copy constr. } ";
 	return;
 }
 
@@ -32,7 +32,7 @@ MateriaSource::~MateriaSource(void)
 	for (int i = 0; i < 4; i++)
 		if (this->_source[i] != NULL)
 			delete this->_source[i];
-	std::cout << " {MateriaSource destructor (delete)} ";
+	std::cout << " { MateriaSource destructor (delete)} ";
 	return;
 }
 
@@ -62,7 +62,7 @@ void			MateriaSource::learnMateria(AMateria *m)
 		{
 			this->_source[i] = m;
 			std::cout << " {MateriaSource[" << i << "] learned ";
-			std::cout << m->getType() << " ";
+			std::cout << m->getType() << "} " << std::endl;
 			return ;
 		}
 	}

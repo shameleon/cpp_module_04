@@ -30,7 +30,7 @@ class	Character: public ICharacter
 
 		Character			&operator=(Character const &rhs);
 		std::string const	&getName(void) const; //override;
-		//virtual AMateria	&getItem(int idx) const; // override;
+		AMateria const		&getItem(int idx) const; // override;
 		void				equip(AMateria *m); //override;
 		void				unequip(int idx); //override;
 		void				use(int idx, ICharacter &target); //override;
