@@ -34,7 +34,7 @@ AMateria::AMateria(AMateria const	&other)
 AMateria::~AMateria(void)
 {
 	std::cout << COL_RED << EMO_MINUS << " (AMateria destructor) ";
-	std::cout << COL_RES;
+	std::cout << COL_RES << std::endl;
 	return ;
 }
 
@@ -43,7 +43,7 @@ AMateria			&AMateria::operator=(AMateria const &rhs)
 	if (this->_type == rhs.getType())
 		return (*this);
 	std::cout << EMO_WRENCH << " (AMateria copy assignment operator) ";
-	this->_type =rhs.getType();
+	this->_type = rhs.getType();
 	return (*this);
 }
 
@@ -67,7 +67,7 @@ void				AMateria::use(ICharacter &target)
 	return ;
 }
 
-std::ostream	&operator<<(std::ostream &oss, AMateria const &rhs)
+std::ostream		&operator<<(std::ostream &oss, AMateria const &rhs)
 {
 	if (rhs.getType() == "ice")
 		oss << EMO_ICE_CUBE;

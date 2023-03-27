@@ -27,16 +27,51 @@ static void		test4(void)
 	return ;
 }
 
+/* AMateria derived classes */
 static void		test3(void)
 {
+	AMateria		*ice_bolt = new Ice();
+	AMateria		*antidote = new Cure();
+	
+	std::cout << std::endl;
+	std::cout << *ice_bolt << std::endl;
+	std::cout << *antidote << std::endl;
+
+	AMateria		*antidote2 = antidote->clone();;
+	std::cout << std::endl;
+	std::cout << *antidote2 << std::endl;
+	std::cout << std::endl;
+
+	Character		*toto = new Character("Tonia");
+	std::cout << (Character *)toto << std::endl; // KO
+	antidote2->use(*toto);
+	std::cout << std::endl;
+
+	std::cout << "---- END ----" << std::endl;
+	delete antidote2;
+	delete ice_bolt;
+	delete antidote;
+	delete toto;
 	return ;
 }
 
+/* tests learning Materia */
 static void		test2(void)
 {
+	MateriaSource	*machine = new MateriaSource();
+
+	std::cout << std::endl;
+	for (int j = 0; j < 4; j++)
+	{
+		machine->learnMateria(new Ice());
+		machine->learnMateria(new Cure());
+	}
+	std::cout << "\n---- END ----" << std::endl;
+	delete machine;
 	return ;
 }
 
+/* test from the subject pdf file */
 static int		test1(void)
 {
 	IMateriaSource *src = new MateriaSource();
@@ -44,14 +79,17 @@ static int		test1(void)
 	src->learnMateria(new Cure());
 
 	ICharacter* me = new Character("me");
-	AMateria* tmp;
-	tmp = src->createMateria("ice");   // 1 (32 bytes) ROOT LEAK: <Ice 0x7fb7a9c05a30> [32]
-	// me->equip(tmp);   // SEG FAULT
-	tmp = src->createMateria("cure");     // NO LEAK 
+	AMateria* 	tmp;
+	tmp = src->createMateria("ice");
+	//me->equip(tmp);   // SEG FAULT
+	delete tmp;
+	tmp = src->createMateria("cure");
 	//me->equip(tmp);     // SEG FAULT
+	delete tmp;
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+	std::cout << "---- END ----" << std::endl;
 	delete bob;
 	delete me;
 	delete src;
@@ -82,7 +120,5 @@ int				main(void)
 
 
 /*
-	delete :  ~MateriaSource  { if -source[i] not NULL 
-
 	leaks -atExit -- ./a.out
 */

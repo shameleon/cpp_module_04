@@ -12,9 +12,9 @@
 
 # include "../inc/Cure.hpp"
 
-Cure::Cure(void):AMateria("Cure")
+Cure::Cure(void):AMateria("cure")
 {
-	std::cout << EMO_BLUE_HEART << " (Cure def. constr.) ";
+	std::cout << EMO_BLUE_HEART << " (Cure def. constr.) " << std::endl;
 	return ;
 }
 
@@ -44,8 +44,8 @@ Cure			&Cure::operator=(Cure const &rhs)
 /* 	return (new Cure()); */
 AMateria		*Cure::clone(void) const
 {
-	std::cout << EMO_MINUS << " (Cure::clone)";
-	return (new Cure());
+	std::cout << EMO_WRENCH << " ! cure cloned ! ";
+	return (new Cure(*this));
 }
 
 void			Cure::use(ICharacter &target)

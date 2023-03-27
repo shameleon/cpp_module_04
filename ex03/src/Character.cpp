@@ -25,7 +25,8 @@ Character::Character(void):_name("Character")
 
 Character::Character(std::string const name):_name(name)
 {
-	std::cout <<  " < Charact. param. constr > ";
+	std::cout << EMO_NO_GOOD <<  " < Charact. param. constr. for " << this->_name;
+	std::cout << " > " << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->_backpack[i] = NULL;
 	return ;
@@ -45,7 +46,8 @@ Character::~Character(void)
 		if (this->_backpack[i] != NULL)
 			delete this->_backpack[i];
 	}
-	std::cout <<  " < Charact. destruction > ";
+	std::cout <<  " < Charact. destruction for ";
+	std::cout << this->_name << " > " << std::endl;
 	return ;
 }
 
@@ -73,12 +75,10 @@ std::string const	&Character::getName(void) const
 	return this->_name;
 }
 
-/*
-AMateria			&getItem(int idx) const
+AMateria const		&Character::getItem(int idx) const
 {
-	return this->_backpack[idx];
+	return *(this->_backpack[idx]);
 }
-*/
 
 void				Character::equip(AMateria *m)
 {
@@ -86,12 +86,13 @@ void				Character::equip(AMateria *m)
 	{
 		if (this->_backpack[i] == NULL)
 		{
-			this->_backpack[i] = m;
+			*this->_backpack[i] = *m;
+			delete m;
 			std::cout <<  " + 1 " << m->getType() << " to backpack > ";
 			return;
 		}
-		std::cout << " = backpack is full = ";
 	}
+	std::cout << " = backpack is full = ";
 	return ;
 }
 
@@ -120,8 +121,9 @@ void				Character::use(int idx, ICharacter &target)
 
 std::ostream		&operator<<(std::ostream &oss, Character const &rhs)
 {
-	oss << EMO_NO_GOOD << " " << std::setw(15) << rhs.getName() << " ";
-	//for (int i = 0; i < 4; i++)
-	//	oss << rhs._backpack[i];
+	oss << &rhs << " " << EMO_NO_GOOD << " ";
+	oss << std::setw(15) << rhs.getName() << " ";
+	for (int i = 0; i < 4; i++)
+		oss << rhs.getItem(i);
 	return oss;
 }

@@ -20,7 +20,7 @@ class	Ice: public AMateria
 	public:
 		Ice(void);
 		Ice(Ice const &other);
-		virtual ~Ice(void);
+		~Ice(void);
 
 		Ice			&operator=(Ice const &rhs);
 
