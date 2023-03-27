@@ -30,11 +30,12 @@ static void		test4(void)
 
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
+	std::cout << std::endl;
 	for (int i = 0; i < 7; i++)
 	{
-		tmp = src->createMateria("ice");
+		tmp = src->createMateria("cure");
 		me->equip(tmp);
-		delete tmp;
+		//delete tmp;
 	}
 	delete me;
 	delete src;
@@ -96,10 +97,10 @@ static int		test1(void)
 	ICharacter* me = new Character("me");
 	AMateria* 	tmp;
 	tmp = src->createMateria("ice");
-	me->equip(tmp);
+	//me->equip(tmp);
 	delete tmp;
 	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	//me->equip(tmp);
 	delete tmp;
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);

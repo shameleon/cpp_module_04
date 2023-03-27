@@ -90,7 +90,7 @@ void				Character::equip(AMateria *m)
 			//*this->_backpack[i] = *m;
 			this->_backpack[i] = m;
 			delete m;
-			std::cout <<  " + 1 " << m->getType() << " to backpack > ";
+			//std::cout <<  " + 1 " << m->getType() << " to backpack > ";
 			return;
 		}
 	}
