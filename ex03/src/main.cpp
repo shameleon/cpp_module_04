@@ -24,6 +24,20 @@
 
 static void		test4(void)
 {
+	IMateriaSource	*src = new MateriaSource();
+	ICharacter		*me = new Character("me");
+	AMateria		*tmp;
+
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	for (int i = 0; i < 7; i++)
+	{
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+		delete tmp;
+	}
+	delete me;
+	delete src;
 	return ;
 }
 
@@ -72,6 +86,7 @@ static void		test2(void)
 }
 
 /* test from the subject pdf file */
+/* added delete tmp */
 static int		test1(void)
 {
 	IMateriaSource *src = new MateriaSource();
@@ -81,10 +96,10 @@ static int		test1(void)
 	ICharacter* me = new Character("me");
 	AMateria* 	tmp;
 	tmp = src->createMateria("ice");
-	//me->equip(tmp);   // SEG FAULT
+	me->equip(tmp);
 	delete tmp;
 	tmp = src->createMateria("cure");
-	//me->equip(tmp);     // SEG FAULT
+	me->equip(tmp);
 	delete tmp;
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
