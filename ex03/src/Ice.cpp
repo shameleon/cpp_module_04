@@ -18,7 +18,7 @@ Ice::Ice(void):AMateria("ice")
 	return ;
 }
 
-Ice::Ice(Ice const	&other)
+Ice::Ice(Ice const &other)
 {
 	std::cout << EMO_ICE_CUBE << " (Ice  copy constructor) ";
 	*this = other;

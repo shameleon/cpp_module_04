@@ -35,7 +35,6 @@ static void		test4(void)
 	{
 		tmp = src->createMateria("cure");
 		me->equip(tmp);
-		//delete tmp;
 	}
 	delete me;
 	delete src;
@@ -57,8 +56,8 @@ static void		test3(void)
 	std::cout << *antidote2 << std::endl;
 	std::cout << std::endl;
 
-	Character		*toto = new Character("Tonia");
-	std::cout << (Character *)toto << std::endl; // KO
+	ICharacter		*toto = new Character("Tonia");
+	std::cout << "CHaracter : " << toto << std::endl; // KO
 	antidote2->use(*toto);
 	std::cout << std::endl;
 
@@ -95,16 +94,19 @@ static int		test1(void)
 	src->learnMateria(new Cure());
 
 	ICharacter* me = new Character("me");
+
 	AMateria* 	tmp;
 	tmp = src->createMateria("ice");
-	//me->equip(tmp);
-	delete tmp;
+	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	//me->equip(tmp);
-	delete tmp;
+
+	
 	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	me->use(1, *bob);
+
+	//me->use(0, *bob);
+	//me->use(1, *bob);
+
 	std::cout << "---- END ----" << std::endl;
 	delete bob;
 	delete me;

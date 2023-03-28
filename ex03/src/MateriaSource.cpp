@@ -68,7 +68,7 @@ void			MateriaSource::learnMateria(AMateria *m)
 			return ;
 		}
 	}
-	delete m;
+	//delete m; // lol
 	std::cout << " {MateriaSource full} ";
 	return ;
 }
