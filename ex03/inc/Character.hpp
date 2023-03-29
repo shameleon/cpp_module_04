@@ -19,10 +19,10 @@
 class	Character: public ICharacter
 {
 	private: 
-		//static const int	_size;
+		//static const int	_items;
 		std::string			_name;
 		AMateria			*_backpack[4];
-		// int				index;
+		//int					_index;
 
 	public:
 		Character(void);   // pass private

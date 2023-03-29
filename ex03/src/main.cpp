@@ -22,22 +22,36 @@
 /*  Ex03        Interfaces                        */
 /* ********************************************** */
 
+/* learn, create and equip to full */
 static void		test4(void)
 {
 	IMateriaSource	*src = new MateriaSource();
 	ICharacter		*me = new Character("me");
 	AMateria		*tmp;
 
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
 	std::cout << std::endl;
-	for (int i = 0; i < 7; i++)
+	src->learnMateria(new Ice());
+	for (int i = 0; i < 5; i++)
+		src->learnMateria(new Cure());
+
+	std::cout << std::endl;
+	tmp = src->createMateria("water");
+	for (int i = 0; i < 5; i++)
 	{
 		tmp = src->createMateria("cure");
 		me->equip(tmp);
 	}
+
+	std::cout << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		std::cout << "index to unequip : " << i << "\t";
+		me->unequip(0);
+	}
+	std::cout << "---- END ----" << std::endl;
 	delete me;
 	delete src;
+	std::cout << "---- END of TESTS ----" << std::endl;
 	return ;
 }
 
@@ -57,7 +71,7 @@ static void		test3(void)
 	std::cout << std::endl;
 
 	ICharacter		*toto = new Character("Tonia");
-	std::cout << "CHaracter : " << toto << std::endl; // KO
+	std::cout << "Character : " << toto << std::endl; // KO
 	antidote2->use(*toto);
 	std::cout << std::endl;
 
@@ -93,23 +107,23 @@ static int		test1(void)
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
-	ICharacter* me = new Character("me");
+	// ICharacter* me = new Character("me");
 
-	AMateria* 	tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	//me->equip(tmp);
+	// AMateria* 	tmp;
+	// tmp = src->createMateria("ice");
+	// me->equip(tmp);
+	// tmp = src->createMateria("cure");
+	// me->equip(tmp);
 
 	
-	ICharacter* bob = new Character("bob");
+	// ICharacter* bob = new Character("bob");
 
-	//me->use(0, *bob);
-	//me->use(1, *bob);
+	// me->use(0, *bob);
+	// me->use(1, *bob);
 
-	std::cout << "---- END ----" << std::endl;
-	delete bob;
-	delete me;
+	// std::cout << "---- END ----" << std::endl;
+	// delete bob;
+	// delete me;
 	delete src;
 	return 0;
 }
