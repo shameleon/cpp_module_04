@@ -41,13 +41,13 @@ Character::Character(Character const &other):_name(other.getName())
 
 Character::~Character(void)
 {
-	// for (int i = 0; i < 4; i++)
-	// {
-	// 	if (this->_backpack[i] != NULL)
-	// 		delete this->_backpack[i];
-	// }
-	std::cout <<  " < Charact. destruction for ";
-	std::cout << this->_name << " > " << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_backpack[i] != NULL)
+			delete this->_backpack[i];
+	}
+	std::cout << COL_PUR <<  " < Charact. destruction for ";
+	std::cout << this->_name << " > " << COL_RES << std::endl;
 	return ;
 }
 
@@ -89,40 +89,32 @@ void	Character::getInventory(void) const
 	return ;
 }
 */
+
 void				Character::equip(AMateria *m)
 {
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_backpack[i] == NULL)
 		{
-			std::cout <<  " to backpack[" << "] > ";
-			this->_backpack[i] = m;   // shallow
-			delete m;
-			std::cout <<  " + 1 " << m->getType() << " to backpack[" << i << "]" << std::endl;
+			this->_backpack[i] = m; 
+			std::cout << COL_GRN <<  "\nequip : " <<  " + 1 " << m->getType();
+			std::cout << " to backpack[" << i << "]" << COL_RES << std::endl;
 			return;
 		}
 	}
 	delete m;
-	std::cout << " = backpack is full => Materia destroyed " << std::endl;
+	std::cout << COL_PUR << " equip : backpack is full => Materia destroyed " << COL_RES << std::endl;
 	return ;
 }
 
-/*
-void Character::equip(AMateria *m) {
-	if (this->_index < Character::ize) {
-		this->_backpack[this->_index] = m; // shallow copy
-		this->_index+;
-	}
-}
-*/
-
+/* no delete for unequip*/
 void				Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || this->_backpack[idx] == NULL)
 		return ;
-	std::cout <<  " - 1 " << this->_backpack[idx]->getType() << " from backpack > ";
-	//delete this->_backpack[idx];
-	for (int i = idx + 1; i < 4 ; i++)
+	std::cout <<  " - 1 " << this->_backpack[idx]->getType() << " from backpack["  << idx << "]";
+	delete this->_backpack[idx];
+	for (int i = idx + 1; i < 3 ; i++)
 	{
 		this->_backpack[i - 1] = this->_backpack[i];
 		this->_backpack[i] = NULL;
@@ -162,13 +154,4 @@ void Character::unequip(int idx) {
 	}
 }
 
-Character& Character::operator=(const Character& other) {
-	this->_name = other._name;
-	this->_nEquiped = other._nEquiped;
-	for (int i = 0; i < Character::kInventorySize; i++) {
-		//this->_inventory[i] = other._inventory[i]; // shallow copy
-		this->_inventory[i] = other._inventory[i]->clone(); // deep copy
-	}
-	return *this;
-}
 */

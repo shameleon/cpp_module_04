@@ -63,5 +63,9 @@ std::ostream	&operator<<(std::ostream &oss, AMateria const &rhs);
 
 
 /*
-	clone : pure virtual function. override in derived class(es)
+Abstrat class AMateria : 
+	cannot be instanciated. but ca
+	can be declared through a pointer
+
+function clone : pure virtual function. Override in derived class(es)
 */

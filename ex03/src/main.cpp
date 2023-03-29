@@ -22,7 +22,7 @@
 /*  Ex03        Interfaces                        */
 /* ********************************************** */
 
-/* learn and create can handle more than 4 inputs */
+/* learn, create and equip to full */
 static void		test4(void)
 {
 	IMateriaSource	*src = new MateriaSource();
@@ -33,16 +33,25 @@ static void		test4(void)
 	src->learnMateria(new Ice());
 	for (int i = 0; i < 5; i++)
 		src->learnMateria(new Cure());
+
 	std::cout << std::endl;
 	tmp = src->createMateria("water");
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		tmp = src->createMateria("cure");
-		delete tmp;
-		//me->equip(tmp);
+		me->equip(tmp);
 	}
+
+	std::cout << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		std::cout << "index to unequip : " << i << "\t";
+		me->unequip(0);
+	}
+	std::cout << "---- END ----" << std::endl;
 	delete me;
 	delete src;
+	std::cout << "---- END of TESTS ----" << std::endl;
 	return ;
 }
 
@@ -62,7 +71,7 @@ static void		test3(void)
 	std::cout << std::endl;
 
 	ICharacter		*toto = new Character("Tonia");
-	std::cout << "CHaracter : " << toto << std::endl; // KO
+	std::cout << "Character : " << toto << std::endl; // KO
 	antidote2->use(*toto);
 	std::cout << std::endl;
 
@@ -94,9 +103,9 @@ static void		test2(void)
 /* added delete tmp */
 static int		test1(void)
 {
-	// IMateriaSource *src = new MateriaSource();
-	// src->learnMateria(new Ice());
-	// src->learnMateria(new Cure());
+	IMateriaSource *src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 
 	// ICharacter* me = new Character("me");
 
@@ -115,7 +124,7 @@ static int		test1(void)
 	// std::cout << "---- END ----" << std::endl;
 	// delete bob;
 	// delete me;
-	// delete src;
+	delete src;
 	return 0;
 }
 
