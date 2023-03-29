@@ -22,6 +22,14 @@
 /*  Ex03        Interfaces                        */
 /* ********************************************** */
 
+/* */
+static void		test5(void)
+{
+	ICharacter		*me = new Character("me");
+
+	delete me;
+}
+
 /* learn, create and equip to full */
 static void		test4(void)
 {
@@ -43,10 +51,10 @@ static void		test4(void)
 	}
 
 	std::cout << std::endl;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		std::cout << "index to unequip : " << i << "\t";
-		me->unequip(0);
+		std::cout << i << " unequip \t";
+		me->unequip(1);
 	}
 	std::cout << "---- END ----" << std::endl;
 	delete me;
@@ -147,6 +155,13 @@ int				main(void)
 	std::cout << COL_YEL << "TEST 4" << COL_RES << std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	test4();
+	std::cout << std::endl << std::endl;
+	std::cout << COL_YEL << "TEST 5" << COL_RES << std::endl;
+	std::cout << "______________________________________________" << std::endl;
+	test5();
+	std::cout << COL_YEL;
+	std::cout << "______________________________________________" << std::endl;
+	std::cout << COL_RES << std::endl;
 	return 0;
 }
 

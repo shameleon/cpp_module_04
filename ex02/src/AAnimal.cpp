@@ -69,3 +69,11 @@ std::ostream	&operator<<(std::ostream& oss, AAnimal const &rhs)
 	oss << EMO_OPEN_BOOK << "  " << &rhs << " : " << rhs.getType() << std::endl;
 	return oss;
 }
+
+/*
+virtual : dynamic resolution for function call - runtime polymorphism
+method = virtual member-function 
+virtual destructor : guarantees that the object of derived class
+destructed properly. Maintains the hierarchy of call destructors
+from child clas object.
+*/

@@ -39,4 +39,7 @@ class	ICharacter
 	ICharacter : interface class :
 					 contains only pure virtual functions
 					 no implementation, no attributes, no member-functions
+
+	class 	AMateria;
+	class declaration to be ordered with compilation
 */

@@ -107,14 +107,14 @@ void				Character::equip(AMateria *m)
 	return ;
 }
 
-/* no delete for unequip*/
+/* subject : no delete for unequip */
 void				Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || this->_backpack[idx] == NULL)
 		return ;
-	std::cout <<  " - 1 " << this->_backpack[idx]->getType() << " from backpack["  << idx << "]";
-	delete this->_backpack[idx];
-	for (int i = idx + 1; i < 3 ; i++)
+	std::cout <<  " -1 " << this->_backpack[idx]->getType() << " from backpack["  << idx << "]";
+	delete this->_backpack[idx];  // to be reemoved
+	for (int i = idx + 1; i < 4 ; i++)
 	{
 		this->_backpack[i - 1] = this->_backpack[i];
 		this->_backpack[i] = NULL;
