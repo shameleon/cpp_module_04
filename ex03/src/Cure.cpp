@@ -18,7 +18,7 @@ Cure::Cure(void):AMateria("cure")
 	return ;
 }
 
-Cure::Cure(Cure const	&other)
+Cure::Cure(Cure const &other)
 {
 	std::cout << EMO_BLUE_HEART << " (Cure copy constructor) ";
 	*this = other;

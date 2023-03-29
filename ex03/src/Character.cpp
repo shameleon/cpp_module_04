@@ -75,33 +75,54 @@ std::string const	&Character::getName(void) const
 	return this->_name;
 }
 
-AMateria const		&Character::getItem(int idx) const
+/*
+AMateria const		*Character::getItem(int idx) const
 {
 	return *(this->_backpack[idx]);
 }
+*/
 
+/*
+void	Character::getInventory(void) const
+{
+	for (int i = 0; i < 4; i++)
+		std::cout << " " << &(this->_backpack[i]);
+	return ;
+}
+*/
 void				Character::equip(AMateria *m)
 {
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_backpack[i] == NULL)
 		{
-			*this->_backpack[i] = *m;
+			std::cout <<  " to backpack[" << i << "] > ";
+			this->_backpack[i] = m;   // shallow
 			delete m;
-			std::cout <<  " + 1 " << m->getType() << " to backpack > ";
+			std::cout <<  " + 1 " << m->getType() << " to backpack[" << i << "]" << std::endl;
 			return;
 		}
 	}
-	std::cout << " = backpack is full = ";
+	delete m;
+	std::cout << " = backpack is full => Materia destroyed " << std::endl;
 	return ;
 }
+
+/*
+void Character::equip(AMateria *m) {
+	if (this->_index < Character::ize) {
+		this->_backpack[this->_index] = m; // shallow copy
+		this->_index+;
+	}
+}
+*/
 
 void				Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || this->_backpack[idx] == NULL)
 		return ;
 	std::cout <<  " - 1 " << this->_backpack[idx]->getType() << " from backpack > ";
-	delete this->_backpack[idx];
+	//delete this->_backpack[idx];
 	for (int i = idx + 1; i < 4 ; i++)
 	{
 		this->_backpack[i - 1] = this->_backpack[i];
@@ -119,11 +140,36 @@ void				Character::use(int idx, ICharacter &target)
 	return ;
 }
 
-std::ostream		&operator<<(std::ostream &oss, Character const &rhs)
+std::ostream		&operator<<(std::ostream &oss, ICharacter const &rhs)
 {
-	oss << &rhs << " " << EMO_NO_GOOD << " ";
-	oss << std::setw(15) << rhs.getName() << " ";
-	for (int i = 0; i < 4; i++)
-		oss << rhs.getItem(i);
+	oss << " " << EMO_NO_GOOD << " ";
+	oss << std::setw(15) << rhs.getName();
+	//rhs.getInventory();
+	//for (int i = 0; i < 4; i++)
+	//	oss << rhs.getItem(i);
 	return oss;
 }
+
+ /*
+void Character::unequip(int idx) {
+	if (idx >= 0 && idx < this->_index) {
+		delete this->_backpack[idx];
+		int i = idx;
+		for (; i < this->_nEquiped - 1; i++) {
+			this->_inventory[i] = this->_inventory[i + 1];
+		}
+		this->_inventory[i] = NULL;
+		--(this->_nEquiped);
+	}
+}
+
+Character& Character::operator=(const Character& other) {
+	this->_name = other._name;
+	this->_nEquiped = other._nEquiped;
+	for (int i = 0; i < Character::kInventorySize; i++) {
+		//this->_inventory[i] = other._inventory[i]; // shallow copy
+		this->_inventory[i] = other._inventory[i]->clone(); // deep copy
+	}
+	return *this;
+}
+*/

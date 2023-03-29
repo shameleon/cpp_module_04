@@ -80,4 +80,3 @@ std::ostream		&operator<<(std::ostream &oss, AMateria const &rhs)
 	return oss;
 }
 
-

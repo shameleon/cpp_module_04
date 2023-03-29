@@ -24,6 +24,20 @@
 
 static void		test4(void)
 {
+	IMateriaSource	*src = new MateriaSource();
+	ICharacter		*me = new Character("me");
+	AMateria		*tmp;
+
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	std::cout << std::endl;
+	for (int i = 0; i < 7; i++)
+	{
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+	}
+	delete me;
+	delete src;
 	return ;
 }
 
@@ -42,8 +56,8 @@ static void		test3(void)
 	std::cout << *antidote2 << std::endl;
 	std::cout << std::endl;
 
-	Character		*toto = new Character("Tonia");
-	std::cout << (Character *)toto << std::endl; // KO
+	ICharacter		*toto = new Character("Tonia");
+	std::cout << "CHaracter : " << toto << std::endl; // KO
 	antidote2->use(*toto);
 	std::cout << std::endl;
 
@@ -72,6 +86,7 @@ static void		test2(void)
 }
 
 /* test from the subject pdf file */
+/* added delete tmp */
 static int		test1(void)
 {
 	IMateriaSource *src = new MateriaSource();
@@ -79,16 +94,19 @@ static int		test1(void)
 	src->learnMateria(new Cure());
 
 	ICharacter* me = new Character("me");
+
 	AMateria* 	tmp;
 	tmp = src->createMateria("ice");
-	//me->equip(tmp);   // SEG FAULT
-	delete tmp;
+	me->equip(tmp);
 	tmp = src->createMateria("cure");
-	//me->equip(tmp);     // SEG FAULT
-	delete tmp;
+	//me->equip(tmp);
+
+	
 	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	me->use(1, *bob);
+
+	//me->use(0, *bob);
+	//me->use(1, *bob);
+
 	std::cout << "---- END ----" << std::endl;
 	delete bob;
 	delete me;

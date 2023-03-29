@@ -19,11 +19,13 @@
 class	Character: public ICharacter
 {
 	private: 
+		//static const int	_size;
 		std::string			_name;
 		AMateria			*_backpack[4];
+		// int				index;
 
 	public:
-		Character(void);
+		Character(void);   // pass private
 		Character(std::string const name);
 		Character(Character const &other);
 		~Character(void);
@@ -31,13 +33,14 @@ class	Character: public ICharacter
 		Character			&operator=(Character const &rhs);
 		std::string const	&getName(void) const; //override;
 		AMateria const		&getItem(int idx) const; // override;
+		//void				getInventory(void) const;
 		void				equip(AMateria *m); //override;
 		void				unequip(int idx); //override;
 		void				use(int idx, ICharacter &target); //override;
 };
 
 /* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &oss, Character const &rhs);
+std::ostream	&operator<<(std::ostream &oss, ICharacter const &rhs);
 
 #endif
 
