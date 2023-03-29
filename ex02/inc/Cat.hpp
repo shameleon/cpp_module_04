@@ -35,7 +35,11 @@ class	Cat: public AAnimal
 		void		getBrain(void) const;
 		void		setBrain(std::string const idea, int const index);
 
-		void		makeSound(void) const override;
+		void		makeSound(void) const;
 };
 
 #endif
+
+/*
+	void		makeSound(void) const override;
+*/

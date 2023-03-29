@@ -15,7 +15,7 @@
 # include "../inc/Character.hpp"
 
 
-Character::Character(void):_name("Character")
+Character::Character(void):_name("N/A")
 {
 	std::cout <<  " < Charact. def.constr > ";
 	for (int i = 0; i < 4; i++)
@@ -41,17 +41,16 @@ Character::Character(Character const &other):_name(other.getName())
 
 Character::~Character(void)
 {
-	for (int i = 0; i < 4; i++)
-	{
-		if (this->_backpack[i] != NULL)
-			delete this->_backpack[i];
-	}
+	// for (int i = 0; i < 4; i++)
+	// {
+	// 	if (this->_backpack[i] != NULL)
+	// 		delete this->_backpack[i];
+	// }
 	std::cout <<  " < Charact. destruction for ";
 	std::cout << this->_name << " > " << std::endl;
 	return ;
 }
 
-/* *this->_brain = *rhs._brain; */
 Character	&Character::operator=(Character const &rhs)
 {
 	if (this == &rhs)
@@ -96,7 +95,7 @@ void				Character::equip(AMateria *m)
 	{
 		if (this->_backpack[i] == NULL)
 		{
-			std::cout <<  " to backpack[" << i << "] > ";
+			std::cout <<  " to backpack[" << "] > ";
 			this->_backpack[i] = m;   // shallow
 			delete m;
 			std::cout <<  " + 1 " << m->getType() << " to backpack[" << i << "]" << std::endl;

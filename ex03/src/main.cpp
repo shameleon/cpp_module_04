@@ -22,19 +22,24 @@
 /*  Ex03        Interfaces                        */
 /* ********************************************** */
 
+/* learn and create can handle more than 4 inputs */
 static void		test4(void)
 {
 	IMateriaSource	*src = new MateriaSource();
 	ICharacter		*me = new Character("me");
 	AMateria		*tmp;
 
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
 	std::cout << std::endl;
-	for (int i = 0; i < 7; i++)
+	src->learnMateria(new Ice());
+	for (int i = 0; i < 5; i++)
+		src->learnMateria(new Cure());
+	std::cout << std::endl;
+	tmp = src->createMateria("water");
+	for (int i = 0; i < 1; i++)
 	{
 		tmp = src->createMateria("cure");
-		me->equip(tmp);
+		delete tmp;
+		//me->equip(tmp);
 	}
 	delete me;
 	delete src;
@@ -89,28 +94,28 @@ static void		test2(void)
 /* added delete tmp */
 static int		test1(void)
 {
-	IMateriaSource *src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
+	// IMateriaSource *src = new MateriaSource();
+	// src->learnMateria(new Ice());
+	// src->learnMateria(new Cure());
 
-	ICharacter* me = new Character("me");
+	// ICharacter* me = new Character("me");
 
-	AMateria* 	tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	//me->equip(tmp);
+	// AMateria* 	tmp;
+	// tmp = src->createMateria("ice");
+	// me->equip(tmp);
+	// tmp = src->createMateria("cure");
+	// me->equip(tmp);
 
 	
-	ICharacter* bob = new Character("bob");
+	// ICharacter* bob = new Character("bob");
 
-	//me->use(0, *bob);
-	//me->use(1, *bob);
+	// me->use(0, *bob);
+	// me->use(1, *bob);
 
-	std::cout << "---- END ----" << std::endl;
-	delete bob;
-	delete me;
-	delete src;
+	// std::cout << "---- END ----" << std::endl;
+	// delete bob;
+	// delete me;
+	// delete src;
 	return 0;
 }
 
