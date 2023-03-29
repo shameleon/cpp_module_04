@@ -113,7 +113,8 @@ void				Character::unequip(int idx)
 	if (idx < 0 || idx >= 4 || this->_backpack[idx] == NULL)
 		return ;
 	std::cout <<  " -1 " << this->_backpack[idx]->getType() << " from backpack["  << idx << "]";
-	delete this->_backpack[idx];  // to be reemoved
+	// delete this->_backpack[idx];  // to be reemoved
+	this->discard_on_floor(idx);
 	for (int i = idx + 1; i < 4 ; i++)
 	{
 		this->_backpack[i - 1] = this->_backpack[i];
@@ -129,6 +130,11 @@ void				Character::use(int idx, ICharacter &target)
 	this->_backpack[idx]->use(target);
 	this->unequip(idx);
 	return ;
+}
+
+void			Character::discard_on_floor(int idx)
+{
+	return this->_backpack[idx];
 }
 
 std::ostream		&operator<<(std::ostream &oss, ICharacter const &rhs)

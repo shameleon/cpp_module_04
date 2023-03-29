@@ -26,7 +26,7 @@
 static void		test5(void)
 {
 	ICharacter		*me = new Character("me");
-
+	
 	delete me;
 }
 
