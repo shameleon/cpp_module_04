@@ -17,7 +17,7 @@
 
 Character::Character(void):_name("N/A")
 {
-	std::cout <<  " < Charact. def.constr > ";
+	std::cout << EMO_NO_GOOD << " def.  ";
 	for (int i = 0; i < 4; i++)
 		this->_backpack[i] = NULL;
 	return ;
@@ -25,8 +25,8 @@ Character::Character(void):_name("N/A")
 
 Character::Character(std::string const name):_name(name)
 {
-	std::cout << EMO_NO_GOOD <<  " < Charact. param. constr. for " << this->_name;
-	std::cout << " > " << std::endl;
+	std::cout << EMO_NO_GOOD <<  " param " << this->_name;
+	std::cout << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->_backpack[i] = NULL;
 	return ;
@@ -34,7 +34,7 @@ Character::Character(std::string const name):_name(name)
 
 Character::Character(Character const &other):_name(other.getName())
 {
-	std::cout <<  " < Charact. copy constr > ";
+	std::cout << EMO_NO_GOOD <<  " copy ";
 	*this = other;
 	return ;
 }
@@ -46,8 +46,8 @@ Character::~Character(void)
 		if (this->_backpack[i] != NULL)
 			delete this->_backpack[i];
 	}
-	std::cout << COL_PUR <<  " < Charact. destruction for ";
-	std::cout << this->_name << " > " << COL_RES << std::endl;
+	std::cout << EMO_NO_GOOD  << COL_PUR <<  " Charact. destruction for ";
+	std::cout << this->_name << COL_RES << std::endl;
 	return ;
 }
 
@@ -74,19 +74,12 @@ std::string const	&Character::getName(void) const
 	return this->_name;
 }
 
-AMateria const		&Character::getItem(int idx) const
+AMateria			*Character::getItem(int idx) const
 {
-	return *(this->_backpack[idx]);
+	if (idx < 0 || idx >= 4 || this->_backpack[idx] == NULL)
+		return NULL;
+	return (this->_backpack[idx]);
 }
-
-/*
-void	Character::getInventory(void) const
-{
-	for (int i = 0; i < 4; i++)
-		std::cout << " " << &(this->_backpack[i]);
-	return ;
-}
-*/
 
 void				Character::equip(AMateria *m)
 {
@@ -109,7 +102,55 @@ void				Character::equip(AMateria *m)
 void				Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || this->_backpack[idx] == NULL)
+	{
+		std::cout << "Backpack slot is empty" << std::endl;
 		return ;
+	}
+	std::cout <<  " -1 " << this->_backpack[idx]->getType() << " from backpack["  << idx << "]" << std::endl;;
+	this->_backpack[idx] = NULL;
+	return ;
+}
+
+void				Character::use(int idx, ICharacter &target)
+{
+	if (idx >= 0 && idx < 4 && this->_backpack[idx] != NULL)
+		this->_backpack[idx]->use(target);
+	else 
+		std::cout << "could not use item" << std::endl;
+	this->unequip(idx);
+	return ;
+}
+
+std::ostream		&operator<<(std::ostream &oss, ICharacter const &rhs)
+{
+	AMateria		*item= NULL;
+
+	oss << std::endl << EMO_SPY << std::setw(10) << rhs.getName() << "  ";
+	for (int i = 0; i < 4; i++)
+	{
+		item = rhs.getItem(i);
+		if (item)
+			oss << *item << " ";
+		else
+			oss << EMO_FREE << " ";
+	}
+	std::cout << std::endl;
+	std::cout << std::endl;
+	return oss;
+}
+
+ /*
+subject :
+	1/ no delete for unequip , cannot delete this->_backpack[idx];
+	2/ ouput expected 
+
+void				Character::unequip(int idx)
+{
+	if (idx < 0 || idx >= 4 || this->_backpack[idx] == NULL)
+	{
+		std::cout << "Backpack slot was empty - could not be unequiped" << std::endl;
+		return ;
+	}
 	std::cout <<  " -1 " << this->_backpack[idx]->getType() << " from backpack["  << idx << "]";
 	for (int i = idx + 1; i < 4 ; i++)
 	{
@@ -118,26 +159,4 @@ void				Character::unequip(int idx)
 	}
 	return ;
 }
-
-void				Character::use(int idx, ICharacter &target)
-{
-	if (idx < 0 || idx >= 4 || this->_backpack[idx] == NULL)
-		return ;
-	this->_backpack[idx]->use(target);
-	this->unequip(idx);
-	return ;
-}
-
-std::ostream		&operator<<(std::ostream &oss, ICharacter const &rhs)
-{
-	oss << " " << EMO_NO_GOOD << " ";
-	oss << std::setw(15) << rhs.getName();
-	//rhs.getInventory();
-	//for (int i = 0; i < 4; i++)
-	//	oss << rhs.getItem(i);
-	return oss;
-}
-
- /*
-
 */

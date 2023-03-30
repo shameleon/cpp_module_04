@@ -26,10 +26,10 @@ class	IMateriaSource
 };
 
 #endif
+
 /*
 	IMateriaSource : Interface for class MateriaSource
 
-		interface class :
 					 contains only pure virtual functions
 					 no implementation, no attributes, no member-functions
 */

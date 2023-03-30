@@ -14,26 +14,26 @@
 
 AMateria::AMateria(void):_type("")
 {
-	std::cout << EMO_WRENCH << " (AMateria def. constr.) ";
+	std::cout << EMO_WRENCH << " def. ";
 	return ;
 }
 
 AMateria::AMateria(std::string const &type):_type(type)
 {
-	std::cout << EMO_WRENCH << " (AMateria param. constr.) ";
+	std::cout << EMO_WRENCH  << " param ";
 	return ;
 }
 
 AMateria::AMateria(AMateria const	&other)
 {
-	std::cout << EMO_WRENCH << " (AMateria copy constructor) ";
+	std::cout << EMO_WRENCH  << " clone ";
 	*this = other;
 	return ;
 }
 
 AMateria::~AMateria(void)
 {
-	std::cout << COL_RED << EMO_MINUS << " (AMateria destructor) ";
+	std::cout << COL_RED << EMO_MINUS;
 	std::cout << COL_RES << std::endl;
 	return ;
 }
@@ -42,7 +42,7 @@ AMateria			&AMateria::operator=(AMateria const &rhs)
 {
 	if (this->_type == rhs.getType())
 		return (*this);
-	std::cout << EMO_WRENCH << " (AMateria copy assignment operator) ";
+	std::cout << EMO_WRENCH << " copy ";
 	this->_type = rhs.getType();
 	return (*this);
 }
@@ -73,10 +73,8 @@ std::ostream		&operator<<(std::ostream &oss, AMateria const &rhs)
 		oss << EMO_ICE_CUBE;
 	else if (rhs.getType() == "cure")
 		oss << EMO_BLUE_HEART;
-	else if (rhs.getType() == "")
-		oss << EMO_FREE;
 	else
-		oss << EMO_BLACK_SQ;
+		oss << EMO_FREE;
 	return oss;
 }
 

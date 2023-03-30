@@ -69,7 +69,7 @@ void			MateriaSource::learnMateria(AMateria *m)
 		}
 	}
 	delete m;
-	std::cout << " {MateriaSource full} ";
+	std::cout << " {MateriaSource is full} " << std::endl;
 	return ;
 }
 
@@ -87,18 +87,10 @@ AMateria		*MateriaSource::createMateria(std::string const &type)
 			return this->_source[i]->clone();
 		}
 	}
-	std::cout << " {source could not create unknown Materia} ";
+	std::cout << " {source could not create unknown Materia} " << std::endl;
 	return NULL;
 }
 
-/*
-std::ostream	&operator<<(std::ostream &oss, MateriaSource const &rhs)
-{
-	oss << rhs->putMateriaSource();
-	oss << std::endl;
-	return oss;
-}
-*/
 /*
 •learnMateria(AMateria*)
 	Copie la Materia passée en paramètre et la stocke en mémoire afin de la cloner

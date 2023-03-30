@@ -24,12 +24,12 @@ class	Cure: public AMateria
 
 		Cure		&operator=(Cure const &rhs);
 		
-		AMateria	*clone(void) const; // override;
+		AMateria	*clone(void) const;
 		void		use(ICharacter &target);
 };
 
 #endif
 
 /*
-
+	AMateria	*clone(void) const override;
 */

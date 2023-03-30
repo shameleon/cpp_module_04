@@ -24,9 +24,12 @@ class	Ice: public AMateria
 
 		Ice			&operator=(Ice const &rhs);
 
-		AMateria	*clone(void) const; //override;
+		AMateria	*clone(void) const;
 		void		use(ICharacter &target);
 };
 
 #endif
 
+/*
+	AMateria	*clone(void) const override;
+*/

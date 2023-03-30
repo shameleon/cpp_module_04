@@ -31,15 +31,14 @@ class	Character: public ICharacter
 
 		Character			&operator=(Character const &rhs);
 		std::string const	&getName(void) const;
-		AMateria const		&getItem(int idx) const;
-		//void				getInventory(void) const;
+		AMateria			*getItem(int idx) const;
 		void				equip(AMateria *m);
 		void				unequip(int idx);
 		void				use(int idx, ICharacter &target);
 };
 
 /* * * * *  stream operator * * * * */
-std::ostream	&operator<<(std::ostream &oss, ICharacter const &rhs);
+std::ostream				&operator<<(std::ostream &oss, ICharacter const &rhs);
 
 #endif
 

@@ -24,8 +24,7 @@ class	ICharacter
 	public:
 		virtual						~ICharacter(void) {}
 		virtual	std::string const	&getName(void) const = 0;
-		virtual AMateria const		&getItem(int idx) const = 0;
-		//virtual void				getInventory(void) const = 0;
+		virtual AMateria			*getItem(int idx) const = 0;
 		virtual void				equip(AMateria *m)= 0;
 		virtual void				unequip(int idx)= 0;
 		virtual void				use(int idx, ICharacter &target)= 0;
@@ -34,12 +33,13 @@ class	ICharacter
 #endif
 
 /*
-	Interface for class Character
 	
-	ICharacter : interface class :
+	ICharacter : interface for class Character
 					 contains only pure virtual functions
 					 no implementation, no attributes, no member-functions
 
 	class 	AMateria;
-	class declaration to be ordered with compilation
+				class declaration to be ordered with compilation
+
 */
+

@@ -14,20 +14,20 @@
 
 Cure::Cure(void):AMateria("cure")
 {
-	std::cout << EMO_BLUE_HEART << " (Cure def. constr.) " << std::endl;
+	std::cout << EMO_BLUE_HEART << " def. " << std::endl;
 	return ;
 }
 
 Cure::Cure(Cure const &other)
 {
-	std::cout << EMO_BLUE_HEART << " (Cure copy constructor) ";
+	std::cout << EMO_BLUE_HEART << " copy ";
 	*this = other;
 	return ;
 }
 
 Cure::~Cure(void)
 {
-	std::cout << COL_RED << EMO_MINUS << " (Cure destructor) ";
+	std::cout << COL_RED << EMO_MINUS << " cure destr. ";
 	std::cout << COL_RES;
 	return ;
 }
@@ -36,7 +36,7 @@ Cure			&Cure::operator=(Cure const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	std::cout << EMO_BLUE_HEART << " (Cure copy assignment operator) ";
+	std::cout << " = cure ";
 	this->_type =rhs.getType();
 	return (*this);
 }
@@ -44,12 +44,13 @@ Cure			&Cure::operator=(Cure const &rhs)
 /* 	return (new Cure()); */
 AMateria		*Cure::clone(void) const
 {
-	std::cout << EMO_WRENCH << " ! cure cloned ! ";
+	std::cout << EMO_BLUE_HEART << " cure clone ";
 	return (new Cure(*this));
 }
 
 void			Cure::use(ICharacter &target)
 {
-	std::cout << " * Heals " << target.getName() << "'s wounds *" << std::endl;
+	std::cout << COL_YEL <<  "* Heals " << target.getName();
+	std::cout << "'s wounds *" << COL_RES << std::endl;
 	return ;
 }

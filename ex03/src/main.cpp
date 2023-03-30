@@ -22,12 +22,13 @@
 /*  Ex03        Interfaces                        */
 /* ********************************************** */
 
-/* */
-static void		test5(void)
+/* Character stream operator      OK              */
+/* MateriaSource stream operator  not implemented */
+
+
+static int		test5(void)
 {
-	ICharacter		*me = new Character("me");
-	
-	delete me;
+	return 0;
 }
 
 /* learn, create and equip to full */
@@ -43,26 +44,32 @@ static void		test4(void)
 	for (int i = 0; i < 5; i++)
 		src->learnMateria(new Cure());
 
-	std::cout << std::endl;
+	std::cout << COL_CYA << std::endl;
 	tmp = src->createMateria("water");
-	for (int i = 0; i < 5; i++)
+	std::cout << COL_RES << std::endl;
+	for (int i = 0; i < 3; i++)
 	{
 		tmp = src->createMateria("cure");
 		me->equip(tmp);
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
 	}
-
+	
+	std::cout << *me;
 	std::cout << std::endl;
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		std::cout << i << " unequip \t";
-		*at_floor = me->getItem(0);
+		std::cout << "unequip \t";
+		at_floor = me->getItem(0);
 		me->unequip(0);
-		delete at_floor;
+		if (at_floor)
+			delete at_floor;
 	}
-	std::cout << "---- END ----" << std::endl;
+	std::cout << *me;
+	std::cout  << std::endl;
 	delete me;
 	delete src;
-	std::cout << "---- END of TESTS ----" << std::endl;
+	std::cout << std::endl;
 	return ;
 }
 
@@ -73,20 +80,14 @@ static void		test3(void)
 	AMateria		*antidote = new Cure();
 	
 	std::cout << std::endl;
-	std::cout << *ice_bolt << std::endl;
-	std::cout << *antidote << std::endl;
-
 	AMateria		*antidote2 = antidote->clone();;
-	std::cout << std::endl;
-	std::cout << *antidote2 << std::endl;
 	std::cout << std::endl;
 
 	ICharacter		*toto = new Character("Tonia");
-	std::cout << "Character : " << toto << std::endl; // KO
+	std::cout << *toto << std::endl;
 	antidote2->use(*toto);
 	std::cout << std::endl;
 
-	std::cout << "---- END ----" << std::endl;
 	delete antidote2;
 	delete ice_bolt;
 	delete antidote;
@@ -94,18 +95,18 @@ static void		test3(void)
 	return ;
 }
 
-/* tests learning Materia */
+/* learning Materia */
 static void		test2(void)
 {
 	MateriaSource	*machine = new MateriaSource();
 
 	std::cout << std::endl;
-	for (int j = 0; j < 4; j++)
+	for (int j = 0; j < 3; j++)
 	{
 		machine->learnMateria(new Ice());
 		machine->learnMateria(new Cure());
 	}
-	std::cout << "\n---- END ----" << std::endl;
+	std::cout << std::endl;
 	delete machine;
 	return ;
 }
@@ -114,27 +115,39 @@ static void		test2(void)
 /* added delete tmp */
 static int		test1(void)
 {
-	IMateriaSource *src = new MateriaSource();
+	IMateriaSource 	*src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
-	// ICharacter* me = new Character("me");
+	ICharacter		*me = new Character("me");
+	AMateria		*tmp;
 
-	// AMateria* 	tmp;
-	// tmp = src->createMateria("ice");
-	// me->equip(tmp);
-	// tmp = src->createMateria("cure");
-	// me->equip(tmp);
-
+	std::cout << *me;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	std::cout << *me;
 	
-	// ICharacter* bob = new Character("bob");
+	ICharacter		*bob = new Character("bob");
+	AMateria		*at_floor = NULL;
 
-	// me->use(0, *bob);
-	// me->use(1, *bob);
+	std::cout << std::endl;
+	at_floor = me->getItem(0);
+	me->use(0, *bob);
+	if (at_floor)
+		delete at_floor;
+	std::cout << *me;
 
-	// std::cout << "---- END ----" << std::endl;
-	// delete bob;
-	// delete me;
+	at_floor = me->getItem(1);
+	me->use(1, *bob);
+	if (at_floor)
+		delete at_floor;
+	std::cout << *me;
+
+	std::cout << std::endl;
+	delete bob;
+	delete me;
 	delete src;
 	return 0;
 }
@@ -162,7 +175,6 @@ int				main(void)
 	std::cout << COL_YEL << "TEST 5" << COL_RES << std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	test5();
-	std::cout << COL_YEL;
 	std::cout << "______________________________________________" << std::endl;
 	std::cout << COL_RES << std::endl;
 	return 0;
@@ -170,5 +182,5 @@ int				main(void)
 
 
 /*
-	leaks -atExit -- ./a.out
+	Darwin :	leaks -atExit -- ./a.out
 */

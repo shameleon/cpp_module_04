@@ -33,9 +33,6 @@ class	MateriaSource: public IMateriaSource
 
 #endif
 
-/* * * * *  stream operator * * * * 
-std::ostream	&operator<<(std::ostream &oss, MateriaSource const &rhs);
-*/
 /*
 •learnMateria(AMateria*)
 	Copie la Materia passée en paramètre et la stocke en mémoire afin de la cloner
