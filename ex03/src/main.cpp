@@ -36,6 +36,7 @@ static void		test4(void)
 	IMateriaSource	*src = new MateriaSource();
 	ICharacter		*me = new Character("me");
 	AMateria		*tmp;
+	AMateria		*at_floor = NULL;
 
 	std::cout << std::endl;
 	src->learnMateria(new Ice());
@@ -51,10 +52,12 @@ static void		test4(void)
 	}
 
 	std::cout << std::endl;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		std::cout << i << " unequip \t";
-		me->unequip(1);
+		*at_floor = me->getItem(0);
+		me->unequip(0);
+		delete at_floor;
 	}
 	std::cout << "---- END ----" << std::endl;
 	delete me;
