@@ -60,3 +60,11 @@ class	Animal
 std::ostream	&operator<<(std::ostream &o, Animal const &rhs);
 
 #endif
+
+/*
+virtual : dynamic resolution for function call - runtime polymorphism
+method = virtual member-function 
+virtual destructor : guarantees that the object of derived class
+destructed properly. Maintains the hierarchy of call destructors
+from child clas object.
+*/

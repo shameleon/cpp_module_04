@@ -29,6 +29,7 @@ class	ICharacter
 		virtual void				equip(AMateria *m)= 0;
 		virtual void				unequip(int idx)= 0;
 		virtual void				use(int idx, ICharacter &target)= 0;
+		virtual AMateria			*discard_on_floor(int idx) = 0;
 };
 
 #endif
@@ -39,4 +40,7 @@ class	ICharacter
 	ICharacter : interface class :
 					 contains only pure virtual functions
 					 no implementation, no attributes, no member-functions
+
+	class 	AMateria;
+	class declaration to be ordered with compilation
 */
