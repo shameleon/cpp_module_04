@@ -22,7 +22,17 @@ MateriaSource::MateriaSource(void)
 
 MateriaSource::MateriaSource(MateriaSource const &other)
 {
-	*this = other;
+	if (this == &other)
+		return ;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_source[i] != NULL)
+			delete this->_source[i];
+		if (other._source[i] != NULL)
+			this->_source[i] = other._source[i]->clone();
+		else
+			this->_source[i] = NULL;
+	}
 	std::cout << " { MateriaSource copy constr. } ";
 	return;
 }
@@ -39,16 +49,16 @@ MateriaSource::~MateriaSource(void)
 // new ?
 MateriaSource	&MateriaSource::operator=(MateriaSource const &rhs)
 {
+	if (this == &rhs)
+		return (*this);
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_source[i] != NULL)
-		{
 			delete this->_source[i];
-			if (rhs._source[i] != NULL)
-				this->_source[i] = rhs._source[i]->clone();
-			else
-				this->_source[i] = NULL;
-		}
+		if (rhs._source[i] != NULL)
+			this->_source[i] = rhs._source[i]->clone();
+		else
+			this->_source[i] = NULL;
 	}
 	std::cout << " {MateriaSource copy assignement} ";
 	return *this;
@@ -80,7 +90,7 @@ AMateria		*MateriaSource::createMateria(std::string const &type)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->_source[i]->getType() == type)
+		if (this->_source[i] && this->_source[i]->getType() == type)
 		{
 			std::cout << " {source[" << i << "] created new Materia} ";
 			std::cout << this->_source[i]->getType() << " ";
