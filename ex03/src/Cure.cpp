@@ -14,7 +14,7 @@
 
 Cure::Cure(void):AMateria("cure")
 {
-	std::cout << EMO_BLUE_HEART << " def. " << std::endl;
+	std::cout << EMO_BLUE_HEART << " def. " << "\t";
 	return ;
 }
 

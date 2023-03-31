@@ -14,7 +14,7 @@
 
 Ice::Ice(void):AMateria("ice")
 {
-	std::cout << EMO_ICE_CUBE << " def." << std::endl;
+	std::cout << EMO_ICE_CUBE << " def." << "\t";
 	return ;
 }
 
@@ -27,7 +27,7 @@ Ice::Ice(Ice const &other)
 
 Ice::~Ice(void)
 {
-	std::cout << COL_RED << EMO_MINUS << " ice destr. ";
+	std::cout << COL_RED << EMO_MINUS << " ice  destr. ";
 	std::cout << COL_RES;
 	return ;
 }
