@@ -103,21 +103,27 @@ void				Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || this->_backpack[idx] == NULL)
 	{
-		std::cout << "Backpack slot is empty" << std::endl;
+		std::cout << "Backpack slot is either empty or unvailable " << std::endl;
 		return ;
 	}
-	std::cout <<  " -1 " << this->_backpack[idx]->getType() << " from backpack["  << idx << "]" << std::endl;;
+	std::cout <<  " Unequip : -1 " << this->_backpack[idx]->getType() << " from backpack["  << idx << "]" << std::endl;;
 	this->_backpack[idx] = NULL;
+	for (int i = idx + 1; i < 4; i++)
+		this->_backpack[i - 1] = this->_backpack[i];
+	this->_backpack[3] = NULL;
 	return ;
 }
 
 void				Character::use(int idx, ICharacter &target)
 {
 	if (idx >= 0 && idx < 4 && this->_backpack[idx] != NULL)
+	{
 		this->_backpack[idx]->use(target);
+		//delete this->_backpack[idx];
+		//this->_backpack[idx] = NULL;
+	}
 	else 
 		std::cout << "could not use item" << std::endl;
-	this->unequip(idx);
 	return ;
 }
 

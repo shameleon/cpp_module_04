@@ -64,13 +64,13 @@ static int		test5(void)
 	delete mike;
 	return 0;
 }
-/* learn, create and equip to full */
+
+/* learn, create and equip to full then unequip */
 static void		test4(void)
 {
 	IMateriaSource	*src = new MateriaSource();
 	ICharacter		*me = new Character("me");
 	AMateria		*tmp;
-	AMateria		*at_floor = NULL;
 
 	std::cout << std::endl;
 	src->learnMateria(new Ice());
@@ -87,18 +87,20 @@ static void		test4(void)
 		tmp = src->createMateria("ice");
 		me->equip(tmp);
 	}
-	
+
+	AMateria		*at_floor = NULL;
+
 	std::cout << *me;
 	std::cout << std::endl;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 4; i++)
 	{
-		std::cout << "unequip \t";
-		at_floor = me->getItem(i);
-		me->unequip(i);
+		int	slot = 1;
+		at_floor = me->getItem(slot);
+		me->unequip(slot);
 		if (at_floor)
 			delete at_floor;
+		std::cout << *me;
 	}
-	std::cout << *me;
 	std::cout  << std::endl;
 	delete me;
 	delete src;
@@ -163,19 +165,12 @@ static int		test1(void)
 	std::cout << *me;
 	
 	ICharacter		*bob = new Character("bob");
-	AMateria		*at_floor = NULL;
 
 	std::cout << std::endl;
-	at_floor = me->getItem(0);
 	me->use(0, *bob);
-	if (at_floor)
-		delete at_floor;
 	std::cout << *me;
 
-	at_floor = me->getItem(1);
 	me->use(1, *bob);
-	if (at_floor)
-		delete at_floor;
 	std::cout << *me;
 
 	std::cout << std::endl;
@@ -217,4 +212,15 @@ int				main(void)
 
 /*
 	Darwin :	leaks -atExit -- ./a.out
+
+
+	Subject : unequip cannot delete unequiped Materia
+
+	AMateria		*at_floor = NULL;
+	
+	at_floor = me->getItem(slot);
+	me->unequipe(slot);
+	if (at_floor)
+		delete at_floor;
+	std::cout << *me;
 */

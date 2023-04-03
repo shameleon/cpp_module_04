@@ -35,6 +35,8 @@
 # include <iomanip>
 # include "../inc/ICharacter.hpp"
 
+/*  used forward declaration in the header files 
+to get around the circular dependencies*/
 class	ICharacter;
 
 class	AMateria
