@@ -15,13 +15,12 @@
 
 # include "../inc/ICharacter.hpp"
 
-
 class	Character: public ICharacter
 {
 	private: 
 		std::string			_name;
 		AMateria			*_backpack[4];
-		
+
 		Character(void);
 
 	public:
@@ -35,6 +34,8 @@ class	Character: public ICharacter
 		void				equip(AMateria *m);
 		void				unequip(int idx);
 		void				use(int idx, ICharacter &target);
+
+		static bool			verbose;
 };
 
 /* * * * *  stream operator * * * * */

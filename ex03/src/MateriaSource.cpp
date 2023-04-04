@@ -16,7 +16,8 @@ MateriaSource::MateriaSource(void)
 {
 	for (int i = 0; i < 4; i++)
 		this->_source[i] = NULL;
-	std::cout << " { MateriaSource default constr. } " << std::endl;
+	if (MateriaSource::verbose)
+		std::cout << " MSource default constr. " << std::endl;
 	return;
 }
 
@@ -33,7 +34,8 @@ MateriaSource::MateriaSource(MateriaSource const &other)
 		else
 			this->_source[i] = NULL;
 	}
-	std::cout << " { MateriaSource copy constr. } ";
+	if (MateriaSource::verbose)
+		std::cout << " MSource copy constr. ";
 	return;
 }
 
@@ -42,7 +44,8 @@ MateriaSource::~MateriaSource(void)
 	for (int i = 0; i < 4; i++)
 		if (this->_source[i] != NULL)
 			delete this->_source[i];
-	std::cout << " { MateriaSource destructor (delete)} ";
+	if (MateriaSource::verbose)
+		std::cout <<  EMO_MINUS << " MSource destruction" << std::endl;
 	return;
 }
 
@@ -60,7 +63,8 @@ MateriaSource	&MateriaSource::operator=(MateriaSource const &rhs)
 		else
 			this->_source[i] = NULL;
 	}
-	std::cout << " {MateriaSource copy assignement} ";
+	if (MateriaSource::verbose)
+		std::cout << " MSource copy assignement ";
 	return *this;
 }
 
@@ -73,13 +77,17 @@ void			MateriaSource::learnMateria(AMateria *m)
 		if (this->_source[i] == NULL)
 		{
 			this->_source[i] = m;
-			std::cout << " {MateriaSource[" << i << "] learned ";
-			std::cout << m->getType() << "} " << std::endl;
+			if (MateriaSource::verbose)
+			{
+				std::cout << " MSource[" << i << "] learned ";
+				std::cout << m->getType() << std::endl;
+			}
 			return ;
 		}
 	}
 	delete m;
-	std::cout << " {MateriaSource is full} " << std::endl;
+	if (MateriaSource::verbose)
+		std::cout << " MSource is full} " << std::endl;
 	return ;
 }
 
@@ -92,14 +100,21 @@ AMateria		*MateriaSource::createMateria(std::string const &type)
 	{
 		if (this->_source[i] && this->_source[i]->getType() == type)
 		{
-			std::cout << " {source[" << i << "] created new Materia} ";
-			std::cout << this->_source[i]->getType() << " ";
+			if (MateriaSource::verbose)
+			{
+				std::cout << " MSource[" << i << "] = ";
+				std::cout << this->_source[i]->getType() << " " << std::endl;
+			}
 			return this->_source[i]->clone();
 		}
 	}
-	std::cout << " {source could not create unknown Materia} " << std::endl;
+	if (MateriaSource::verbose)
+		std::cout << " MSource could not create unknown Materia " << std::endl;
 	return NULL;
 }
+
+/* initialize static */
+bool			MateriaSource::verbose = false;
 
 /*
 •learnMateria(AMateria*)

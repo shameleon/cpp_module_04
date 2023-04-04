@@ -29,6 +29,8 @@ class	MateriaSource: public IMateriaSource
 		
 		void			learnMateria(AMateria *m); // override;
 		AMateria		*createMateria(std::string const &type); // override;
+	
+	static bool			verbose;
 };
 
 #endif

@@ -147,7 +147,7 @@ static void		test2(void)
 }
 
 /* test from the subject pdf file */
-/* added delete tmp */
+/* verbose set to true */
 static int		test1(void)
 {
 	IMateriaSource 	*src = new MateriaSource();
@@ -180,11 +180,47 @@ static int		test1(void)
 	return 0;
 }
 
-int				main(void)
+/* test from the ex03 subject */
+static int		test0(void)
 {
+	IMateriaSource 	*src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter		*me = new Character("me");
+
+	AMateria		*tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	
+	ICharacter		*bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+	return 0;
+}
+
+int				main(int argc, char **argv)
+{
+	if (argc == 1)
+	{
+		test0();
+		return 0;
+	}
+	if (argv[1] != NULL)
+		std::cout << std::endl << std::endl;
+	Character::verbose = true;
+	AMateria::verbose = true;
+	MateriaSource::verbose = true;
+	std::cout << COL_GRN << "\t\t verbose mode" << COL_RES << std::endl;
 	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << COL_YEL << "TEST 1" << COL_RES << std::endl;
+	std::cout << COL_YEL << "TEST 1" << COL_RES <<  std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	test1();
 	std::cout << std::endl << std::endl;

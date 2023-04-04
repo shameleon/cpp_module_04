@@ -14,21 +14,23 @@
 
 Ice::Ice(void):AMateria("ice")
 {
-	std::cout << EMO_ICE_CUBE << " def." << "\t";
+	if (AMateria::verbose)
+		std::cout << EMO_ICE_CUBE << " def." << "\t\t";
 	return ;
 }
 
 Ice::Ice(Ice const &other)
 {
-	std::cout << EMO_ICE_CUBE << " copy ";
+	if (AMateria::verbose)
+		std::cout << EMO_ICE_CUBE << " copy ";
 	*this = other;
 	return ;
 }
 
 Ice::~Ice(void)
 {
-	std::cout << COL_RED << EMO_MINUS << " ice  destr. ";
-	std::cout << COL_RES;
+	if (AMateria::verbose)
+		std::cout << COL_RED << EMO_MINUS << " ice " << COL_RES;
 	return ;
 }
 
@@ -36,7 +38,8 @@ Ice			&Ice::operator=(Ice const &rhs)
 {
 	if (this == &rhs)
 		return (*this);
-	std::cout << " = ice ";
+	if (AMateria::verbose)
+		std::cout << " = ice ";
 	this->_type = rhs.getType();
 	return (*this);
 }
@@ -44,14 +47,14 @@ Ice			&Ice::operator=(Ice const &rhs)
 /* returns a new instance of the same type */
 AMateria	*Ice::clone(void) const
 {
-	std::cout << EMO_ICE_CUBE << " ice clone ";
+	if (AMateria::verbose)
+		std::cout << EMO_ICE_CUBE << " ice clone ";
 	return (new Ice(*this));
 }
 
 void		Ice::use(ICharacter &target)
 {
-	std::cout << COL_YEL << "* shoots an ice bolt at ";
-	std::cout << target.getName() << " *" << COL_RES << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 	return ;
 }
 

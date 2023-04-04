@@ -55,7 +55,7 @@ fclean: clean
 re: fclean all
 
 test:$(NAME)
-	@./$(NAME)
+	@./$(NAME) verbose
 
 leaks: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all -s ./$(NAME)

@@ -56,6 +56,8 @@ class	AMateria
 
 		virtual AMateria	*clone(void) const = 0;
 		virtual void		use(ICharacter &target);
+
+		static bool			verbose;
 };
 
 /* * * * *  stream operator * * * * */
