@@ -26,30 +26,30 @@
 /* MateriaSource stream operator  not implemented */
 
 /* copying instances */
-// static int		test5(void)
-// {
-// 	MateriaSource	*src1 = new MateriaSource();
+static int		test6(void)
+{
+	MateriaSource	*src1 = new MateriaSource();
 
-// 	src1->learnMateria(new Cure());
-// 	MateriaSource	*src2 = new MateriaSource();
-// 	src2 = src1;
-// 	std::cout << std::endl;
+	src1->learnMateria(new Cure());
+	MateriaSource	*src2 = new MateriaSource();
+	*src2 = *src1;
+	std::cout << std::endl;
 
-// 	AMateria		*tmp1;
-// 	std::cout << std::endl;
-// 	tmp1 = src1->createMateria("cure");
-// 	if (tmp1)
-// 		delete tmp1;
+	AMateria		*tmp1;
+	std::cout << std::endl;
+	tmp1 = src1->createMateria("cure");
+	if (tmp1)
+		delete tmp1;
 
-// 	AMateria		*tmp2;
-// 	tmp2 = src2->createMateria("cure");
-// 	if (tmp2)
-// 		delete tmp2;
-// 	std::cout << std::endl;
-// 	delete src1;
-// 	delete src2;
-// 	return 0;
-// }
+	AMateria		*tmp2;
+	tmp2 = src2->createMateria("cure");
+	if (tmp2)
+		delete tmp2;
+	std::cout << std::endl;
+	delete src1;
+	delete src2;
+	return 0;
+}
 
 /* conditional jump */
 static int		test5(void)
@@ -203,6 +203,10 @@ int				main(void)
 	std::cout << COL_YEL << "TEST 5" << COL_RES << std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	test5();
+	std::cout << std::endl << std::endl;
+	std::cout << COL_YEL << "TEST 6" << COL_RES << std::endl;
+	std::cout << "______________________________________________" << std::endl;
+	test6();
 	std::cout << std::endl << std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	std::cout << COL_RES << std::endl;
