@@ -17,7 +17,8 @@
 
 Character::Character(void):_name("N/A")
 {
-	std::cout << EMO_NO_GOOD << " def.  ";
+	if (Character::verbose)
+		std::cout << EMO_NO_GOOD << " Def. ";
 	for (int i = 0; i < 4; i++)
 		this->_backpack[i] = NULL;
 	return ;
@@ -25,8 +26,8 @@ Character::Character(void):_name("N/A")
 
 Character::Character(std::string const name):_name(name)
 {
-	std::cout << EMO_NO_GOOD <<  " param " << this->_name;
-	std::cout << std::endl;
+	if (Character::verbose)
+		std::cout << EMO_NO_GOOD <<  " Param. " << this->_name << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->_backpack[i] = NULL;
 	return ;
@@ -34,7 +35,8 @@ Character::Character(std::string const name):_name(name)
 
 Character::Character(Character const &other):_name(other.getName())
 {
-	std::cout << EMO_NO_GOOD <<  " copy ";
+	if (Character::verbose)
+		std::cout << EMO_NO_GOOD <<  " Copy ";
 	*this = other;
 	return ;
 }
@@ -46,16 +48,16 @@ Character::~Character(void)
 		if (this->_backpack[i] != NULL)
 			delete this->_backpack[i];
 	}
-	std::cout << EMO_NO_GOOD  << COL_PUR <<  " Charact. destruction for ";
-	std::cout << this->_name << COL_RES << std::endl;
+	if (Character::verbose)
+		std::cout << EMO_MINUS << " " << EMO_NO_GOOD << " " << this->_name << std::endl;
 	return ;
 }
 
+//this->_name = rhs.getName();
 Character	&Character::operator=(Character const &rhs)
 {
 	if (this == &rhs)
 		return *this;
-	this->_name = rhs.getName();
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_backpack[i] != NULL)
@@ -65,7 +67,8 @@ Character	&Character::operator=(Character const &rhs)
 		else
 			this->_backpack[i] = NULL;
 	}
-	std::cout <<  " < Charact. copy assignment operator > ";
+	if (Character::verbose)
+		std::cout << EMO_SPY << " copy assignment operator " << std::endl;
 	return *this;
 }
 
@@ -87,9 +90,12 @@ void				Character::equip(AMateria *m)
 	{
 		if (this->_backpack[i] == NULL)
 		{
-			this->_backpack[i] = m; 
-			std::cout << COL_GRN <<  "\nequip : " <<  " + 1 " << m->getType();
-			std::cout << " to backpack[" << i << "]" << COL_RES << std::endl;
+			this->_backpack[i] = m;
+			if (Character::verbose)
+			{
+				std::cout << COL_GRN <<  "\nequip : " <<  " + 1 " << m->getType();
+				std::cout << " to backpack[" << i << "]" << COL_RES << std::endl;
+			}
 			return;
 		}
 	}
@@ -103,11 +109,19 @@ void				Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || this->_backpack[idx] == NULL)
 	{
-		std::cout << "Backpack slot is empty" << std::endl;
+		if (Character::verbose)
+			std::cout << "Backpack slot is either empty or unvailable " << std::endl;
 		return ;
 	}
-	std::cout <<  " -1 " << this->_backpack[idx]->getType() << " from backpack["  << idx << "]" << std::endl;;
+	if (Character::verbose)
+	{
+		std::cout <<  " Unequip : -1 " << this->_backpack[idx]->getType();
+		std::cout << " from backpack["  << idx << "]" << std::endl;;
+	}
 	this->_backpack[idx] = NULL;
+	for (int i = idx + 1; i < 4; i++)
+		this->_backpack[i - 1] = this->_backpack[i];
+	this->_backpack[3] = NULL;
 	return ;
 }
 
@@ -117,7 +131,6 @@ void				Character::use(int idx, ICharacter &target)
 		this->_backpack[idx]->use(target);
 	else 
 		std::cout << "could not use item" << std::endl;
-	this->unequip(idx);
 	return ;
 }
 
@@ -139,24 +152,5 @@ std::ostream		&operator<<(std::ostream &oss, ICharacter const &rhs)
 	return oss;
 }
 
- /*
-subject :
-	1/ no delete for unequip , cannot delete this->_backpack[idx];
-	2/ ouput expected 
-
-void				Character::unequip(int idx)
-{
-	if (idx < 0 || idx >= 4 || this->_backpack[idx] == NULL)
-	{
-		std::cout << "Backpack slot was empty - could not be unequiped" << std::endl;
-		return ;
-	}
-	std::cout <<  " -1 " << this->_backpack[idx]->getType() << " from backpack["  << idx << "]";
-	for (int i = idx + 1; i < 4 ; i++)
-	{
-		this->_backpack[i - 1] = this->_backpack[i];
-		this->_backpack[i] = NULL;
-	}
-	return ;
-}
-*/
+ /* static initialization */
+bool			Character::verbose = false;

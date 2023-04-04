@@ -35,6 +35,8 @@
 # include <iomanip>
 # include "../inc/ICharacter.hpp"
 
+/*  used forward declaration in the header files 
+to get around the circular dependencies*/
 class	ICharacter;
 
 class	AMateria
@@ -54,6 +56,8 @@ class	AMateria
 
 		virtual AMateria	*clone(void) const = 0;
 		virtual void		use(ICharacter &target);
+
+		static bool			verbose;
 };
 
 /* * * * *  stream operator * * * * */

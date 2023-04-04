@@ -22,14 +22,10 @@ OBJ			= $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
 CXX			= c++
 CXXFLAGS	= -std=c++98
 CFLAGS		= -Wall -Werror -Wextra
+CDEBUG 		= -fsanitize=address -g
+LDEBUG		= -fsanitize=address -static-libsan
 
-COL_RED = @echo -n "\e[1;31m"
-COL_GRN = @echo -n "\e[1;32m"
-COL_YEL = @echo -n "\e[1;33m"
-COL_BLU = @echo -n "\e[1;34m"
-COL_PUR = @echo -n "\e[1;35m"
-COL_RESET = @echo -n "\e[0m"
-
+##########################################################
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -58,7 +54,19 @@ fclean: clean
 
 re: fclean all
 
-run: $(NAME)
-	@./$(NAME)
+test:$(NAME)
+	@./$(NAME) verbose
 
-.PHONY : run re fclean clean
+leaks: $(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all -s ./$(NAME)
+
+.PHONY : leaks test re fclean clean 
+
+
+COL_RED = @echo -n "\e[1;31m"
+COL_GRN = @echo -n "\e[1;32m"
+COL_YEL = @echo -n "\e[1;33m"
+COL_BLU = @echo -n "\e[1;34m"
+COL_PUR = @echo -n "\e[1;35m"
+COL_RESET = @echo -n "\e[0m"
+

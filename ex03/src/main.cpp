@@ -26,30 +26,30 @@
 /* MateriaSource stream operator  not implemented */
 
 /* copying instances */
-// static int		test5(void)
-// {
-// 	MateriaSource	*src1 = new MateriaSource();
+static int		test6(void)
+{
+	MateriaSource	*src1 = new MateriaSource();
 
-// 	src1->learnMateria(new Cure());
-// 	MateriaSource	*src2 = new MateriaSource();
-// 	src2 = src1;
-// 	std::cout << std::endl;
+	src1->learnMateria(new Cure());
+	MateriaSource	*src2 = new MateriaSource();
+	*src2 = *src1;
+	std::cout << std::endl;
 
-// 	AMateria		*tmp1;
-// 	std::cout << std::endl;
-// 	tmp1 = src1->createMateria("cure");
-// 	if (tmp1)
-// 		delete tmp1;
+	AMateria		*tmp1;
+	std::cout << std::endl;
+	tmp1 = src1->createMateria("cure");
+	if (tmp1)
+		delete tmp1;
 
-// 	AMateria		*tmp2;
-// 	tmp2 = src2->createMateria("cure");
-// 	if (tmp2)
-// 		delete tmp2;
-// 	std::cout << std::endl;
-// 	delete src1;
-// 	delete src2;
-// 	return 0;
-// }
+	AMateria		*tmp2;
+	tmp2 = src2->createMateria("cure");
+	if (tmp2)
+		delete tmp2;
+	std::cout << std::endl;
+	delete src1;
+	delete src2;
+	return 0;
+}
 
 /* conditional jump */
 static int		test5(void)
@@ -64,13 +64,13 @@ static int		test5(void)
 	delete mike;
 	return 0;
 }
-/* learn, create and equip to full */
+
+/* learn, create and equip to full then unequip */
 static void		test4(void)
 {
 	IMateriaSource	*src = new MateriaSource();
 	ICharacter		*me = new Character("me");
 	AMateria		*tmp;
-	AMateria		*at_floor = NULL;
 
 	std::cout << std::endl;
 	src->learnMateria(new Ice());
@@ -87,18 +87,20 @@ static void		test4(void)
 		tmp = src->createMateria("ice");
 		me->equip(tmp);
 	}
-	
+
+	AMateria		*at_floor = NULL;
+
 	std::cout << *me;
 	std::cout << std::endl;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 4; i++)
 	{
-		std::cout << "unequip \t";
-		at_floor = me->getItem(i);
-		me->unequip(i);
+		int	slot = 1;
+		at_floor = me->getItem(slot);
+		me->unequip(slot);
 		if (at_floor)
 			delete at_floor;
+		std::cout << *me;
 	}
-	std::cout << *me;
 	std::cout  << std::endl;
 	delete me;
 	delete src;
@@ -145,7 +147,7 @@ static void		test2(void)
 }
 
 /* test from the subject pdf file */
-/* added delete tmp */
+/* verbose set to true */
 static int		test1(void)
 {
 	IMateriaSource 	*src = new MateriaSource();
@@ -163,19 +165,12 @@ static int		test1(void)
 	std::cout << *me;
 	
 	ICharacter		*bob = new Character("bob");
-	AMateria		*at_floor = NULL;
 
 	std::cout << std::endl;
-	at_floor = me->getItem(0);
 	me->use(0, *bob);
-	if (at_floor)
-		delete at_floor;
 	std::cout << *me;
 
-	at_floor = me->getItem(1);
 	me->use(1, *bob);
-	if (at_floor)
-		delete at_floor;
 	std::cout << *me;
 
 	std::cout << std::endl;
@@ -185,11 +180,47 @@ static int		test1(void)
 	return 0;
 }
 
-int				main(void)
+/* test from the ex03 subject */
+static int		test0(void)
 {
+	IMateriaSource 	*src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter		*me = new Character("me");
+
+	AMateria		*tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	
+	ICharacter		*bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+	return 0;
+}
+
+int				main(int argc, char **argv)
+{
+	if (argc == 1)
+	{
+		test0();
+		return 0;
+	}
+	if (argv[1] != NULL)
+		std::cout << std::endl << std::endl;
+	Character::verbose = true;
+	AMateria::verbose = true;
+	MateriaSource::verbose = true;
+	std::cout << COL_GRN << "\t\t verbose mode" << COL_RES << std::endl;
 	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << COL_YEL << "TEST 1" << COL_RES << std::endl;
+	std::cout << COL_YEL << "TEST 1" << COL_RES <<  std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	test1();
 	std::cout << std::endl << std::endl;
@@ -209,6 +240,10 @@ int				main(void)
 	std::cout << "______________________________________________" << std::endl;
 	test5();
 	std::cout << std::endl << std::endl;
+	std::cout << COL_YEL << "TEST 6" << COL_RES << std::endl;
+	std::cout << "______________________________________________" << std::endl;
+	test6();
+	std::cout << std::endl << std::endl;
 	std::cout << "______________________________________________" << std::endl;
 	std::cout << COL_RES << std::endl;
 	return 0;
@@ -217,4 +252,15 @@ int				main(void)
 
 /*
 	Darwin :	leaks -atExit -- ./a.out
+
+
+	Subject : unequip cannot delete unequiped Materia
+
+	AMateria		*at_floor = NULL;
+	
+	at_floor = me->getItem(slot);
+	me->unequipe(slot);
+	if (at_floor)
+		delete at_floor;
+	std::cout << *me;
 */

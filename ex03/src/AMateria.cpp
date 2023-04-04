@@ -14,27 +14,30 @@
 
 AMateria::AMateria(void):_type("")
 {
-	std::cout << EMO_WRENCH << " def. ";
+	if (AMateria::verbose)
+		std::cout << EMO_WRENCH << " AMat. def. ";
 	return ;
 }
 
 AMateria::AMateria(std::string const &type):_type(type)
 {
-	std::cout << EMO_WRENCH  << " param ";
+	if (AMateria::verbose)
+		std::cout << EMO_WRENCH  << " AMat. param. ";
 	return ;
 }
 
 AMateria::AMateria(AMateria const	&other)
 {
-	std::cout << EMO_WRENCH  << " clone ";
+	if (AMateria::verbose)
+		std::cout << EMO_WRENCH  << " AMat. clone ";
 	*this = other;
 	return ;
 }
 
 AMateria::~AMateria(void)
 {
-	std::cout << COL_RED << EMO_MINUS;
-	std::cout << COL_RES << std::endl;
+	if (AMateria::verbose)
+		std::cout << COL_RED << EMO_MINUS << COL_RES << std::endl;
 	return ;
 }
 
@@ -42,7 +45,8 @@ AMateria			&AMateria::operator=(AMateria const &rhs)
 {
 	if (this->_type == rhs.getType())
 		return (*this);
-	std::cout << EMO_WRENCH << " copy ";
+	if (AMateria::verbose)
+		std::cout << EMO_WRENCH << " copy ";
 	this->_type = rhs.getType();
 	return (*this);
 }
@@ -61,9 +65,9 @@ AMateria			*AMateria::clone(void) const = 0;
 void				AMateria::use(ICharacter &target)
 {
 	if (this->_type == "ice")
-		std::cout << " * shoots an ice bolt at " << target.getName() << " *" << std::endl;
+		std::cout << "# shoots an ice bolt at " << target.getName() << " #" << std::endl;
 	if (this->_type == "cure")
-		std::cout << " * Heals " << target.getName() << "'s wounds *" << std::endl;
+		std::cout << "# Heals " << target.getName() << "'s wounds #" << std::endl;
 	return ;
 }
 
@@ -78,3 +82,4 @@ std::ostream		&operator<<(std::ostream &oss, AMateria const &rhs)
 	return oss;
 }
 
+bool			AMateria::verbose = false;
