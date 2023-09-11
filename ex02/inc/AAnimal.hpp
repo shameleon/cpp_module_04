@@ -63,6 +63,9 @@ std::ostream	&operator<<(std::ostream &o, AAnimal const &rhs);
 
 /*
 	AAnimal   : abstract class 
+		An abstract class is a class that
+		contains at least one pure virtual function and cannot be instantiated
+	
 	makeSound : pure virtual function. 
 				function override in derived class(es)
 	
