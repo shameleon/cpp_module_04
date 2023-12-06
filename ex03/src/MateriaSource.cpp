@@ -87,7 +87,7 @@ void			MateriaSource::learnMateria(AMateria *m)
 	}
 	delete m;
 	if (MateriaSource::verbose)
-		std::cout << " MSource is full} " << std::endl;
+		std::cout << " {MSource is full} " << std::endl;
 	return ;
 }
 

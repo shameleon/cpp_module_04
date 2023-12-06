@@ -3,6 +3,8 @@
 ./.vscode/*
 .vscode
 .txt
+.json
+other.md
 
 # Prerequisites
 *.d
@@ -38,3 +40,4 @@
 *.exe
 *.out
 *.app
+.vscode/settings.json

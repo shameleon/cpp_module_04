@@ -211,6 +211,8 @@ int				main(int argc, char **argv)
 	if (argc == 1)
 	{
 		test0();
+		std::cout << "\n>>>\t\t" << COL_YEL << "$ ./a.out verbose" << COL_RES;
+		std::cout << "\tto run all tests\t<<<" << std::endl;
 		return 0;
 	}
 	if (argv[1] != NULL)
